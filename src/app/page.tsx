@@ -1,8 +1,9 @@
+
 "use client"
 
 import React from 'react';
 import Image from 'next/image';
-import { ShieldCheck, BookOpen, Compass, Wand2, Lock, EyeOff, Flame, Sparkles, Bird, MessageCircle } from 'lucide-react';
+import { ShieldCheck, BookOpen, Compass, Wand2, Lock, EyeOff, Flame, Sparkles, Bird, MessageCircle, User } from 'lucide-react';
 import { LeadForm } from '@/components/LeadForm';
 import { useScrollReveal } from '@/hooks/use-scroll-reveal';
 import { MagicParticles } from '@/components/ui/magic-particles';
@@ -13,14 +14,9 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Card, CardContent } from '@/components/ui/card';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 export default function LandingPage() {
   useScrollReveal();
-
-  const student1 = PlaceHolderImages.find(img => img.id === 'anon-1');
-  const student2 = PlaceHolderImages.find(img => img.id === 'anon-2');
-  const student3 = PlaceHolderImages.find(img => img.id === 'anon-3');
 
   return (
     <div className="min-h-screen selection-sonserina text-foreground bg-background relative overflow-x-hidden">
@@ -234,21 +230,14 @@ export default function LandingPage() {
           <h2 className="text-2xl md:text-3xl font-headline text-foreground text-center mb-16 md:mb-20 scroll-reveal tracking-[0.2em] md:tracking-[0.3em] uppercase">Quem já destravou</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             {[
-              { name: "João Silva", role: "Profissional de TI", text: "Depois de aplicar o método, apresentei um projeto inteiro em inglês para a matriz nos EUA. Sem medo, com confiança!", img: student1 },
-              { name: "Maria Santos", role: "Gerente de Projetos", text: "Finalmente consigo participar de reuniões internacionais sem aquele pânico. Minha carreira mudou!", img: student2 },
-              { name: "Ana Paula", role: "Diretora de Marketing", text: "Não é apenas sobre gramática, é sobre retomar o poder da própria voz em ambientes corporativos de elite.", img: student3 },
+              { name: "João Silva", role: "Profissional de TI", text: "Depois de aplicar o método, apresentei um projeto inteiro em inglês para a matriz nos EUA. Sem medo, com confiança!" },
+              { name: "Maria Santos", role: "Gerente de Projetos", text: "Finalmente consigo participar de reuniões internacionais sem aquele pânico. Minha carreira mudou!" },
+              { name: "Ana Paula", role: "Diretora de Marketing", text: "Não é apenas sobre gramática, é sobre retomar o poder da própria voz em ambientes corporativos de elite." },
             ].map((testi, idx) => (
               <div key={idx} className="p-8 md:p-10 brand-card scroll-reveal">
                 <div className="flex items-center gap-4 mb-8">
-                  <div className="w-[45px] h-[45px] md:w-[50px] md:h-[50px] rounded-none border border-primary/20 bg-muted flex items-center justify-center overflow-hidden">
-                    <Image 
-                      src={testi.img?.imageUrl || ''} 
-                      alt={testi.name} 
-                      width={50} 
-                      height={50} 
-                      className="opacity-40 grayscale"
-                      data-ai-hint="user profile"
-                    />
+                  <div className="w-[45px] h-[45px] md:w-[50px] md:h-[50px] rounded-none border border-primary/20 bg-card flex items-center justify-center overflow-hidden">
+                    <User className="w-6 h-6 text-primary/40" />
                   </div>
                   <div>
                     <h4 className="font-bold text-foreground tracking-wider uppercase text-[9px] md:text-[10px]">{testi.name}</h4>
