@@ -1,9 +1,10 @@
+
 import type {Metadata} from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Caroline Renó | Habilidade Ativa - Minicurso Gratuito',
-  description: 'Supere o bloqueio emocional ao falar inglês com o método de psicologia da Caroline Renó.',
+  title: 'Safe & Sound | Caroline Renó - Onde a Magia do Inglês Acontece',
+  description: 'Supere a Maldição do Silêncio e o bloqueio emocional ao falar inglês com o método de psicologia da Caroline Renó.',
 };
 
 export default function RootLayout({

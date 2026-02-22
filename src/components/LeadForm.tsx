@@ -1,3 +1,4 @@
+
 "use client"
 
 import React, { useState } from 'react';
@@ -16,7 +17,7 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { generatePersonalizedFollowUpMessage } from '@/ai/flows/personalized-follow-up-message-flow';
-import { Loader2, Sparkles, Wand2, Compass } from 'lucide-react';
+import { Loader2, Wand2, Compass, Bird } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 
 const formSchema = z.object({
@@ -42,11 +43,11 @@ export function LeadForm() {
       const response = await generatePersonalizedFollowUpMessage({
         leadName: values.name,
         leadEmail: values.email,
-        registrationSource: 'Santuário Oficial Caroline Renó',
-        courseName: 'Habilidade Ativa: O Despertar da Autoridade',
+        registrationSource: 'Santuário Safe & Sound',
+        courseName: 'Safe & Sound: Onde a Magia do Inglês Acontece',
         teacherName: 'Caroline Renó',
-        courseGoal: 'Transmutar o silêncio profissional em fluência absoluta e maestria verbal.',
-        courseBenefits: '3 lições de autoridade, Psicologia das Sombras, Mentorias VIP',
+        courseGoal: 'Transmutar o silêncio e as travas mentais em fluência absoluta e Protego Mental.',
+        courseBenefits: 'Aulas de Defesa Contra Travas, Suporte via Coruja, Alquimia Linguística',
       });
       
       setSuccessData({ message: response.message, name: values.name });
@@ -107,7 +108,7 @@ export function LeadForm() {
               </div>
             ) : (
               <div className="flex items-center justify-center gap-3">
-                <span className="tracking-[0.3em]">Garantir Acesso à Ordem</span>
+                <span className="tracking-[0.3em]">Entrar no Santuário</span>
                 <Compass className="h-3.5 w-3.5 opacity-50 group-hover:opacity-100 group-hover:rotate-45 transition-all" />
               </div>
             )}
@@ -118,15 +119,14 @@ export function LeadForm() {
       <Dialog open={!!successData} onOpenChange={() => setSuccessData(null)}>
         <DialogContent className="bg-background border-primary/30 max-w-2xl text-foreground rounded-none p-0 overflow-hidden">
           <div className="relative p-10">
-            {/* Gráfico oficial de fundo no modal */}
             <div className="absolute top-0 right-0 opacity-10 pointer-events-none w-1/2">
                <Image src="https://imgur.com/bQxd94N.png" alt="Seal" width={400} height={400} />
             </div>
             
             <DialogHeader>
               <DialogTitle className="flex items-center gap-4 text-3xl font-headline text-primary">
-                <Wand2 className="w-8 h-8" />
-                Boas-vindas, {successData?.name}.
+                <Bird className="w-8 h-8" />
+                A Coruja chegou, {successData?.name}.
               </DialogTitle>
             </DialogHeader>
             <div className="mt-8 space-y-8 relative z-10">
@@ -134,7 +134,7 @@ export function LeadForm() {
                 {successData?.message}
               </div>
               <p className="text-center font-bold text-primary text-[10px] uppercase tracking-[0.5em]">
-                O Ritual de Ascensão Começou.
+                O Ritual Safe & Sound Começou.
               </p>
               <Button onClick={() => setSuccessData(null)} className="w-full bg-primary/5 hover:bg-primary/10 text-primary border border-primary/30 h-12 uppercase tracking-[0.4em] text-[10px] font-bold rounded-none transition-all">
                 Fechar Grimório

@@ -1,10 +1,7 @@
+
 'use server';
 /**
- * @fileOverview A Genkit flow for generating personalized follow-up messages for new leads.
- *
- * - generatePersonalizedFollowUpMessage - A function that generates a personalized follow-up message.
- * - PersonalizedFollowUpMessageInput - The input type for the generatePersonalizedFollowUpMessage function.
- * - PersonalizedFollowUpMessageOutput - The return type for the generatePersonalizedFollowUpMessage function.
+ * @fileOverview A Genkit flow for generating personalized follow-up messages for new initiates of Safe & Sound.
  */
 
 import { ai } from '@/ai/genkit';
@@ -14,10 +11,10 @@ const PersonalizedFollowUpMessageInputSchema = z.object({
   leadName: z.string().describe('The name of the new lead.'),
   leadEmail: z.string().email().describe('The email address of the new lead.'),
   registrationSource: z.string().describe('How the lead registered for the course.'),
-  courseName: z.string().describe('The name of the mini-course.'),
+  courseName: z.string().describe('The name of the course.'),
   teacherName: z.string().describe('The name of the course instructor.'),
-  courseGoal: z.string().describe('The main goal of the mini-course.'),
-  courseBenefits: z.string().describe('Key benefits of the mini-course, comma-separated.'),
+  courseGoal: z.string().describe('The main goal of the course.'),
+  courseBenefits: z.string().describe('Key benefits of the course, comma-separated.'),
 });
 export type PersonalizedFollowUpMessageInput = z.infer<typeof PersonalizedFollowUpMessageInputSchema>;
 
@@ -34,8 +31,8 @@ const followUpMessagePrompt = ai.definePrompt({
   name: 'followUpMessagePrompt',
   input: { schema: PersonalizedFollowUpMessageInputSchema },
   output: { schema: PersonalizedFollowUpMessageOutputSchema },
-  prompt: `You are the elegant and authoritative voice of the "Order of Active Ability" (Habilidade Ativa).
-Your task is to craft a deeply engaging, psychological, and slightly mystical follow-up message for a new initiate (lead).
+  prompt: `You are the elegant and authoritative voice of the "Safe & Sound" Order.
+Your task is to craft a deeply engaging, psychological, and slightly mystical follow-up message for a new initiate who has just requested entry into the sanctuary.
 
 The tone must be:
 - Sophisticated and Academic (Oxford/Sonserina vibe).
@@ -45,21 +42,27 @@ The tone must be:
 
 Lead Details:
 Name: {{{leadName}}}
-Source: {{{registrationSource}}}
 Course: {{{courseName}}}
 Master: {{{teacherName}}}
-Alchemy Goal: {{{courseGoal}}}
+Goal: {{{courseGoal}}}
 Rites of Passage: {{{courseBenefits}}}
+
+Core Terminology to include:
+- "Dementadores do Medo": The mental blocks they face.
+- "Protego Mental": The psychological shield they will build.
+- "Defesa Contra as Travas Mentais": The classes/ritual.
+- "Suporte via Coruja": The digital owl support.
 
 Requirements:
 1. Address them by name with prestige.
-2. Acknowledge the courage it takes to break the "Curse of Silence".
-3. Use metaphors related to "Unlocking chambers", "Transmuting fear", and "Vocal Authority".
-4. Briefly explain that their voice is the most powerful tool in their career arsenal.
+2. Acknowledge the courage it takes to face the "Dementadores do Medo" and break the "Maldição do Silêncio".
+3. Use metaphors related to "Santuário", "Alquimia Linguística", and "Vocal Authority".
+4. Briefly explain that their voice is the most powerful tool in their professional arsenal.
 5. Remind them that the first ritual (lesson) is approaching and they must be ready.
-6. Keep it between 120-180 words.
+6. Mention that a messenger owl (Suporte via Coruja) will keep them informed.
+7. Keep it between 120-180 words.
 
-The message should feel like an invitation to a secret society of elite professionals.
+The message should feel like a prestigious invitation to an elite society.
 `,
 });
 
