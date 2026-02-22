@@ -1,4 +1,3 @@
-
 "use client"
 
 import React from 'react';
@@ -28,9 +27,8 @@ export default function LandingPage() {
     <div className="min-h-screen selection-sonserina text-foreground bg-background relative overflow-x-hidden">
       <MagicParticles />
       
-      {/* SEÇÃO 1: HERO (Dobra de Cima) */}
+      {/* SEÇÃO 1: HERO */}
       <section className="relative pt-12 pb-20 md:pb-32 px-4 flex flex-col items-center overflow-hidden min-h-[90vh] justify-center text-center">
-        {/* Elementos Gráficos de Fundo Místicos */}
         <div className="absolute top-0 right-0 opacity-10 pointer-events-none w-1/2 md:w-1/3 max-w-sm">
           <Image src="https://imgur.com/bQxd94N.png" alt="Selo Místico" width={500} height={500} />
         </div>
@@ -61,7 +59,7 @@ export default function LandingPage() {
             <span className="text-xl md:text-3xl block mt-4 font-body tracking-tight opacity-90">Fale Inglês sem Medo e Destrave sua Carreira.</span>
           </h1>
           <p className="text-base md:text-lg text-muted-foreground mb-10 max-w-2xl font-body scroll-reveal delay-200 leading-relaxed mx-auto">
-            Não espere sua carta de Hogwarts chegar para começar a falar! Participe do minicurso gratuito **Habilidade Ativa** e aprenda como superar os **Dementadores do Medo** e as **Trevas do Bloqueio Mental**.
+            Não espere sua carta de Hogwarts chegar para começar a falar! Participe do minicurso gratuito <span className="magic-emphasis">Habilidade Ativa</span> e aprenda como superar os <span className="magic-emphasis">Dementadores do Medo</span> e as <span className="magic-emphasis">Trevas do Bloqueio Mental</span>.
           </p>
           
           <div className="scroll-reveal delay-300 max-w-md mx-auto">
@@ -85,7 +83,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* SEÇÃO 2: A DOR (O Problema) */}
+      {/* SEÇÃO 2: A DOR */}
       <section className="py-20 md:py-28 bg-card/10 border-y border-primary/10 relative overflow-hidden px-4">
         <div className="absolute top-1/2 left-0 -translate-y-1/2 opacity-5 pointer-events-none w-48 md:w-64">
            <Image src="https://imgur.com/7f2b52K.png" alt="Ornamental" width={500} height={500} />
@@ -99,10 +97,10 @@ export default function LandingPage() {
           
           <div className="space-y-6 md:space-y-8 text-base md:text-lg text-muted-foreground leading-relaxed max-w-3xl mx-auto mb-16 scroll-reveal">
             <p>
-              Você é um profissional competente, mas na hora de uma reunião em inglês ou de uma entrevista para aquela vaga dos sonhos, sente a presença dos **Dementadores do Medo**?
+              Você é um profissional competente, mas na hora de uma reunião em inglês ou de uma entrevista para aquela vaga dos sonhos, sente a presença dos <span className="magic-emphasis">Dementadores do Medo</span>?
             </p>
             <p className="font-bold text-foreground/90">
-              O coração dispara e as palavras somem? Você não está sozinho. O problema não é a sua inteligência, é o seu bloqueio emocional.
+              O coração dispara e as palavras somem? Você não está sozinho. O problema não é a sua inteligência, é o seu <span className="magic-emphasis">bloqueio emocional</span>.
             </p>
           </div>
 
@@ -121,7 +119,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* SEÇÃO 3: A SOLUÇÃO (O Minicurso) */}
+      {/* SEÇÃO 3: A SOLUÇÃO */}
       <section className="py-20 md:py-32 px-4 relative">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16 md:mb-24">
@@ -187,10 +185,10 @@ export default function LandingPage() {
             <h2 className="text-3xl md:text-5xl font-headline text-foreground mb-8">Quem vai te guiar?</h2>
             <div className="space-y-6 text-sm md:text-base text-muted-foreground/90 leading-relaxed">
               <p>
-                Caroline Renó não é apenas uma professora de inglês. Com foco em **Psicologia**, ela desenvolveu um método que une o aprendizado do idioma ao cuidado com a mente: o **Protego Mental**.
+                Caroline Renó não é apenas uma professora de inglês. Com foco em <span className="magic-emphasis">Psicologia</span>, ela desenvolveu um método que une o aprendizado do idioma ao cuidado com a mente: o <span className="magic-emphasis">Protego Mental</span>.
               </p>
               <p>
-                Ela testa em si mesma tudo o que ensina, garantindo uma abordagem humana, prática e livre de julgamentos, como uma verdadeira mentora de **Defesa Contra as Artes das Trevas do Bloqueio Mental**.
+                Ela testa em si mesma tudo o que ensina, garantindo uma abordagem humana, prática e livre de julgamentos, como uma verdadeira mentora de <span className="magic-emphasis">Defesa Contra as Artes das Trevas do Bloqueio Mental</span>.
               </p>
             </div>
             <div className="mt-12 pt-10 border-t border-primary/10 flex flex-col md:flex-row items-center justify-center md:justify-start gap-6 md:gap-8">
@@ -236,7 +234,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* SEÇÃO 6: FAQ (Câmara de Esclarecimentos) */}
+      {/* SEÇÃO 6: FAQ */}
       <section className="py-20 md:py-32 px-4 border-t border-primary/10">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-2xl md:text-3xl font-headline text-foreground text-center mb-12 md:mb-16 scroll-reveal tracking-widest uppercase">FAQ</h2>

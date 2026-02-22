@@ -58,6 +58,13 @@
   font-family: 'Pinyon Script', cursive;
 }
 
+/* Ênfase Mística (Substituição dos asteriscos) */
+.magic-emphasis {
+  @apply text-primary font-bold transition-all duration-700;
+  text-shadow: 0 0 12px hsla(45, 33%, 40%, 0.3);
+  letter-spacing: 0.02em;
+}
+
 /* Revelação de Pergaminho */
 .scroll-reveal {
   opacity: 0;
