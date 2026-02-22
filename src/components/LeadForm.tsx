@@ -17,8 +17,12 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { generatePersonalizedFollowUpMessage } from '@/ai/flows/personalized-follow-up-message-flow';
-import { Loader2, Compass, Bird, MessageCircle } from 'lucide-react';
+import { Loader2, Compass, Bird, MessageCircle, Sparkles } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { useFirestore } from '@/firebase';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { errorEmitter } from '@/firebase/error-emitter';
+import { FirestorePermissionError } from '@/firebase/errors';
 
 const formSchema = z.object({
   name: z.string().min(2, { message: 'Sua identificação mística é necessária.' }),
@@ -28,6 +32,7 @@ const formSchema = z.object({
 export function LeadForm() {
   const [isLoading, setIsLoading] = useState(false);
   const [successData, setSuccessData] = useState<{ message: string; name: string } | null>(null);
+  const firestore = useFirestore();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -40,6 +45,22 @@ export function LeadForm() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true);
     try {
+      // 1. Salva o Lead no Pergaminho Digital (Firestore)
+      const leadsRef = collection(firestore, 'leads');
+      addDoc(leadsRef, {
+        name: values.name,
+        email: values.email,
+        captureDateTime: serverTimestamp(),
+        source: 'Landing Page Safe & Sound',
+      }).catch(async (error) => {
+        errorEmitter.emit('permission-error', new FirestorePermissionError({
+          path: 'leads',
+          operation: 'create',
+          requestResourceData: values
+        }));
+      });
+
+      // 2. Invoca a Inteligência para a Mensagem Personalizada
       const response = await generatePersonalizedFollowUpMessage({
         leadName: values.name,
         leadEmail: values.email,
@@ -135,27 +156,29 @@ export function LeadForm() {
               </DialogTitle>
             </DialogHeader>
             <div className="mt-6 md:mt-8 space-y-6 md:space-y-8 relative z-10">
-              <div className="p-4 md:p-8 bg-card/40 border border-primary/10 italic text-sm md:text-base leading-relaxed text-muted-foreground font-body max-h-[40vh] overflow-y-auto selection-sonserina">
+              <div className="p-4 md:p-8 bg-card/40 border border-primary/10 italic text-sm md:text-base leading-relaxed text-muted-foreground font-body max-h-[40vh] overflow-y-auto selection-sonserina custom-scrollbar">
                 {successData?.message}
               </div>
               
               <div className="space-y-4">
-                <p className="text-center font-bold text-primary/80 text-[10px] md:text-[12px] uppercase tracking-[0.2em] md:tracking-[0.3em]">
-                  O Ritual Habilidade Ativa acontece no Grupo VIP.
+                <p className="text-center font-bold text-primary/80 text-[10px] md:text-[12px] uppercase tracking-[0.2em] md:tracking-[0.3em] flex items-center justify-center gap-2">
+                  <Sparkles className="w-3 h-3" />
+                  Ritual Final: Entre no Grupo VIP
+                  <Sparkles className="w-3 h-3" />
                 </p>
                 <Button 
                   onClick={handleJoinWhatsApp} 
-                  className="w-full cta-button h-16 text-[10px] md:text-[12px] group gold-shimmer bg-primary hover:bg-primary/90"
+                  className="w-full cta-button h-16 text-[10px] md:text-[12px] group gold-shimmer bg-primary hover:bg-primary/90 magic-pulse shadow-[0_0_25px_-5px_hsla(45,33%,40%,0.6)]"
                 >
                   <div className="flex items-center justify-center gap-3">
-                    <MessageCircle className="h-5 w-5" />
-                    <span className="tracking-[0.2em]">Entrar no Santuário (Grupo VIP)</span>
+                    <MessageCircle className="h-5 w-5 animate-bounce" />
+                    <span className="tracking-[0.2em] font-bold">ATRAVESSAR O PORTAL (GRUPO VIP)</span>
                   </div>
                 </Button>
               </div>
 
               <p className="text-center text-[7px] md:text-[8px] uppercase tracking-[0.4em] text-muted-foreground/40 font-bold">
-                Acesse agora para não perder sua vaga.
+                Sua vaga no Santuário expira em breve.
               </p>
             </div>
           </div>
