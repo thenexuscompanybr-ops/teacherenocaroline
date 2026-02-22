@@ -1,3 +1,4 @@
+
 "use client"
 
 import React from 'react';
@@ -18,7 +19,6 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 export default function LandingPage() {
   useScrollReveal();
 
-  const teacherImg = PlaceHolderImages.find(img => img.id === 'teacher-caroline');
   const student1 = PlaceHolderImages.find(img => img.id === 'student-1');
   const student2 = PlaceHolderImages.find(img => img.id === 'student-2');
   const student3 = PlaceHolderImages.find(img => img.id === 'student-3');
@@ -32,16 +32,16 @@ export default function LandingPage() {
       <section className="relative pt-12 pb-20 md:pb-32 px-4 flex flex-col items-center overflow-hidden min-h-[90vh] justify-center text-center">
         {/* Elementos Gráficos de Fundo */}
         <div className="absolute top-0 right-0 opacity-10 pointer-events-none w-1/2 md:w-1/3 max-w-sm">
-          <Image src="https://imgur.com/bQxd94N.png" alt="Selo Místico" width={500} height={500} />
+          <Image src="https://i.imgur.com/bQxd94N.png" alt="Selo Místico" width={500} height={500} />
         </div>
         <div className="absolute bottom-0 left-0 opacity-5 pointer-events-none w-1/2 md:w-1/3 max-w-sm rotate-180">
-          <Image src="https://imgur.com/7f2b52K.png" alt="Ornamental" width={500} height={500} />
+          <Image src="https://i.imgur.com/7f2b52K.png" alt="Ornamental" width={500} height={500} />
         </div>
         
         <header className="mb-12 md:mb-16 scroll-reveal z-10">
           <div className="logo-float">
             <Image 
-              src="https://imgur.com/NtUqBYp.png" 
+              src="https://i.imgur.com/NtUqBYp.png" 
               alt="Caroline Renó Logo" 
               width={220} 
               height={60} 
@@ -89,7 +89,7 @@ export default function LandingPage() {
       {/* SEÇÃO 2: A DOR */}
       <section className="py-20 md:py-28 bg-card/10 border-y border-primary/10 relative overflow-hidden px-4">
         <div className="absolute top-1/2 left-0 -translate-y-1/2 opacity-5 pointer-events-none w-48 md:w-64">
-           <Image src="https://imgur.com/7f2b52K.png" alt="Ornamental" width={500} height={500} />
+           <Image src="https://i.imgur.com/7f2b52K.png" alt="Ornamental" width={500} height={500} />
         </div>
         
         <div className="max-w-4xl mx-auto text-center relative z-10">
@@ -169,7 +169,7 @@ export default function LandingPage() {
           <div className="w-full md:w-1/2 scroll-reveal">
             <div className="relative p-2 md:p-4 border border-primary/15 bg-background/50 group mx-auto max-w-[500px] md:max-w-full sanctuary-glow">
               <Image 
-                src={teacherImg?.imageUrl || ''} 
+                src="https://i.imgur.com/iwVrdXg.png" 
                 alt="Caroline Renó" 
                 width={800} 
                 height={1000}
@@ -177,7 +177,7 @@ export default function LandingPage() {
               />
                {/* Selo Místico na foto */}
                <div className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 opacity-20 hidden lg:block">
-                  <Image src="https://imgur.com/kmtinmG.png" alt="Graphic" width={180} height={180} />
+                  <Image src="https://i.imgur.com/kmtinmG.png" alt="Graphic" width={180} height={180} />
                </div>
             </div>
           </div>
@@ -197,16 +197,16 @@ export default function LandingPage() {
             </div>
             {/* Logo de Assinatura */}
             <div className="mt-12 pt-10 border-t border-primary/10 flex flex-col md:flex-row items-center justify-center md:justify-start gap-6 md:gap-8">
-               <div className="relative w-[180px] md:w-[220px]">
+               <div className="relative w-[140px] md:w-[220px]">
                  <Image 
-                   src="https://imgur.com/DIW3kra.png" 
+                   src="https://i.imgur.com/DIW3kra.png" 
                    alt="Caroline Renó" 
                    width={220} 
                    height={60} 
-                   className="opacity-60 grayscale hover:opacity-100 transition-opacity duration-700" 
+                   className="opacity-60 grayscale hover:opacity-100 transition-opacity duration-700 w-full" 
                  />
                </div>
-               <div className="text-[9px] md:text-[8px] uppercase tracking-[0.4em] font-bold text-primary/40 leading-tight text-center md:text-left">
+               <div className="text-[8px] md:text-[8px] uppercase tracking-[0.4em] font-bold text-primary/40 leading-tight text-center md:text-left">
                 Habilidade Ativa <br /> Academy
                </div>
             </div>
@@ -270,7 +270,7 @@ export default function LandingPage() {
       <section className="py-32 md:py-48 px-4 text-center relative overflow-hidden">
         {/* Selo Místico no CTA Final */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-10 pointer-events-none w-full max-w-2xl">
-           <Image src="https://imgur.com/7f2b52K.png" alt="Graphic" width={1000} height={1000} />
+           <Image src="https://i.imgur.com/7f2b52K.png" alt="Graphic" width={1000} height={1000} />
         </div>
         
         <div className="max-w-4xl mx-auto relative z-10 scroll-reveal text-center">
@@ -290,7 +290,7 @@ export default function LandingPage() {
       {/* RODAPÉ FINAL */}
       <footer className="py-16 md:py-20 text-center border-t border-primary/5 bg-background relative z-10 px-4">
         <Image 
-          src="https://imgur.com/NtUqBYp.png" 
+          src="https://i.imgur.com/NtUqBYp.png" 
           alt="Caroline Renó Logo" 
           width={150} 
           height={45} 
