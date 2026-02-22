@@ -29,10 +29,13 @@ export default function LandingPage() {
       <MagicParticles />
       
       {/* SEÇÃO 1: HERO (Dobra de Cima) */}
-      <section className="relative pt-12 pb-20 md:pb-32 px-4 flex flex-col items-center overflow-hidden min-h-[90vh] justify-center">
-        {/* Elemento Gráfico de Fundo */}
+      <section className="relative pt-12 pb-20 md:pb-32 px-4 flex flex-col items-center overflow-hidden min-h-[90vh] justify-center text-center">
+        {/* Elementos Gráficos de Fundo Místicos */}
         <div className="absolute top-0 right-0 opacity-10 pointer-events-none w-1/2 md:w-1/3 max-w-sm">
           <Image src="https://imgur.com/bQxd94N.png" alt="Selo Místico" width={500} height={500} />
+        </div>
+        <div className="absolute bottom-0 left-0 opacity-5 pointer-events-none w-1/2 md:w-1/3 max-w-sm rotate-180">
+          <Image src="https://imgur.com/7f2b52K.png" alt="Ornamental" width={500} height={500} />
         </div>
         
         <header className="mb-12 md:mb-16 scroll-reveal z-10">
@@ -47,7 +50,7 @@ export default function LandingPage() {
           </div>
         </header>
 
-        <div className="max-w-4xl mx-auto text-center relative z-10">
+        <div className="max-w-4xl mx-auto relative z-10">
           <div className="mb-6 inline-flex items-center gap-3 py-1.5 px-6 border border-primary/20 bg-primary/5 text-primary text-[10px] font-bold tracking-[0.4em] uppercase">
             <Compass className="w-3 h-3" />
             Iniciação Gratuita
@@ -160,10 +163,10 @@ export default function LandingPage() {
       </section>
 
       {/* SEÇÃO 4: SOBRE A TEACHER */}
-      <section className="py-20 md:py-32 px-4 bg-card/5 border-y border-primary/5">
+      <section className="py-20 md:py-32 px-4 bg-card/5 border-y border-primary/5 overflow-hidden">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12 md:gap-20">
           <div className="w-full md:w-1/2 scroll-reveal">
-            <div className="relative p-2 md:p-4 border border-primary/15 bg-background/50 group mx-auto max-w-[400px] md:max-w-full sanctuary-glow">
+            <div className="relative p-2 md:p-4 border border-primary/15 bg-background/50 group mx-auto max-w-[500px] md:max-w-full sanctuary-glow">
               <Image 
                 src={teacherImg?.imageUrl || ''} 
                 alt="Caroline Renó" 
@@ -190,9 +193,17 @@ export default function LandingPage() {
                 Ela testa em si mesma tudo o que ensina, garantindo uma abordagem humana, prática e livre de julgamentos, como uma verdadeira mentora de **Defesa Contra as Artes das Trevas do Bloqueio Mental**.
               </p>
             </div>
-            <div className="mt-12 pt-8 border-t border-primary/10 flex flex-col md:flex-row items-center gap-6">
-               <Image src="https://imgur.com/DIW3kra.png" alt="Caroline Renó" width={140} height={40} className="opacity-60 md:w-[160px] md:h-[50px]" />
-               <div className="text-[8px] uppercase tracking-[0.3em] font-bold text-primary/40 leading-tight">
+            <div className="mt-12 pt-10 border-t border-primary/10 flex flex-col md:flex-row items-center justify-center md:justify-start gap-6 md:gap-8">
+               <div className="relative w-[180px] md:w-[220px]">
+                 <Image 
+                   src="https://imgur.com/DIW3kra.png" 
+                   alt="Caroline Renó" 
+                   width={220} 
+                   height={60} 
+                   className="opacity-60 grayscale hover:opacity-100 transition-opacity duration-700" 
+                 />
+               </div>
+               <div className="text-[9px] md:text-[8px] uppercase tracking-[0.4em] font-bold text-primary/40 leading-tight text-center md:text-left">
                 Habilidade Ativa <br /> Academy
                </div>
             </div>
