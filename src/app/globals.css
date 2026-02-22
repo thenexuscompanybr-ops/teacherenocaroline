@@ -58,7 +58,7 @@
   font-family: 'Pinyon Script', cursive;
 }
 
-/* Ênfase Mística (Substituição dos asteriscos) */
+/* Ênfase Mística */
 .magic-emphasis {
   @apply text-primary font-bold transition-all duration-700;
   text-shadow: 0 0 12px hsla(45, 33%, 40%, 0.3);
@@ -135,6 +135,7 @@
   width: 100%;
 }
 
+/* Animações Místicas */
 .logo-float {
   animation: float 8s ease-in-out infinite;
 }
@@ -143,6 +144,10 @@
   0% { transform: translateY(0px) rotate(0deg); }
   50% { transform: translateY(-8px) rotate(0.5deg); }
   100% { transform: translateY(0px) rotate(0deg); }
+}
+
+.logo-glow {
+  filter: drop-shadow(0 0 15px hsla(45, 33%, 40%, 0.2));
 }
 
 .particle {
@@ -156,10 +161,20 @@
 }
 
 @keyframes rise {
-  0% { transform: translateY(0) scale(1); opacity: 0; }
-  10% { opacity: 0.2; }
-  90% { opacity: 0.2; }
-  100% { transform: translateY(-100vh) scale(0.3); opacity: 0; }
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.2;
+  }
+  90% {
+    opacity: 0.2;
+  }
+  100% {
+    transform: translateY(-100vh) scale(0.3);
+    opacity: 0;
+  }
 }
 
 /* Estética SafeSound/Sanctuary */
@@ -179,4 +194,9 @@
   background: linear-gradient(135deg, hsla(45, 33%, 40%, 0.3), transparent 40%, transparent 60%, hsla(45, 33%, 40%, 0.3));
   pointer-events: none;
   z-index: -1;
+}
+
+/* Seleção Sonserina */
+.selection-sonserina ::selection {
+  @apply bg-primary/30 text-foreground;
 }

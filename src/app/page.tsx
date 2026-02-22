@@ -25,10 +25,12 @@ export default function LandingPage() {
 
   return (
     <div className="min-h-screen selection-sonserina text-foreground bg-background relative overflow-x-hidden">
+      {/* Partículas Místicas Globais */}
       <MagicParticles />
       
       {/* SEÇÃO 1: HERO */}
       <section className="relative pt-12 pb-20 md:pb-32 px-4 flex flex-col items-center overflow-hidden min-h-[90vh] justify-center text-center">
+        {/* Elementos Gráficos de Fundo */}
         <div className="absolute top-0 right-0 opacity-10 pointer-events-none w-1/2 md:w-1/3 max-w-sm">
           <Image src="https://imgur.com/bQxd94N.png" alt="Selo Místico" width={500} height={500} />
         </div>
@@ -67,6 +69,7 @@ export default function LandingPage() {
           </div>
         </div>
 
+        {/* Detalhes de Autoridade */}
         <div className="mt-20 md:mt-24 flex flex-wrap justify-center gap-6 md:gap-8 text-primary/40 font-bold tracking-[0.3em] scroll-reveal delay-500">
            <div className="flex items-center gap-2">
             <Bird className="w-3 h-3" />
@@ -172,6 +175,7 @@ export default function LandingPage() {
                 height={1000}
                 className="grayscale opacity-90 transition-all duration-1000 group-hover:grayscale-0 group-hover:opacity-100 object-cover"
               />
+               {/* Selo Místico na foto */}
                <div className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 opacity-20 hidden lg:block">
                   <Image src="https://imgur.com/kmtinmG.png" alt="Graphic" width={180} height={180} />
                </div>
@@ -191,6 +195,7 @@ export default function LandingPage() {
                 Ela testa em si mesma tudo o que ensina, garantindo uma abordagem humana, prática e livre de julgamentos, como uma verdadeira mentora de <span className="magic-emphasis">Defesa Contra as Artes das Trevas do Bloqueio Mental</span>.
               </p>
             </div>
+            {/* Logo de Assinatura */}
             <div className="mt-12 pt-10 border-t border-primary/10 flex flex-col md:flex-row items-center justify-center md:justify-start gap-6 md:gap-8">
                <div className="relative w-[180px] md:w-[220px]">
                  <Image 
@@ -263,6 +268,7 @@ export default function LandingPage() {
 
       {/* SEÇÃO 7: RODAPÉ E CTA FINAL */}
       <section className="py-32 md:py-48 px-4 text-center relative overflow-hidden">
+        {/* Selo Místico no CTA Final */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-10 pointer-events-none w-full max-w-2xl">
            <Image src="https://imgur.com/7f2b52K.png" alt="Graphic" width={1000} height={1000} />
         </div>
@@ -281,6 +287,7 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* RODAPÉ FINAL */}
       <footer className="py-16 md:py-20 text-center border-t border-primary/5 bg-background relative z-10 px-4">
         <Image 
           src="https://imgur.com/NtUqBYp.png" 
