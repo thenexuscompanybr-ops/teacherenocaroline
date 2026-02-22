@@ -13,11 +13,11 @@ import { z } from 'genkit';
 const PersonalizedFollowUpMessageInputSchema = z.object({
   leadName: z.string().describe('The name of the new lead.'),
   leadEmail: z.string().email().describe('The email address of the new lead.'),
-  registrationSource: z.string().describe('How the lead registered for the course (e.g., "WhatsApp", "Landing Page Form").'),
-  courseName: z.string().default('Habilidade Ativa').describe('The name of the mini-course.'),
-  teacherName: z.string().default('Teacher Caroline Renó').describe('The name of the course instructor.'),
-  courseGoal: z.string().default('Fale inglês sem medo e destrave sua carreira.').describe('The main goal or promise of the mini-course.'),
-  courseBenefits: z.string().default('3 aulas práticas via WhatsApp, Método baseado em psicologia, Sem julgamento ou pressão').describe('Key benefits of the mini-course, comma-separated.'),
+  registrationSource: z.string().describe('How the lead registered for the course.'),
+  courseName: z.string().describe('The name of the mini-course.'),
+  teacherName: z.string().describe('The name of the course instructor.'),
+  courseGoal: z.string().describe('The main goal of the mini-course.'),
+  courseBenefits: z.string().describe('Key benefits of the mini-course, comma-separated.'),
 });
 export type PersonalizedFollowUpMessageInput = z.infer<typeof PersonalizedFollowUpMessageInputSchema>;
 
@@ -34,31 +34,32 @@ const followUpMessagePrompt = ai.definePrompt({
   name: 'followUpMessagePrompt',
   input: { schema: PersonalizedFollowUpMessageInputSchema },
   output: { schema: PersonalizedFollowUpMessageOutputSchema },
-  prompt: `You are a helpful and elegant assistant for the course administrator of the "Habilidade Ativa" mini-course.
-Your task is to craft a personalized and highly engaging follow-up message for a new lead who has just registered.
-The message should nurture their interest and encourage full participation in the course.
+  prompt: `You are the elegant and authoritative voice of the "Order of Active Ability" (Habilidade Ativa).
+Your task is to craft a deeply engaging, psychological, and slightly mystical follow-up message for a new initiate (lead).
 
-The tone should be professional, welcoming, and inspiring, reflecting an atmosphere of modern elegance and subtle magic, similar to an academic wizarding world. Do not infantilize the language.
+The tone must be:
+- Sophisticated and Academic (Oxford/Sonserina vibe).
+- Empathetic but Dominant (Authority in Psychology).
+- Nurturing of potential, but firm on the discipline required for mastery.
+- Avoid all modern "marketing coach" clichés.
 
-Here are the details of the lead and the course:
-Lead Name: {{{leadName}}}
-Lead Email: {{{leadEmail}}}
-Registration Source: {{{registrationSource}}}
-Course Name: {{{courseName}}}
-Teacher Name: {{{teacherName}}}
-Course Goal: {{{courseGoal}}}
-Course Benefits: {{{courseBenefits}}}
+Lead Details:
+Name: {{{leadName}}}
+Source: {{{registrationSource}}}
+Course: {{{courseName}}}
+Master: {{{teacherName}}}
+Alchemy Goal: {{{courseGoal}}}
+Rites of Passage: {{{courseBenefits}}}
 
-Craft a compelling message that:
-1. Greets the lead by name.
-2. Acknowledges their registration and the source.
-3. Briefly reiterates the main goal of the course.
-4. Highlights 1-2 key benefits relevant to overcoming fear and unlocking potential.
-5. Emphasizes the unique approach (e.g., psychology-based, supportive environment).
-6. Encourages them to look forward to the first lesson and provides clear next steps if applicable (e.g., checking WhatsApp).
-7. Concludes with an encouraging and professional closing.
+Requirements:
+1. Address them by name with prestige.
+2. Acknowledge the courage it takes to break the "Curse of Silence".
+3. Use metaphors related to "Unlocking chambers", "Transmuting fear", and "Vocal Authority".
+4. Briefly explain that their voice is the most powerful tool in their career arsenal.
+5. Remind them that the first ritual (lesson) is approaching and they must be ready.
+6. Keep it between 120-180 words.
 
-The message should be concise, around 150-250 words. Focus on building excitement and trust.
+The message should feel like an invitation to a secret society of elite professionals.
 `,
 });
 

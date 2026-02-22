@@ -5,7 +5,7 @@
 @layer base {
   :root {
     /* Paleta Oficial Caroline Renó - Sonserina Moderna */
-    --background: 160 15% 10%; /* Verde Musgo Profundo #1A2320 (Mais escuro para autoridade) */
+    --background: 160 15% 10%; /* Verde Musgo Profundo #1A2320 */
     --foreground: 60 5% 95%;   /* Off-white suave #F5F5F0 */
     
     --card: 160 10% 14%;       /* Verde Oliva Acinzentado */
@@ -21,7 +21,7 @@
     --secondary-foreground: 60 5% 95%;
     
     --muted: 160 10% 12%;
-    --muted-foreground: 160 5% 70%; /* Verde Sálvia Acinzentado para legibilidade */
+    --muted-foreground: 160 5% 70%; /* Verde Sálvia Acinzentado #B4B7A4 */
     
     --accent: 45 33% 30%;      /* Dourado Profundo */
     --accent-foreground: 60 5% 95%;
@@ -29,11 +29,11 @@
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
     
-    --border: 45 33% 25%;      /* Borda Dourada Fina e Discreta */
+    --border: 45 33% 25%;      /* Borda Dourada Fina */
     --input: 160 15% 12%;
     --ring: 45 33% 40%;
     
-    --radius: 0.2rem;          /* Bordas mais secas e elegantes */
+    --radius: 0.2rem;
   }
 }
 
@@ -43,10 +43,9 @@
   }
   body {
     @apply bg-background text-foreground font-body antialiased;
-    /* Textura mística sutil e gradiente de profundidade */
     background-image: 
-      radial-gradient(circle at 50% -20%, hsla(45, 33%, 40%, 0.1) 0%, transparent 50%),
-      url("https://www.transparenttextures.com/patterns/dark-leather.png"); /* Textura sutil de pergaminho/couro escuro */
+      radial-gradient(circle at 50% -20%, hsla(45, 33%, 40%, 0.12) 0%, transparent 50%),
+      url("https://www.transparenttextures.com/patterns/dark-leather.png");
     background-attachment: fixed;
   }
   h1, h2, h3, h4, h5, h6 {
@@ -54,12 +53,12 @@
   }
 }
 
-/* Tipografia de Prestígio */
-.font-script {
+/* Tipografia Mística */
+.mystic-script {
   font-family: 'Pinyon Script', cursive;
 }
 
-/* Animação de Revelação Suave (Academic Standard) */
+/* Revelação de Pergaminho */
 .scroll-reveal {
   opacity: 0;
   transform: translateY(15px);
@@ -71,43 +70,106 @@
   transform: translateY(0);
 }
 
-/* Elementos de Moldura e Autoridade */
-.brand-border {
-  border: 1px solid hsl(var(--primary) / 0.3);
+/* Elementos de Autoridade */
+.brand-card {
+  @apply bg-card border border-primary/15 shadow-2xl transition-all duration-1000 relative overflow-hidden;
+  background-image: linear-gradient(135deg, transparent 0%, hsla(45, 33%, 40%, 0.05) 100%);
+}
+
+.brand-card::after {
+  content: "";
+  @apply absolute inset-0 opacity-0 transition-opacity duration-700 pointer-events-none;
+  background: radial-gradient(circle at top right, hsla(45, 33%, 40%, 0.1), transparent 70%);
+}
+
+.brand-card:hover::after {
+  @apply opacity-100;
 }
 
 .cta-button {
-  @apply bg-primary text-primary-foreground transition-all duration-500 rounded-sm font-bold tracking-[0.2em] uppercase text-[10px];
-  box-shadow: 0 4px 20px -5px hsla(45, 33%, 40%, 0.3);
+  @apply bg-primary text-primary-foreground transition-all duration-500 rounded-sm font-bold tracking-[0.25em] uppercase text-[10px] relative overflow-hidden;
+  box-shadow: 0 4px 20px -5px hsla(45, 33%, 40%, 0.4);
 }
 
 .cta-button:hover {
-  @apply brightness-110;
-  box-shadow: 0 0 15px hsla(45, 33%, 50%, 0.4);
+  @apply brightness-110 -translate-y-0.5;
+  box-shadow: 0 8px 25px -5px hsla(45, 33%, 50%, 0.5);
 }
 
-.brand-card {
-  @apply bg-card border border-primary/10 shadow-lg transition-all duration-700;
-  background-image: linear-gradient(135deg, transparent 0%, hsla(45, 33%, 40%, 0.02) 100%);
+/* Efeito Shimmer de Ouro */
+.gold-shimmer {
+  position: relative;
+  overflow: hidden;
 }
 
-.brand-card:hover {
-  @apply border-primary/30;
-  transform: translateY(-2px);
+.gold-shimmer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.08),
+    transparent
+  );
+  transition: 0.8s;
+}
+
+.gold-shimmer:hover::before {
+  left: 150%;
 }
 
 .ornament-line {
   height: 1px;
   background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.4), transparent);
   width: 100%;
-  margin: 2rem 0;
 }
 
-.logo-glow {
-  filter: drop-shadow(0 0 10px hsla(45, 33%, 40%, 0.2));
+.logo-float {
+  animation: float 8s ease-in-out infinite;
 }
 
-/* Estilo Sonserino: Elegância Fria e Nobre */
-.selection-sonserina::selection {
-  @apply bg-primary/40 text-white;
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(0.5deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+.particle {
+  position: absolute;
+  background: hsl(var(--primary));
+  border-radius: 50%;
+  opacity: 0.2;
+  pointer-events: none;
+  filter: blur(1.5px);
+  animation: rise linear infinite;
+}
+
+@keyframes rise {
+  0% { transform: translateY(0) scale(1); opacity: 0; }
+  10% { opacity: 0.2; }
+  90% { opacity: 0.2; }
+  100% { transform: translateY(-100vh) scale(0.3); opacity: 0; }
+}
+
+/* Estética SafeSound/Sanctuary */
+.sanctuary-glow {
+  box-shadow: 0 0 40px -10px hsla(45, 33%, 40%, 0.15);
+}
+
+.mistic-border {
+  border: 1px solid hsla(45, 33%, 40%, 0.2);
+  position: relative;
+}
+
+.mistic-border::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(135deg, hsla(45, 33%, 40%, 0.3), transparent 40%, transparent 60%, hsla(45, 33%, 40%, 0.3));
+  pointer-events: none;
+  z-index: -1;
 }
