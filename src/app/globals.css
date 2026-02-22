@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -45,7 +44,7 @@
   body {
     @apply bg-background text-foreground font-body antialiased;
     background-image: 
-      radial-gradient(circle at 50% -20%, hsla(45, 33%, 40%, 0.12) 0%, transparent 50%),
+      radial-gradient(circle at 50% -20%, hsla(45, 33%, 40%, 0.15) 0%, transparent 60%),
       url("https://www.transparenttextures.com/patterns/dark-leather.png");
     background-attachment: fixed;
   }
@@ -57,10 +56,6 @@
 /* Proteção de Imagem e Seleção */
 .no-drag {
   -webkit-user-drag: none;
-  -khtml-user-drag: none;
-  -moz-user-drag: none;
-  -o-user-drag: none;
-  user-drag: none;
   user-select: none;
   pointer-events: none;
 }
@@ -68,6 +63,26 @@
 /* Tipografia Mística */
 .mystic-script {
   font-family: 'Pinyon Script', cursive;
+}
+
+/* Efeito Folha de Ouro */
+.gold-leaf {
+  background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 1px rgba(135, 119, 68, 0.5));
+}
+
+/* Névoa Mística */
+.mystic-fog {
+  position: relative;
+}
+.mystic-fog::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, hsla(45, 33%, 40%, 0.05), transparent 70%);
+  pointer-events: none;
 }
 
 /* Ênfase Mística */
@@ -80,8 +95,8 @@
 /* Revelação de Pergaminho */
 .scroll-reveal {
   opacity: 0;
-  transform: translateY(15px);
-  transition: opacity 1.5s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transform: translateY(20px);
+  transition: opacity 1.2s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .scroll-reveal.visible {
@@ -91,14 +106,18 @@
 
 /* Elementos de Autoridade */
 .brand-card {
-  @apply bg-card border border-primary/15 shadow-2xl transition-all duration-1000 relative overflow-hidden;
-  background-image: linear-gradient(135deg, transparent 0%, hsla(45, 33%, 40%, 0.05) 100%);
+  @apply bg-card/60 backdrop-blur-sm border border-primary/20 shadow-2xl transition-all duration-1000 relative overflow-hidden;
+  background-image: linear-gradient(135deg, transparent 0%, hsla(45, 33%, 40%, 0.08) 100%);
 }
 
 .brand-card::after {
   content: "";
   @apply absolute inset-0 opacity-0 transition-opacity duration-700 pointer-events-none;
-  background: radial-gradient(circle at top right, hsla(45, 33%, 40%, 0.1), transparent 70%);
+  background: radial-gradient(circle at top right, hsla(45, 33%, 40%, 0.15), transparent 70%);
+}
+
+.brand-card:hover {
+  @apply border-primary/40 -translate-y-1;
 }
 
 .brand-card:hover::after {
@@ -112,7 +131,7 @@
 
 .cta-button:hover {
   @apply brightness-110 -translate-y-0.5;
-  box-shadow: 0 8px 25px -5px hsla(45, 33%, 50%, 0.5);
+  box-shadow: 0 8px 30px -5px hsla(45, 33%, 50%, 0.6);
 }
 
 /* Efeito Shimmer de Ouro */
@@ -131,7 +150,7 @@
   background: linear-gradient(
     to right,
     transparent,
-    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.3),
     transparent
   );
   transition: 0.8s;
@@ -141,17 +160,17 @@
   left: 150%;
 }
 
-/* Pulsação Mágica para o Botão do WhatsApp */
+/* Pulsação Mágica */
 .magic-pulse {
-  animation: pulse-gold 2s infinite;
+  animation: pulse-gold 2.5s infinite;
 }
 
 @keyframes pulse-gold {
   0% {
-    box-shadow: 0 0 0 0 rgba(135, 119, 68, 0.7);
+    box-shadow: 0 0 0 0 rgba(135, 119, 68, 0.6);
   }
   70% {
-    box-shadow: 0 0 0 15px rgba(135, 119, 68, 0);
+    box-shadow: 0 0 0 18px rgba(135, 119, 68, 0);
   }
   100% {
     box-shadow: 0 0 0 0 rgba(135, 119, 68, 0);
@@ -160,7 +179,7 @@
 
 .ornament-line {
   height: 1px;
-  background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.4), transparent);
+  background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.5), transparent);
   width: 100%;
 }
 
@@ -171,19 +190,19 @@
 
 @keyframes float {
   0% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-8px) rotate(0.5deg); }
+  50% { transform: translateY(-10px) rotate(0.8deg); }
   100% { transform: translateY(0px) rotate(0deg); }
 }
 
 .logo-glow {
-  filter: drop-shadow(0 0 15px hsla(45, 33%, 40%, 0.2));
+  filter: drop-shadow(0 0 20px hsla(45, 33%, 40%, 0.25));
 }
 
 .particle {
   position: absolute;
   background: hsl(var(--primary));
   border-radius: 50%;
-  opacity: 0.2;
+  opacity: 0.15;
   pointer-events: none;
   filter: blur(1.5px);
   animation: rise linear infinite;
@@ -208,21 +227,12 @@
 
 /* Estética SafeSound/Sanctuary */
 .sanctuary-glow {
-  box-shadow: 0 0 40px -10px hsla(45, 33%, 40%, 0.15);
+  box-shadow: 0 0 50px -10px hsla(45, 33%, 40%, 0.2);
 }
 
 .mistic-border {
-  border: 1px solid hsla(45, 33%, 40%, 0.2);
+  border: 1px solid hsla(45, 33%, 40%, 0.25);
   position: relative;
-}
-
-.mistic-border::before {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  background: linear-gradient(135deg, hsla(45, 33%, 40%, 0.3), transparent 40%, transparent 60%, hsla(45, 33%, 40%, 0.3));
-  pointer-events: none;
-  z-index: -1;
 }
 
 /* Seleção Sonserina */
@@ -230,18 +240,17 @@
   @apply bg-primary/30 text-foreground;
 }
 
-/* Custom Scrollbar for the Magic Message */
+/* Custom Scrollbar */
 .custom-scrollbar::-webkit-scrollbar {
-  width: 4px;
+  width: 5px;
 }
 .custom-scrollbar::-webkit-scrollbar-track {
   background: transparent;
 }
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: hsl(var(--primary) / 0.3);
+  background: hsl(var(--primary) / 0.2);
   border-radius: 10px;
 }
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--primary) / 0.6);
+  background: hsl(var(--primary) / 0.5);
 }
-
