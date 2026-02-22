@@ -42,6 +42,10 @@ export function LeadForm() {
     },
   });
 
+  function getFallbackMessage(name: string): string {
+    return `Prezado(a) ${name},\n\nSua inscrição no Santuário Safe & Sound foi registrada com sucesso. Você deu o primeiro passo para enfrentar os Dementadores do Medo e quebrar a Maldição do Silêncio.\n\nNo curso "Safe & Sound: Habilidade Ativa", sob a orientação da Mestra Caroline Renó, você construirá seu Protego Mental — o escudo psicológico que transformará insegurança em Vocal Authority.\n\nPrepare-se: o primeiro ritual de Defesa Contra as Travas Mentais se aproxima. Nossa coruja digital (Suporte via Coruja) trará as próximas instruções em breve.\n\nBem-vindo(a) à Ordem. Sua voz é a arma mais poderosa do seu arsenal profissional — e nós vamos despertá-la.`;
+  }
+
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true);
     try {
@@ -54,22 +58,25 @@ export function LeadForm() {
         source: 'Landing Page Safe & Sound',
       });
 
-      // 2. Invoca a Inteligência para a Mensagem Personalizada
-      const response = await generatePersonalizedFollowUpMessage({
-        leadName: values.name,
-        leadEmail: values.email,
-        registrationSource: 'Santuário Safe & Sound',
-        courseName: 'Safe & Sound: Habilidade Ativa',
-        teacherName: 'Caroline Renó',
-        courseGoal: 'Superar os Dementadores do Medo e as Trevas do Bloqueio Mental.',
-        courseBenefits: 'Protego Mental, Defesa Contra Travas, Suporte via Coruja',
-      });
-      
-      if (response && response.message) {
-        setSuccessData({ message: response.message, name: values.name });
-      } else {
-        throw new Error("A coruja se perdeu no caminho.");
+      // 2. Tenta gerar mensagem personalizada via IA, com fallback
+      let message: string;
+      try {
+        const response = await generatePersonalizedFollowUpMessage({
+          leadName: values.name,
+          leadEmail: values.email,
+          registrationSource: 'Santuário Safe & Sound',
+          courseName: 'Safe & Sound: Habilidade Ativa',
+          teacherName: 'Caroline Renó',
+          courseGoal: 'Superar os Dementadores do Medo e as Trevas do Bloqueio Mental.',
+          courseBenefits: 'Protego Mental, Defesa Contra Travas, Suporte via Coruja',
+        });
+        message = response?.message || getFallbackMessage(values.name);
+      } catch (aiError) {
+        console.warn('Mensagem personalizada indisponível, usando fallback:', aiError);
+        message = getFallbackMessage(values.name);
       }
+
+      setSuccessData({ message, name: values.name });
     } catch (error: any) {
       console.error('Falha no ritual de inscrição:', error);
       toast({
