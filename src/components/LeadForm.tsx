@@ -67,7 +67,7 @@ export function LeadForm() {
             name="name"
             render={({ field }) => (
               <FormItem className="text-left">
-                <FormLabel className="text-primary/60 uppercase tracking-[0.3em] text-[9px] font-bold">Identificação do Iniciado</FormLabel>
+                <FormLabel className="text-primary/60 uppercase tracking-[0.3em] text-[8px] md:text-[9px] font-bold">Identificação do Iniciado</FormLabel>
                 <FormControl>
                   <Input 
                     placeholder="Seu nome completo" 
@@ -84,7 +84,7 @@ export function LeadForm() {
             name="email"
             render={({ field }) => (
               <FormItem className="text-left">
-                <FormLabel className="text-primary/60 uppercase tracking-[0.3em] text-[9px] font-bold">Coruja Digital (E-mail)</FormLabel>
+                <FormLabel className="text-primary/60 uppercase tracking-[0.3em] text-[8px] md:text-[9px] font-bold">Coruja Digital (E-mail)</FormLabel>
                 <FormControl>
                   <Input 
                     placeholder="seu@email.com" 
@@ -98,7 +98,7 @@ export function LeadForm() {
           />
           <Button 
             type="submit" 
-            className="w-full cta-button h-14 text-[10px] group gold-shimmer mt-4"
+            className="w-full cta-button h-14 text-[9px] md:text-[10px] group gold-shimmer mt-4"
             disabled={isLoading}
           >
             {isLoading ? (
@@ -108,7 +108,7 @@ export function LeadForm() {
               </div>
             ) : (
               <div className="flex items-center justify-center gap-2">
-                <span className="tracking-[0.2em]">Quero me inscrever gratuitamente</span>
+                <span className="tracking-[0.1em] md:tracking-[0.2em]">Inscreva-se Gratuitamente</span>
                 <Compass className="h-3 w-3 opacity-50 group-hover:rotate-45 transition-all" />
               </div>
             )}
@@ -117,26 +117,26 @@ export function LeadForm() {
       </Form>
 
       <Dialog open={!!successData} onOpenChange={() => setSuccessData(null)}>
-        <DialogContent className="bg-background border-primary/20 max-w-2xl text-foreground rounded-none p-0 overflow-hidden">
-          <div className="relative p-10">
+        <DialogContent className="bg-background border-primary/20 w-[95vw] md:max-w-2xl text-foreground rounded-none p-0 overflow-hidden outline-none">
+          <div className="relative p-6 md:p-10">
             <div className="absolute top-0 right-0 opacity-10 pointer-events-none w-1/2">
                <Image src="https://imgur.com/bQxd94N.png" alt="Seal" width={400} height={400} />
             </div>
             
             <DialogHeader>
-              <DialogTitle className="flex items-center gap-4 text-3xl font-headline text-primary">
-                <Bird className="w-8 h-8" />
+              <DialogTitle className="flex items-center gap-4 text-2xl md:text-3xl font-headline text-primary">
+                <Bird className="w-6 h-6 md:w-8 md:h-8" />
                 A Coruja chegou.
               </DialogTitle>
             </DialogHeader>
-            <div className="mt-8 space-y-8 relative z-10">
-              <div className="p-8 bg-card/40 border border-primary/10 italic text-base leading-relaxed text-muted-foreground font-body">
+            <div className="mt-6 md:mt-8 space-y-6 md:space-y-8 relative z-10">
+              <div className="p-4 md:p-8 bg-card/40 border border-primary/10 italic text-sm md:text-base leading-relaxed text-muted-foreground font-body max-h-[50vh] overflow-y-auto">
                 {successData?.message}
               </div>
-              <p className="text-center font-bold text-primary/60 text-[9px] uppercase tracking-[0.5em]">
+              <p className="text-center font-bold text-primary/60 text-[8px] md:text-[9px] uppercase tracking-[0.3em] md:tracking-[0.5em]">
                 O Ritual Safe & Sound Começou.
               </p>
-              <Button onClick={() => setSuccessData(null)} className="w-full bg-primary/5 hover:bg-primary/10 text-primary border border-primary/20 h-12 uppercase tracking-[0.3em] text-[9px] font-bold rounded-none transition-all">
+              <Button onClick={() => setSuccessData(null)} className="w-full bg-primary/5 hover:bg-primary/10 text-primary border border-primary/20 h-12 uppercase tracking-[0.3em] text-[8px] md:text-[9px] font-bold rounded-none transition-all">
                 Fechar Grimório
               </Button>
             </div>
