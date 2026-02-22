@@ -4,26 +4,36 @@
 
 @layer base {
   :root {
-    --background: 240 10% 4%;
-    --foreground: 43 33% 90%;
-    --card: 240 10% 7%;
-    --card-foreground: 43 33% 90%;
-    --popover: 240 10% 5%;
-    --popover-foreground: 43 33% 90%;
-    --primary: 41 60% 50%;
-    --primary-foreground: 240 10% 4%;
-    --secondary: 153 34% 15%;
-    --secondary-foreground: 43 33% 98%;
-    --muted: 240 10% 12%;
-    --muted-foreground: 43 10% 60%;
-    --accent: 14 70% 45%;
-    --accent-foreground: 43 33% 98%;
-    --destructive: 0 84.2% 60.2%;
+    /* Paleta Baseada na Imagem: #1A2320 (Fundo), #877744 (Primário), #B4B7A4 (Detalhes) */
+    --background: 160 15% 10%;
+    --foreground: 69 11% 90%;
+    
+    --card: 160 15% 8%;
+    --card-foreground: 69 11% 85%;
+    
+    --popover: 160 15% 7%;
+    --popover-foreground: 69 11% 90%;
+    
+    --primary: 46 33% 40%; /* Ouro Envelhecido #877744 */
+    --primary-foreground: 69 11% 95%;
+    
+    --secondary: 69 11% 25%; /* Tom derivado do #B4B7A4 para elementos secundários */
+    --secondary-foreground: 69 11% 90%;
+    
+    --muted: 160 10% 15%;
+    --muted-foreground: 69 11% 68%; /* Verde Sálvia #B4B7A4 */
+    
+    --accent: 46 33% 50%; /* Ouro um pouco mais vibrante para interações */
+    --accent-foreground: 69 11% 95%;
+    
+    --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 10% 15%;
-    --input: 240 10% 15%;
-    --ring: 41 60% 50%;
-    --radius: 0.3rem;
+    
+    --border: 46 33% 20%;
+    --input: 160 15% 15%;
+    --ring: 46 33% 40%;
+    
+    --radius: 0.2rem;
   }
 }
 
@@ -34,27 +44,27 @@
   body {
     @apply bg-background text-foreground font-body;
     background-image: 
-      radial-gradient(circle at 50% 0%, hsla(41, 60%, 50%, 0.05) 0%, transparent 50%),
-      url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+      radial-gradient(circle at 50% 0%, hsla(46, 33%, 40%, 0.08) 0%, transparent 50%),
+      url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.12'/%3E%3C/svg%3E");
     background-attachment: fixed;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-headline tracking-tight;
+    @apply font-headline tracking-tighter;
   }
 }
 
 .magic-glow {
-  text-shadow: 0 0 20px hsla(41, 60%, 50%, 0.4);
+  text-shadow: 0 0 25px hsla(46, 33%, 40%, 0.5);
 }
 
-.magic-glow-emerald {
-  text-shadow: 0 0 20px hsla(153, 34%, 50%, 0.4);
+.magic-glow-sage {
+  text-shadow: 0 0 20px hsla(69, 11%, 68%, 0.3);
 }
 
 .scroll-reveal {
   opacity: 0;
-  transform: translateY(12px);
-  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(15px);
+  transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 .scroll-reveal.visible {
@@ -64,67 +74,61 @@
 
 @keyframes particle-float {
   0% { transform: translateY(0) translateX(0); opacity: 0; }
-  20% { opacity: 0.4; }
-  80% { opacity: 0.4; }
-  100% { transform: translateY(-150px) translateX(30px); opacity: 0; }
+  20% { opacity: 0.3; }
+  80% { opacity: 0.3; }
+  100% { transform: translateY(-180px) translateX(40px); opacity: 0; }
 }
 
 .particle {
   position: absolute;
-  background: hsla(41, 60%, 50%, 0.3);
+  background: hsla(46, 33%, 40%, 0.25);
   border-radius: 50%;
   pointer-events: none;
   animation: particle-float linear infinite;
-  filter: blur(1px);
+  filter: blur(1.5px);
 }
 
 .frame-border {
   position: relative;
   padding: 1.5rem;
-  background: hsla(240, 10%, 10%, 0.5);
-  backdrop-filter: blur(8px);
+  background: hsla(160, 15%, 5%, 0.4);
+  backdrop-filter: blur(10px);
 }
 
 .frame-border::before {
   content: '';
   position: absolute;
-  inset: 0.75rem;
-  border: 1px solid hsl(var(--primary));
-  opacity: 0.2;
+  inset: 0.5rem;
+  border: 1px solid hsla(46, 33%, 40%, 0.3);
   pointer-events: none;
 }
 
 .frame-border::after {
-  content: '✦';
+  content: '◈';
   position: absolute;
-  top: 0.25rem;
+  top: 0.15rem;
   left: 50%;
   transform: translateX(-50%);
   color: hsl(var(--primary));
-  font-size: 0.75rem;
-  opacity: 0.5;
+  font-size: 0.8rem;
+  opacity: 0.6;
 }
 
 .cta-button {
-  @apply bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-500 shadow-xl hover:shadow-primary/20 uppercase tracking-widest font-bold border border-primary/20;
+  @apply bg-primary text-primary-foreground hover:bg-primary/80 transition-all duration-700 shadow-2xl hover:shadow-primary/30 uppercase tracking-[0.25em] font-bold border border-primary/40;
 }
 
 .wizard-card {
-  @apply bg-card/60 border-primary/10 hover:border-primary/40 transition-all duration-700 backdrop-blur-md relative overflow-hidden;
+  @apply bg-card/40 border-primary/20 hover:border-primary/60 transition-all duration-1000 backdrop-blur-xl relative overflow-hidden;
 }
 
 .wizard-card::before {
   content: '';
   position: absolute;
-  top: 0;
+  bottom: 0;
   left: 0;
   width: 100%;
-  height: 2px;
+  height: 1px;
   background: linear-gradient(90deg, transparent, hsl(var(--primary)), transparent);
-  opacity: 0;
-  transition: opacity 0.5s;
-}
-
-.wizard-card:hover::before {
-  opacity: 0.5;
+  opacity: 0.3;
 }
