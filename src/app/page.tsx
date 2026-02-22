@@ -3,7 +3,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { ShieldCheck, Brain, Flame, BookOpen, Compass, Wand2, Lock, EyeOff, Sparkles, Bird, CheckCircle2 } from 'lucide-react';
+import { ShieldCheck, BookOpen, Compass, Wand2, Lock, EyeOff, Flame, Sparkles, Bird, MessageCircle } from 'lucide-react';
 import { LeadForm } from '@/components/LeadForm';
 import { useScrollReveal } from '@/hooks/use-scroll-reveal';
 import { MagicParticles } from '@/components/ui/magic-particles';
@@ -53,7 +53,7 @@ export default function LandingPage() {
         <div className="max-w-4xl mx-auto relative z-10">
           <div className="mb-6 inline-flex items-center gap-3 py-1.5 px-6 border border-primary/20 bg-primary/5 text-primary text-[10px] font-bold tracking-[0.4em] uppercase">
             <Compass className="w-3 h-3" />
-            Iniciação Gratuita
+            Iniciação Gratuita • Grupo VIP
           </div>
           <h1 className="text-3xl md:text-6xl font-headline text-foreground mb-6 md:mb-8 leading-tight scroll-reveal">
             Safe & Sound: <br />
@@ -67,6 +67,10 @@ export default function LandingPage() {
           <div className="scroll-reveal delay-300 max-w-md mx-auto">
             <LeadForm />
           </div>
+
+          <p className="mt-6 text-[9px] md:text-[10px] uppercase tracking-[0.3em] text-primary/40 font-bold scroll-reveal delay-400">
+            Acesso imediato ao Grupo VIP de Iniciação
+          </p>
         </div>
 
         {/* Detalhes de Autoridade */}
@@ -80,8 +84,8 @@ export default function LandingPage() {
             <span className="text-[8px] md:text-[9px] uppercase">Protego Mental</span>
           </div>
           <div className="flex items-center gap-2">
-            <Wand2 className="w-3 h-3" />
-            <span className="text-[8px] md:text-[9px] uppercase">Defesa Contra Travas</span>
+            <MessageCircle className="w-3 h-3" />
+            <span className="text-[8px] md:text-[9px] uppercase">Aulas via WhatsApp</span>
           </div>
         </div>
       </section>
@@ -131,6 +135,7 @@ export default function LandingPage() {
               <span className="text-primary italic mystic-script text-3xl md:text-6xl">Aulas de Defesa Contra as Travas</span>
             </h2>
             <div className="ornament-line mx-auto max-w-xs mb-8"></div>
+            <p className="text-[9px] md:text-[10px] uppercase tracking-[0.4em] text-primary/60 font-bold mb-12">Minicurso entregue via Grupo VIP de WhatsApp</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
@@ -175,7 +180,6 @@ export default function LandingPage() {
                 height={1000}
                 className="transition-all duration-1000 object-cover"
               />
-               {/* Selo Místico na foto */}
                <div className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 opacity-20 hidden lg:block">
                   <Image src="https://i.imgur.com/kmtinmG.png" alt="Graphic" width={180} height={180} />
                </div>
@@ -195,7 +199,6 @@ export default function LandingPage() {
                 Ela testa em si mesma tudo o que ensina, garantindo uma abordagem humana, prática e livre de julgamentos, como uma verdadeira mentora de <span className="magic-emphasis">Defesa Contra as Artes das Trevas do Bloqueio Mental</span>.
               </p>
             </div>
-            {/* Logo de Assinatura */}
             <div className="mt-12 pt-10 border-t border-primary/10 flex flex-col md:flex-row items-center justify-center md:justify-start gap-6 md:gap-8">
                <div className="relative w-[140px] md:w-[220px]">
                  <Image 
@@ -242,7 +245,7 @@ export default function LandingPage() {
       {/* SEÇÃO 6: FAQ */}
       <section className="py-20 md:py-32 px-4 border-t border-primary/10">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-headline text-foreground text-center mb-12 md:mb-16 scroll-reveal tracking-widest uppercase">FAQ</h2>
+          <h2 className="text-2xl md:text-3xl font-headline text-foreground text-center mb-12 md:mb-16 scroll-reveal tracking-widest uppercase">Câmara de Esclarecimentos</h2>
           <Accordion type="single" collapsible className="w-full scroll-reveal">
             {[
               { q: "O curso é realmente gratuito?", a: "Sim. Este minicurso é o seu ritual de entrada gratuito para conhecer o poder do Protego Mental." },
@@ -268,7 +271,6 @@ export default function LandingPage() {
 
       {/* SEÇÃO 7: RODAPÉ E CTA FINAL */}
       <section className="py-32 md:py-48 px-4 text-center relative overflow-hidden">
-        {/* Selo Místico no CTA Final */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-10 pointer-events-none w-full max-w-2xl">
            <Image src="https://i.imgur.com/7f2b52K.png" alt="Graphic" width={1000} height={1000} />
         </div>

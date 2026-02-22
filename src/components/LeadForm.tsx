@@ -17,7 +17,7 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { generatePersonalizedFollowUpMessage } from '@/ai/flows/personalized-follow-up-message-flow';
-import { Loader2, Wand2, Compass, Bird } from 'lucide-react';
+import { Loader2, Compass, Bird, MessageCircle } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 
 const formSchema = z.object({
@@ -57,6 +57,11 @@ export function LeadForm() {
       setIsLoading(false);
     }
   }
+
+  const handleJoinWhatsApp = () => {
+    // Aqui você inseriria o link do seu grupo de WhatsApp
+    window.open('https://chat.whatsapp.com/seu-link-aqui', '_blank');
+  };
 
   return (
     <div className="w-full relative z-10">
@@ -117,10 +122,10 @@ export function LeadForm() {
       </Form>
 
       <Dialog open={!!successData} onOpenChange={() => setSuccessData(null)}>
-        <DialogContent className="bg-background border-primary/20 w-[95vw] md:max-w-2xl text-foreground rounded-none p-0 overflow-hidden outline-none">
+        <DialogContent className="bg-background border-primary/20 w-[95vw] md:max-w-2xl text-foreground rounded-none p-0 overflow-hidden outline-none sanctuary-glow">
           <div className="relative p-6 md:p-10">
             <div className="absolute top-0 right-0 opacity-10 pointer-events-none w-1/2">
-               <Image src="https://imgur.com/bQxd94N.png" alt="Seal" width={400} height={400} />
+               <Image src="https://i.imgur.com/bQxd94N.png" alt="Seal" width={400} height={400} />
             </div>
             
             <DialogHeader>
@@ -130,15 +135,28 @@ export function LeadForm() {
               </DialogTitle>
             </DialogHeader>
             <div className="mt-6 md:mt-8 space-y-6 md:space-y-8 relative z-10">
-              <div className="p-4 md:p-8 bg-card/40 border border-primary/10 italic text-sm md:text-base leading-relaxed text-muted-foreground font-body max-h-[50vh] overflow-y-auto">
+              <div className="p-4 md:p-8 bg-card/40 border border-primary/10 italic text-sm md:text-base leading-relaxed text-muted-foreground font-body max-h-[40vh] overflow-y-auto selection-sonserina">
                 {successData?.message}
               </div>
-              <p className="text-center font-bold text-primary/60 text-[8px] md:text-[9px] uppercase tracking-[0.3em] md:tracking-[0.5em]">
-                O Ritual Safe & Sound Começou.
+              
+              <div className="space-y-4">
+                <p className="text-center font-bold text-primary/80 text-[10px] md:text-[12px] uppercase tracking-[0.2em] md:tracking-[0.3em]">
+                  O Ritual Habilidade Ativa acontece no Grupo VIP.
+                </p>
+                <Button 
+                  onClick={handleJoinWhatsApp} 
+                  className="w-full cta-button h-16 text-[10px] md:text-[12px] group gold-shimmer bg-primary hover:bg-primary/90"
+                >
+                  <div className="flex items-center justify-center gap-3">
+                    <MessageCircle className="h-5 w-5" />
+                    <span className="tracking-[0.2em]">Entrar no Santuário (Grupo VIP)</span>
+                  </div>
+                </Button>
+              </div>
+
+              <p className="text-center text-[7px] md:text-[8px] uppercase tracking-[0.4em] text-muted-foreground/40 font-bold">
+                Acesse agora para não perder sua vaga.
               </p>
-              <Button onClick={() => setSuccessData(null)} className="w-full bg-primary/5 hover:bg-primary/10 text-primary border border-primary/20 h-12 uppercase tracking-[0.3em] text-[8px] md:text-[9px] font-bold rounded-none transition-all">
-                Fechar Grimório
-              </Button>
             </div>
           </div>
         </DialogContent>
