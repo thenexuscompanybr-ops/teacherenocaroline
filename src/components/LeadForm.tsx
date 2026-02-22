@@ -19,10 +19,9 @@ import { Input } from '@/components/ui/input';
 import { generatePersonalizedFollowUpMessage } from '@/ai/flows/personalized-follow-up-message-flow';
 import { Loader2, Compass, Bird, MessageCircle, Sparkles } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { useFirestore } from '@/firebase';
-import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
-import { errorEmitter } from '@/firebase/error-emitter';
-import { FirestorePermissionError } from '@/firebase/errors';
+import { useFirestore, addDocumentNonBlocking } from '@/firebase';
+import { collection, serverTimestamp } from 'firebase/firestore';
+import { useToast } from '@/hooks/use-toast';
 
 const formSchema = z.object({
   name: z.string().min(2, { message: 'Sua identificação mística é necessária.' }),
@@ -33,6 +32,7 @@ export function LeadForm() {
   const [isLoading, setIsLoading] = useState(false);
   const [successData, setSuccessData] = useState<{ message: string; name: string } | null>(null);
   const firestore = useFirestore();
+  const { toast } = useToast();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -45,19 +45,13 @@ export function LeadForm() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true);
     try {
-      // 1. Salva o Lead no Pergaminho Digital (Firestore)
+      // 1. Salva o Lead no Pergaminho Digital (Firestore) - Não bloqueante
       const leadsRef = collection(firestore, 'leads');
-      addDoc(leadsRef, {
+      addDocumentNonBlocking(leadsRef, {
         name: values.name,
         email: values.email,
         captureDateTime: serverTimestamp(),
         source: 'Landing Page Safe & Sound',
-      }).catch(async (error) => {
-        errorEmitter.emit('permission-error', new FirestorePermissionError({
-          path: 'leads',
-          operation: 'create',
-          requestResourceData: values
-        }));
       });
 
       // 2. Invoca a Inteligência para a Mensagem Personalizada
@@ -71,16 +65,25 @@ export function LeadForm() {
         courseBenefits: 'Protego Mental, Defesa Contra Travas, Suporte via Coruja',
       });
       
-      setSuccessData({ message: response.message, name: values.name });
-    } catch (error) {
+      if (response && response.message) {
+        setSuccessData({ message: response.message, name: values.name });
+      } else {
+        throw new Error("A coruja se perdeu no caminho.");
+      }
+    } catch (error: any) {
       console.error('Falha no ritual de inscrição:', error);
+      toast({
+        variant: "destructive",
+        title: "Erro no Ritual",
+        description: "Os ventos mágicos estão instáveis. Por favor, tente novamente em instantes.",
+      });
     } finally {
       setIsLoading(false);
     }
   }
 
   const handleJoinWhatsApp = () => {
-    // Aqui você inseriria o link do seu grupo de WhatsApp
+    // Inserir link real do grupo de WhatsApp aqui
     window.open('https://chat.whatsapp.com/seu-link-aqui', '_blank');
   };
 
