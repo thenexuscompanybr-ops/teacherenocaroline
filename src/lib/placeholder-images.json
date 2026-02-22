@@ -1,3 +1,28 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "teacher-caroline",
+      "description": "Teacher Caroline Renó",
+      "imageUrl": "https://images.unsplash.com/photo-1634015190762-c5332c150284?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx0ZWFjaGVyJTIwY2Fyb2xpbmV8ZW58MHx8fHwxNzcxNzc2NTQ2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "teacher caroline"
+    },
+    {
+      "id": "student-1",
+      "description": "Student Testimonial 1",
+      "imageUrl": "https://images.unsplash.com/photo-1522529599102-193c0d76b5b6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxzdHVkZW50JTIwcG9ydHJhaXR8ZW58MHx8fHwxNzcxNzY3NDU0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "student portrait"
+    },
+    {
+      "id": "student-2",
+      "description": "Student Testimonial 2",
+      "imageUrl": "https://images.unsplash.com/photo-1517256673644-36ad11246d21?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxzdHVkZW50JTIwcG9ydHJhaXR8ZW58MHx8fHwxNzcxNzY3NDU0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "student portrait"
+    },
+    {
+      "id": "student-3",
+      "description": "Student Testimonial 3",
+      "imageUrl": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxzdHVkZW50JTIwcG9ydHJhaXR8ZW58MHx8fHwxNzcxNzY3NDU0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "student portrait"
+    }
+  ]
 }
