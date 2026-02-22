@@ -1,0 +1,185 @@
+{
+  "entities": {
+    "Lead": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Lead",
+      "type": "object",
+      "description": "Represents a potential customer or prospect whose contact information has been captured through the landing page.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Lead entity."
+        },
+        "email": {
+          "type": "string",
+          "description": "The email address provided by the captured lead.",
+          "format": "email"
+        },
+        "name": {
+          "type": "string",
+          "description": "The full name of the captured lead, if provided."
+        },
+        "phoneNumber": {
+          "type": "string",
+          "description": "The phone number of the captured lead, primarily for WhatsApp contact."
+        },
+        "captureDateTime": {
+          "type": "string",
+          "description": "The timestamp indicating when the lead's information was captured.",
+          "format": "date-time"
+        },
+        "source": {
+          "type": "string",
+          "description": "Indicates the specific origin or campaign from which the lead was captured."
+        }
+      },
+      "required": [
+        "id",
+        "email",
+        "captureDateTime"
+      ]
+    },
+    "Testimonial": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Testimonial",
+      "type": "object",
+      "description": "Stores social proof in the form of customer testimonials displayed on the landing page.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Testimonial entity."
+        },
+        "quote": {
+          "type": "string",
+          "description": "The complete text of the testimonial provided by a user."
+        },
+        "authorName": {
+          "type": "string",
+          "description": "The name of the person who gave the testimonial."
+        },
+        "authorTitleOrRole": {
+          "type": "string",
+          "description": "An optional title or role of the testimonial's author (e.g., 'Student', 'Professional')."
+        },
+        "authorPhotoUrl": {
+          "type": "string",
+          "description": "Optional URL to the profile photo of the testimonial's author.",
+          "format": "uri"
+        },
+        "displayOrder": {
+          "type": "number",
+          "description": "A numerical value to determine the order in which testimonials are displayed on the page."
+        }
+      },
+      "required": [
+        "id",
+        "quote",
+        "authorName"
+      ]
+    },
+    "FAQItem": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "FAQItem",
+      "type": "object",
+      "description": "Represents a single frequently asked question and its corresponding answer to be displayed in an accordion section.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the FAQItem entity."
+        },
+        "question": {
+          "type": "string",
+          "description": "The text of the frequently asked question."
+        },
+        "answer": {
+          "type": "string",
+          "description": "The detailed answer to the frequently asked question."
+        },
+        "displayOrder": {
+          "type": "number",
+          "description": "A numerical value to determine the order in which FAQ items are displayed in the accordion."
+        }
+      },
+      "required": [
+        "id",
+        "question",
+        "answer"
+      ]
+    }
+  },
+  "auth": {
+    "providers": [
+      "password",
+      "anonymous"
+    ]
+  },
+  "firestore": {
+    "structure": [
+      {
+        "path": "/leads/{leadId}",
+        "definition": {
+          "entityName": "Lead",
+          "schema": {
+            "$ref": "#/backend/entities/Lead"
+          },
+          "description": "Stores contact information captured from the landing page's lead form. Unauthenticated users can create leads. Only authenticated users with an 'admin' role can read or list leads.",
+          "params": [
+            {
+              "name": "leadId",
+              "description": "Unique identifier for a specific lead document."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/testimonials/{testimonialId}",
+        "definition": {
+          "entityName": "Testimonial",
+          "schema": {
+            "$ref": "#/backend/entities/Testimonial"
+          },
+          "description": "Stores customer testimonials displayed on the landing page. All users (authenticated or unauthenticated) can read and list these documents. Only authenticated users with an 'admin' role can create, update, or delete testimonials.",
+          "params": [
+            {
+              "name": "testimonialId",
+              "description": "Unique identifier for a specific testimonial document."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/faq_items/{faqItemId}",
+        "definition": {
+          "entityName": "FAQItem",
+          "schema": {
+            "$ref": "#/backend/entities/FAQItem"
+          },
+          "description": "Stores frequently asked questions and answers for the landing page. All users (authenticated or unauthenticated) can read and list these documents. Only authenticated users with an 'admin' role can create, update, or delete FAQ items.",
+          "params": [
+            {
+              "name": "faqItemId",
+              "description": "Unique identifier for a specific FAQ item document."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/admin_roles/{userId}",
+        "definition": {
+          "entityName": "admin_role",
+          "schema": {
+            "$ref": "#/backend/entities/User"
+          },
+          "description": "This collection is used for Database-Backed Access Control (DBAC). The existence of a document at this path signifies that the corresponding userId has administrative privileges. Used by security rules to grant elevated permissions to other collections. No public access.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "The unique identifier of the user who has an administrative role."
+            }
+          ]
+        }
+      }
+    ],
+    "reasoning": "The proposed Firestore structure prioritizes secure, scalable, and debuggable authorization patterns. We will use three primary collections to manage dynamic content for the landing page: 'leads', 'testimonials', and 'faq_items'. Additionally, a 'admin_roles' collection will be used for database-backed access control (DBAC).\n\n1.  **Authorization Independence:** This design achieves authorization independence by avoiding `get()` calls in security rules for checking parent document permissions. For `leads`, write access is granted globally for unauthenticated users (for capture), while read/list access is restricted to authenticated administrators. For `testimonials` and `faq_items`, read/list access is public, eliminating any need for parent checks. Management (create/update/delete) for these public collections, as well as read/list for `leads`, is tied to an 'admin' role, defined by the explicit existence of a document in the `/admin_roles/{userId}` collection. This denormalized role check allows atomic operations without hierarchical dependencies, making rules simple and robust.\n\n2.  **QAPs (Rules are not Filters):**\n    *   **`/leads`:** This collection stores sensitive user contact information. Unauthenticated users can *only* create new documents (submit the form). List and read operations are strictly for administrators. The security rules will allow `create` for `request.auth == null` and `list`/`get` for users whose `uid` exists in `/admin_roles/{request.auth.uid}`. This ensures that a `list` query from an admin will retrieve all leads without relying on filtering, as only authorized users can perform the query.\n    *   **`/testimonials` and `/faq_items`:** These collections contain public content. Any user, authenticated or unauthenticated, can perform `list` and `get` operations on these collections. There are no user-specific permissions or filtering required for reads, thus satisfying the QAPs for public data. Administrative actions (create, update, delete) are restricted to users with the 'admin' role, similar to `leads` read access.\n\n3.  **Structural Segregation:** Each collection (`leads`, `testimonials`, `faq_items`, `admin_roles`) serves a distinct purpose and has a homogeneous security posture. 'leads' is for private, admin-managed data (post-creation), while 'testimonials' and 'faq_items' are for public, read-only data (for non-admins). This clear separation simplifies security rules significantly, as each collection's rules can be defined independently without complex conditional logic.\n\n4.  **DBAC (Database-Backed Access Control):** The `/admin_roles/{userId}` collection is explicitly used to define administrators. The mere existence of a document at `/admin_roles/someUid` grants admin privileges to 'someUid'. This is a clear, debuggable, and scalable way to manage roles without relying on custom claims or complex `get()` operations across unrelated collections.\n\n5.  **Data Clarity:** Path names are semantic and descriptive (e.g., `leads`, `faq_items`). No dynamic keys are used, and all entities are clearly defined by their respective schemas."
+  }
+}

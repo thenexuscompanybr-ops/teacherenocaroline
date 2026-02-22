@@ -1,0 +1,107 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    /**
+     * FIRESTORE SECURITY RULES - PROTOTYPING PHASE
+     * 
+     * CORE PHILOSOPHY:
+     * This ruleset implements a Role-Based Access Control (RBAC) model focused on a public-facing 
+     * landing page. It distinguishes between "Public Content" (FAQ, Testimonials), "Lead Generation" 
+     * (Incoming contact data), and "Administrative Management".
+     * 
+     * DATA STRUCTURE:
+     * - /leads/{leadId}: Private collection for capturing prospect data.
+     * - /testimonials/{testimonialId}: Publicly readable collection for social proof.
+     * - /faq_items/{faqItemId}: Publicly readable collection for site help.
+     * - /admin_roles/{userId}: Internal registry for administrative privileges.
+     * 
+     * KEY SECURITY DECISIONS:
+     * 1. DBAC (Database-Backed Access Control): Admin privileges are determined by the existence 
+     *    of a document in the `/admin_roles` collection. This allows for simple, performant 
+     *    checks without complex custom claims.
+     * 2. Lead Capture: Creation of 'leads' is intentionally open to allow unauthenticated users 
+     *    to submit contact forms, while read access is strictly restricted to admins.
+     * 3. Public Readability: Testimonials and FAQs are open for 'get' and 'list' to ensure 
+     *    the landing page can display content to all visitors.
+     * 4. Schema Flexibility: In this prototyping phase, rules enforce 'who' can write, but not 
+     *    the specific data shape of the 'what', allowing for rapid UI iteration.
+     */
+
+    // --- GLOBAL HELPER FUNCTIONS ---
+
+    /** @description Checks if the request is from an authenticated user. */
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    /** @description Checks if the authenticated user has an entry in the admin_roles collection. */
+    function isAdmin() {
+      return isSignedIn() && exists(/databases/$(database)/documents/admin_roles/$(request.auth.uid));
+    }
+
+    /** @description Verifies ownership of a specific user document. */
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    // --- COLLECTION RULES ---
+
+    /**
+     * @description Rules for lead generation data. Anyone can submit, only admins can view/manage.
+     * @path /leads/{leadId}
+     * @allow (create) if true; (for unauthenticated lead capture)
+     * @deny (list) if request.auth == null; (prevents data scraping)
+     * @principle Public creation for intake, admin-only read for privacy.
+     */
+    match /leads/{leadId} {
+      allow get, list: if isAdmin();
+      allow create: if true;
+      allow update, delete: if isAdmin() && resource != null;
+    }
+
+    /**
+     * @description Rules for customer testimonials. Publicly readable, admin-only writes.
+     * @path /testimonials/{testimonialId}
+     * @allow (get) if true; (public social proof)
+     * @deny (update) if !isAdmin(); (prevents unauthorized content editing)
+     * @principle Public visibility with restricted administrative management.
+     */
+    match /testimonials/{testimonialId} {
+      allow get, list: if true;
+      allow create: if isAdmin();
+      allow update, delete: if isAdmin() && resource != null;
+    }
+
+    /**
+     * @description Rules for FAQ items. Publicly readable, admin-only writes.
+     * @path /faq_items/{faqItemId}
+     * @allow (list) if true; (needed for landing page display)
+     * @deny (create) if !isAdmin(); (only staff can add FAQs)
+     * @principle Public visibility with restricted administrative management.
+     */
+    match /faq_items/{faqItemId} {
+      allow get, list: if true;
+      allow create: if isAdmin();
+      allow update, delete: if isAdmin() && resource != null;
+    }
+
+    /**
+     * @description Defines which users have administrative rights. 
+     * @path /admin_roles/{userId}
+     * @allow (get) if isOwner(userId); (allows user to check their own role)
+     * @deny (list) if true; (admin list is not public)
+     * @principle Database-Backed Access Control (DBAC).
+     */
+    match /admin_roles/{userId} {
+      allow get: if isOwner(userId);
+      allow list: if false;
+      allow create, update, delete: if false; // Managed via console or backend only
+    }
+
+    // --- DEFAULT DENY ---
+    match /{path=**} {
+      allow read, write: if false;
+    }
+  }
+}
