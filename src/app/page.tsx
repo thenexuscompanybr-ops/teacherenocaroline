@@ -27,7 +27,7 @@ export default function LandingPage() {
       <section className="relative pt-12 pb-20 md:pb-32 px-4 flex flex-col items-center overflow-hidden min-h-[90vh] justify-center text-center">
         {/* Elementos Gráficos de Fundo */}
         <div className="absolute top-0 right-0 opacity-10 pointer-events-none w-1/2 md:w-1/3 max-w-sm">
-          <Image src="https://i.imgur.com/bQxd94N.png" alt="Selo Místico" width={500} height={500} />
+          <Image src="https://i.imgur.com/bQxd94N.png" alt="Selo Místico" width={500} height={500} priority />
         </div>
         <div className="absolute bottom-0 left-0 opacity-5 pointer-events-none w-1/2 md:w-1/3 max-w-sm rotate-180">
           <Image src="https://i.imgur.com/7f2b52K.png" alt="Ornamental" width={500} height={500} />
@@ -41,6 +41,7 @@ export default function LandingPage() {
               width={220} 
               height={60} 
               className="logo-glow md:w-[280px] md:h-[80px]"
+              priority
             />
           </div>
         </header>

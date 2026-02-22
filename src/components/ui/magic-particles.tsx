@@ -1,3 +1,4 @@
+
 "use client"
 
 import React, { useEffect, useState } from 'react';
@@ -7,13 +8,14 @@ export const MagicParticles = () => {
 
   useEffect(() => {
     const isMobile = window.innerWidth < 768;
-    const count = isMobile ? 10 : 30;
+    // Otimização: Reduzindo ainda mais a carga para dispositivos móveis para priorizar a interatividade
+    const count = isMobile ? 8 : 25;
     const newParticles = Array.from({ length: count }).map((_, i) => ({
       id: i,
       left: `${Math.random() * 100}%`,
       delay: `${Math.random() * 5}s`,
-      size: `${Math.random() * 4 + 2}px`,
-      duration: `${Math.random() * 10 + 10}s`,
+      size: `${Math.random() * 3 + 2}px`, // Partículas ligeiramente menores para maior elegância
+      duration: `${Math.random() * 10 + 12}s`, // Movimento mais lento e suave
     }));
     setParticles(newParticles);
   }, []);
