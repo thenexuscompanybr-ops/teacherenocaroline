@@ -46,14 +46,11 @@ export default function LandingPage() {
       {/* Partículas Místicas Globais */}
       <MagicParticles />
       
-      {/* SEÇÃO 1: HERO - Estética Sonserina Elevada */}
-      <section className="relative pt-2 md:pt-4 pb-16 md:pb-28 px-4 flex flex-col items-center overflow-hidden min-h-[90vh] justify-start md:justify-center text-center mystic-fog">
+      {/* SEÇÃO 1: HERO - Ascensão Otimizada */}
+      <section className="relative pt-4 md:pt-8 pb-16 md:pb-28 px-4 flex flex-col items-center overflow-hidden min-h-[85vh] justify-start md:justify-center text-center mystic-fog">
         {/* Elementos Gráficos de Fundo */}
         <div className="absolute top-0 right-0 opacity-15 pointer-events-none w-1/2 md:w-1/3 max-w-md">
           <Image src="https://i.imgur.com/bQxd94N.png" alt="Selo Místico" width={600} height={600} priority className="no-drag scale-110" />
-        </div>
-        <div className="absolute bottom-0 left-0 opacity-10 pointer-events-none w-1/2 md:w-1/3 max-w-md rotate-180">
-          <Image src="https://i.imgur.com/7f2b52K.png" alt="Ornamental" width={600} height={600} className="no-drag" />
         </div>
         
         <header className="mb-4 md:mb-6 scroll-reveal z-10">
@@ -77,10 +74,10 @@ export default function LandingPage() {
           <h1 className="text-4xl md:text-7xl font-headline text-foreground mb-6 md:mb-8 leading-[1.1] scroll-reveal">
             Safe & Sound: <br />
             <span className="gold-leaf italic mystic-script text-5xl md:text-8xl block mt-3">Onde a Magia do Inglês Acontece.</span>
-            <span className="text-xl md:text-3xl block mt-4 font-body tracking-tight opacity-95">Fale Inglês sem Medo e Destrave sua Carreira.</span>
+            <span className="text-xl md:text-3xl block mt-4 font-body tracking-tight opacity-95">Fale Inglês Sem Medo e Destrave sua Carreira.</span>
           </h1>
           <p className="text-base md:text-lg text-muted-foreground mb-10 max-w-2xl font-body scroll-reveal delay-200 leading-relaxed mx-auto">
-            Não espere sua carta de Hogwarts chegar para começar a falar! Participe do minicurso gratuito <span className="magic-emphasis">Habilidade Ativa</span> e aprenda como superar os <span className="magic-emphasis">Dementadores do Medo</span>.
+            Não espere mais para começar a falar! Participe do minicurso gratuito: <span className="magic-emphasis">Habilidade Ativa</span> e aprenda como superar o pânico na hora de falar inglês.
           </p>
           
           <div className="scroll-reveal delay-300 max-w-md mx-auto sanctuary-glow-heavy">
@@ -109,32 +106,35 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* SEÇÃO 2: A DOR - IMPACTO PSICOLÓGICO */}
+      {/* SEÇÃO 2: A DOR - IMPACTO PSICOLÓGICO REFINADO */}
       <section className="py-24 md:py-36 bg-card/20 border-y border-primary/10 relative overflow-hidden px-4 mystic-fog">
         <div className="absolute top-1/2 left-0 -translate-y-1/2 opacity-10 pointer-events-none w-56 md:w-80">
            <Image src="https://i.imgur.com/7f2b52K.png" alt="Ornamental" width={600} height={600} className="no-drag" />
         </div>
         
         <div className="max-w-4xl mx-auto text-center relative z-10">
-          <h2 className="text-3xl md:text-6xl font-headline text-foreground mb-16 scroll-reveal">
+          <h2 className="text-3xl md:text-5xl font-headline text-foreground mb-16 scroll-reveal leading-tight">
             Você sente que poderia ir mais longe… <br />
             <span className="gold-leaf italic mystic-script text-4xl md:text-7xl mt-2 block">se falasse inglês com confiança?</span>
           </h2>
           
           <div className="space-y-8 md:space-y-10 text-lg md:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto mb-20 scroll-reveal">
             <p>
-              Você é um profissional competente, mas na hora de uma reunião em inglês sente a presença dos <span className="magic-emphasis">Dementadores do Medo</span>?
+              O método <span className="magic-emphasis">Safe & Sound</span> combina <span className="magic-emphasis">Psicologia & Acolhimento</span> com Aulas para Destravar Seu Inglês.
             </p>
             <p className="font-bold text-foreground/95">
-              O coração dispara e as palavras somem? O problema não é a sua inteligência, é o seu <span className="magic-emphasis">bloqueio emocional</span>.
+              Você é um profissional competente, mas na hora de uma reunião em inglês ou de uma entrevista para aquela vaga dos sonhos, sente aquele pânico?
+            </p>
+            <p>
+              O coração dispara e as palavras somem? <span className="magic-emphasis">Você não está sozinho</span>. O problema não é a sua inteligência, é o medo que trava sua fala.
             </p>
           </div>
 
-          {/* CITAÇÃO DE IMPACTO - REFINADA */}
+          {/* CITAÇÃO DE IMPACTO - AUTORIDADE PSICOLÓGICA */}
           <div className="max-w-3xl mx-auto mb-24 scroll-reveal delay-200">
             <div className="bg-card/60 backdrop-blur-md border-l-4 border-primary p-10 md:p-14 text-left sanctuary-glow mistic-border">
               <p className="text-xl md:text-3xl text-foreground italic leading-relaxed mb-8">
-                "O problema não é seu vocabulário. É o seu cérebro entrando em modo de defesa, ativando o medo de passar vergonha, e ele literalmente 'trava' sua fala."
+                "O problema não é seu vocabulário. É o seu cérebro ativando um pânico automático quando você precisa falar em inglês."
               </p>
               <p className="text-primary font-headline text-base md:text-lg tracking-[0.3em] uppercase opacity-90">
                 — Teacher Caroline Renó
@@ -144,9 +144,9 @@ export default function LandingPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
             {[
-              { text: "Medo de ser julgado pelo sotaque", icon: EyeOff },
-              { text: "Sensação de que 'sabe ler, mas não fala'", icon: Lock },
-              { text: "Perda de promoções e oportunidades", icon: Flame },
+              { text: "Pânico automático ao falar", icon: EyeOff },
+              { text: "Sensação de bloqueio emocional", icon: Lock },
+              { text: "Potencial travado pelo medo", icon: Flame },
             ].map((item, idx) => (
               <div key={idx} className="p-8 md:p-12 brand-card scroll-reveal">
                 <item.icon className="w-6 h-6 text-primary/70 mx-auto mb-8" />
@@ -174,17 +174,17 @@ export default function LandingPage() {
               { 
                 num: "Aula 1", 
                 title: "O Mapa do Desbloqueio", 
-                desc: "Focaremos em entender por que o cérebro trava e como reverter esse processo, aplicando o Protego Mental." 
+                desc: "Entenda por que o seu cérebro entra em modo de pânico e como reverter esse processo de forma imediata." 
               },
               { 
                 num: "Aula 2", 
                 title: "A Técnica da Habilidade Ativa", 
-                desc: "Pratique a fala de forma lúdica e sem pressão, como em um verdadeiro treino de feitiços linguísticos." 
+                desc: "Pratique a fala de forma acolhedora e sem julgamentos, focando na comunicação real e segura." 
               },
               { 
                 num: "Aula 3", 
                 title: "O Plano de Carreira Fluente", 
-                desc: "Preparação para transições de carreira com confiança, utilizando o inglês para abrir novos portais." 
+                desc: "Como utilizar sua nova confiança para abrir portais em reuniões e entrevistas internacionais." 
               },
             ].map((card, idx) => (
               <Card key={idx} className="brand-card scroll-reveal border-primary/10">
@@ -199,7 +199,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* SEÇÃO 4: SOBRE A TEACHER - AUTORIDADE */}
+      {/* SEÇÃO 4: SOBRE A TEACHER - AUTORIDADE PSICOLÓGICA */}
       <section className="py-24 md:py-40 px-4 bg-card/10 border-y border-primary/10 overflow-hidden mystic-fog">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-16 md:gap-24">
           <div className="w-full md:w-1/2 scroll-reveal">
@@ -211,9 +211,6 @@ export default function LandingPage() {
                 height={1100}
                 className="transition-all duration-1000 object-cover no-drag brightness-90 group-hover:brightness-105"
               />
-               <div className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 opacity-30 hidden lg:block scale-125">
-                  <Image src="https://i.imgur.com/kmtinmG.png" alt="Graphic" width={220} height={220} className="no-drag" />
-               </div>
             </div>
           </div>
           <div className="w-full md:w-1/2 scroll-reveal text-center md:text-left">
@@ -224,10 +221,10 @@ export default function LandingPage() {
             <h2 className="text-4xl md:text-6xl font-headline text-foreground mb-10 leading-tight">Quem vai te guiar?</h2>
             <div className="space-y-8 text-base md:text-lg text-muted-foreground/95 leading-relaxed">
               <p>
-                Caroline Renó não é apenas uma professora de inglês. Com foco em <span className="magic-emphasis">Psicologia</span>, ela desenvolveu um método que une o aprendizado do idioma ao cuidado com a mente: o <span className="magic-emphasis">Protego Mental</span>.
+                Caroline Renó não é apenas uma professora de inglês. Com foco em <span className="magic-emphasis">Psicologia</span>, ela desenvolveu um método que une o aprendizado do idioma ao cuidado emocional: o <span className="magic-emphasis">Método para Falar Sem Medo</span>.
               </p>
               <p>
-                Ela testa em si mesma tudo o que ensina, garantindo uma abordagem humana, prática e livre de julgamentos, como uma verdadeira mentora de <span className="magic-emphasis">Defesa Contra o Bloqueio</span>.
+                Ela testa em si mesma tudo o que ensina, garantindo uma abordagem humana, prática e livre de julgamentos, como uma verdadeira <span className="magic-emphasis">especialista em destravar o medo de falar</span>.
               </p>
             </div>
             <div className="mt-16 pt-12 border-t border-primary/20 flex flex-col md:flex-row items-center justify-center md:justify-start gap-8 md:gap-12">
@@ -281,9 +278,9 @@ export default function LandingPage() {
           <h2 className="text-3xl md:text-4xl font-headline text-foreground text-center mb-16 md:mb-24 scroll-reveal tracking-[0.4em] uppercase">Câmara de Esclarecimentos</h2>
           <Accordion type="single" collapsible className="w-full scroll-reveal space-y-4">
             {[
-              { q: "O curso é realmente gratuito?", a: "Sim. Este minicurso é o seu ritual de entrada gratuito para conhecer o poder do Protego Mental." },
+              { q: "O curso é realmente gratuito?", a: "Sim. Este minicurso é o seu ritual de entrada gratuito para conhecer o poder do Habilidade Ativa." },
               { q: "Como vou receber as aulas?", a: "As aulas e orientações serão enviadas diretamente no nosso grupo exclusivo de WhatsApp." },
-              { q: "Preciso ter nível avançado?", a: "Não. O Habilidade Ativa é para quem tem medo de falar, independentemente do seu nível atual de conhecimento." },
+              { q: "Preciso ter nível avançado?", a: "Não. O Habilidade Ativa é para quem tem pânico de falar, independentemente do seu nível atual de conhecimento." },
               { q: "O que é o Protego Mental?", a: "É a nossa metodologia exclusiva que une psicologia e acolhimento para neutralizar os bloqueios emocionais ao falar." },
             ].map((item, idx) => (
               <AccordionItem key={idx} value={`item-${idx}`} className="border border-primary/10 bg-card/10 hover:bg-card/20 transition-all sanctuary-glow">
@@ -322,7 +319,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* RODAPÉ FINAL - PRESTÍGIO ETERNO */}
+      {/* RODAPÉ FINAL */}
       <footer className="py-20 md:py-28 text-center border-t border-primary/10 bg-background/80 relative z-10 px-4">
         <Image 
           src="https://i.imgur.com/NtUqBYp.png" 
