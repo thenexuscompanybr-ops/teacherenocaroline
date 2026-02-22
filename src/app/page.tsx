@@ -23,8 +23,8 @@ export default function LandingPage() {
       {/* Partículas Místicas Globais */}
       <MagicParticles />
       
-      {/* SEÇÃO 1: HERO */}
-      <section className="relative pt-12 pb-20 md:pb-32 px-4 flex flex-col items-center overflow-hidden min-h-[90vh] justify-center text-center">
+      {/* SEÇÃO 1: HERO - Ajustada para maior visibilidade inicial */}
+      <section className="relative pt-4 md:pt-8 pb-16 md:pb-24 px-4 flex flex-col items-center overflow-hidden min-h-[85vh] justify-start md:justify-center text-center">
         {/* Elementos Gráficos de Fundo */}
         <div className="absolute top-0 right-0 opacity-10 pointer-events-none w-1/2 md:w-1/3 max-w-sm">
           <Image src="https://i.imgur.com/bQxd94N.png" alt="Selo Místico" width={500} height={500} priority />
@@ -33,30 +33,30 @@ export default function LandingPage() {
           <Image src="https://i.imgur.com/7f2b52K.png" alt="Ornamental" width={500} height={500} />
         </div>
         
-        <header className="mb-12 md:mb-16 scroll-reveal z-10">
+        <header className="mb-6 md:mb-10 scroll-reveal z-10">
           <div className="logo-float">
             <Image 
               src="https://i.imgur.com/NtUqBYp.png" 
               alt="Caroline Renó Logo" 
-              width={220} 
-              height={60} 
-              className="logo-glow md:w-[280px] md:h-[80px]"
+              width={200} 
+              height={55} 
+              className="logo-glow md:w-[260px] md:h-[75px]"
               priority
             />
           </div>
         </header>
 
         <div className="max-w-4xl mx-auto relative z-10">
-          <div className="mb-6 inline-flex items-center gap-3 py-1.5 px-6 border border-primary/20 bg-primary/5 text-primary text-[10px] font-bold tracking-[0.4em] uppercase">
+          <div className="mb-4 inline-flex items-center gap-3 py-1.5 px-6 border border-primary/20 bg-primary/5 text-primary text-[10px] font-bold tracking-[0.4em] uppercase">
             <Compass className="w-3 h-3" />
             Iniciação Gratuita • Grupo VIP
           </div>
-          <h1 className="text-3xl md:text-6xl font-headline text-foreground mb-6 md:mb-8 leading-tight scroll-reveal">
+          <h1 className="text-3xl md:text-6xl font-headline text-foreground mb-4 md:mb-6 leading-tight scroll-reveal">
             Safe & Sound: <br />
             <span className="text-primary italic mystic-script text-4xl md:text-7xl block mt-2">Onde a Magia do Inglês Acontece.</span>
-            <span className="text-xl md:text-3xl block mt-4 font-body tracking-tight opacity-90">Fale Inglês sem Medo e Destrave sua Carreira.</span>
+            <span className="text-lg md:text-2xl block mt-3 font-body tracking-tight opacity-90">Fale Inglês sem Medo e Destrave sua Carreira.</span>
           </h1>
-          <p className="text-base md:text-lg text-muted-foreground mb-10 max-w-2xl font-body scroll-reveal delay-200 leading-relaxed mx-auto">
+          <p className="text-sm md:text-base text-muted-foreground mb-8 max-w-2xl font-body scroll-reveal delay-200 leading-relaxed mx-auto">
             Não espere sua carta de Hogwarts chegar para começar a falar! Participe do minicurso gratuito <span className="magic-emphasis">Habilidade Ativa</span> e aprenda como superar os <span className="magic-emphasis">Dementadores do Medo</span> e as <span className="magic-emphasis">Trevas do Bloqueio Mental</span>.
           </p>
           
@@ -64,13 +64,13 @@ export default function LandingPage() {
             <LeadForm />
           </div>
 
-          <p className="mt-6 text-[9px] md:text-[10px] uppercase tracking-[0.3em] text-primary/40 font-bold scroll-reveal delay-400">
+          <p className="mt-4 text-[9px] md:text-[10px] uppercase tracking-[0.3em] text-primary/40 font-bold scroll-reveal delay-400">
             Acesso imediato ao Grupo VIP de Iniciação
           </p>
         </div>
 
         {/* Detalhes de Autoridade */}
-        <div className="mt-20 md:mt-24 flex flex-wrap justify-center gap-6 md:gap-8 text-primary/40 font-bold tracking-[0.3em] scroll-reveal delay-500">
+        <div className="mt-12 md:mt-16 flex flex-wrap justify-center gap-6 md:gap-8 text-primary/40 font-bold tracking-[0.3em] scroll-reveal delay-500">
            <div className="flex items-center gap-2">
             <Bird className="w-3 h-3" />
             <span className="text-[8px] md:text-[9px] uppercase">Suporte via Coruja</span>
