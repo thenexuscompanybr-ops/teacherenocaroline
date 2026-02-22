@@ -15,7 +15,7 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { generatePersonalizedFollowUpMessage } from '@/ai/flows/personalized-follow-up-message-flow';
-import { Loader2, Sparkles, CheckCircle2 } from 'lucide-react';
+import { Loader2, Sparkles, CheckCircle2, Wand2 } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 
 const formSchema = z.object({
@@ -38,20 +38,19 @@ export function LeadForm() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true);
     try {
-      // AI Flow call
       const response = await generatePersonalizedFollowUpMessage({
         leadName: values.name,
         leadEmail: values.email,
-        registrationSource: 'Landing Page Form',
-        courseName: 'Habilidade Ativa',
-        teacherName: 'Teacher Caroline Renó',
-        courseGoal: 'Fale inglês sem medo e destrave sua carreira.',
-        courseBenefits: '3 aulas práticas via WhatsApp, Método baseado em psicologia, Sem julgamento ou pressão',
+        registrationSource: 'Ritual de Inscrição Dark',
+        courseName: 'Habilidade Ativa: O Despertar',
+        teacherName: 'Mestra Caroline Renó',
+        courseGoal: 'Transmutar o medo em fluência absoluta e autoridade profissional.',
+        courseBenefits: '3 lições secretas, Metodologia de psicologia transmutativa, Santuário de prática seguro',
       });
       
       setSuccessData({ message: response.message, name: values.name });
     } catch (error) {
-      console.error('Registration failed:', error);
+      console.error('Iniciação falhou:', error);
     } finally {
       setIsLoading(false);
     }
@@ -60,17 +59,21 @@ export function LeadForm() {
   return (
     <div className="w-full max-w-md mx-auto">
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <FormField
             control={form.control}
             name="name"
             render={({ field }) => (
-              <FormItem>
-                <FormLabel className="text-secondary font-semibold">Seu Nome</FormLabel>
+              <FormItem className="text-left">
+                <FormLabel className="text-muted-foreground font-bold uppercase tracking-widest text-[10px]">Identificação</FormLabel>
                 <FormControl>
-                  <Input placeholder="Como podemos te chamar?" {...field} className="bg-white/50 border-primary/20" />
+                  <Input 
+                    placeholder="Como você é conhecido(a)?" 
+                    {...field} 
+                    className="h-12 bg-card/40 border-primary/20 focus:border-primary/60 transition-all rounded-sm placeholder:text-muted-foreground/40" 
+                  />
                 </FormControl>
-                <FormMessage />
+                <FormMessage className="text-[10px] text-accent font-bold" />
               </FormItem>
             )}
           />
@@ -78,52 +81,57 @@ export function LeadForm() {
             control={form.control}
             name="email"
             render={({ field }) => (
-              <FormItem>
-                <FormLabel className="text-secondary font-semibold">Seu Melhor E-mail</FormLabel>
+              <FormItem className="text-left">
+                <FormLabel className="text-muted-foreground font-bold uppercase tracking-widest text-[10px]">Endereço de Coruja Digital</FormLabel>
                 <FormControl>
-                  <Input placeholder="seu@email.com" {...field} className="bg-white/50 border-primary/20" />
+                  <Input 
+                    placeholder="seu@grimorio.com" 
+                    {...field} 
+                    className="h-12 bg-card/40 border-primary/20 focus:border-primary/60 transition-all rounded-sm placeholder:text-muted-foreground/40" 
+                  />
                 </FormControl>
-                <FormMessage />
+                <FormMessage className="text-[10px] text-accent font-bold" />
               </FormItem>
             )}
           />
           <Button 
             type="submit" 
-            className="w-full cta-button h-12 text-lg font-bold group"
+            className="w-full cta-button h-14 text-sm font-bold group relative overflow-hidden"
             disabled={isLoading}
           >
             {isLoading ? (
-              <>
-                <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                Preparando sua jornada...
-              </>
+              <div className="flex items-center justify-center gap-3">
+                <Loader2 className="h-5 w-5 animate-spin text-background" />
+                <span className="tracking-[0.2em]">Iniciando Ritual...</span>
+              </div>
             ) : (
-              <>
-                Quero participar gratuitamente
-                <Sparkles className="ml-2 h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
-              </>
+              <div className="flex items-center justify-center gap-3">
+                <span className="tracking-[0.2em]">Reclamar Meu Lugar</span>
+                <Sparkles className="h-4 w-4 opacity-50 group-hover:opacity-100 transition-opacity" />
+              </div>
             )}
           </Button>
         </form>
       </Form>
 
       <Dialog open={!!successData} onOpenChange={() => setSuccessData(null)}>
-        <DialogContent className="bg-[#f5f1e8] border-primary/30 max-w-2xl">
+        <DialogContent className="bg-card border-primary/30 max-w-2xl text-foreground">
           <DialogHeader>
-            <DialogTitle className="flex items-center gap-2 text-2xl font-headline text-secondary">
-              <CheckCircle2 className="text-green-600" />
-              Bem-vindo(a), {successData?.name}!
+            <DialogTitle className="flex items-center gap-3 text-2xl font-headline text-primary">
+              <Wand2 className="w-6 h-6" />
+              Bem-vindo à Ordem, {successData?.name}!
             </DialogTitle>
           </DialogHeader>
-          <div className="mt-4 space-y-4">
-            <div className="p-6 bg-white/40 border border-primary/10 rounded-lg italic text-lg leading-relaxed text-secondary/80">
+          <div className="mt-6 space-y-6">
+            <div className="p-8 bg-black/40 border border-primary/10 rounded-sm italic text-lg leading-relaxed text-muted-foreground relative">
+              <span className="absolute -top-4 -left-2 text-6xl text-primary/10 font-serif">"</span>
               {successData?.message}
             </div>
-            <p className="text-center font-semibold text-secondary">
-              Verifique seu e-mail e WhatsApp para os próximos passos.
+            <p className="text-center font-bold text-primary text-sm uppercase tracking-widest">
+              Sua primeira coruja está a caminho.
             </p>
-            <Button onClick={() => setSuccessData(null)} className="w-full bg-primary hover:bg-primary/90">
-              Entendido
+            <Button onClick={() => setSuccessData(null)} className="w-full bg-primary/20 hover:bg-primary/40 text-primary border border-primary/30 h-12 uppercase tracking-widest text-xs font-bold">
+              Prosseguir com Cuidado
             </Button>
           </div>
         </DialogContent>

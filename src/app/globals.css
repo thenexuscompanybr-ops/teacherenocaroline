@@ -4,26 +4,26 @@
 
 @layer base {
   :root {
-    --background: 43 33% 94%;
-    --foreground: 153 34% 18%;
-    --card: 43 33% 96%;
-    --card-foreground: 153 34% 18%;
-    --popover: 43 33% 94%;
-    --popover-foreground: 153 34% 18%;
-    --primary: 41 54% 54%;
-    --primary-foreground: 43 33% 98%;
-    --secondary: 153 34% 25%;
+    --background: 240 10% 4%;
+    --foreground: 43 33% 90%;
+    --card: 240 10% 7%;
+    --card-foreground: 43 33% 90%;
+    --popover: 240 10% 5%;
+    --popover-foreground: 43 33% 90%;
+    --primary: 41 60% 50%;
+    --primary-foreground: 240 10% 4%;
+    --secondary: 153 34% 15%;
     --secondary-foreground: 43 33% 98%;
-    --muted: 43 20% 88%;
-    --muted-foreground: 153 20% 35%;
-    --accent: 14 79% 62%;
+    --muted: 240 10% 12%;
+    --muted-foreground: 43 10% 60%;
+    --accent: 14 70% 45%;
     --accent-foreground: 43 33% 98%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 41 30% 85%;
-    --input: 41 30% 85%;
-    --ring: 41 54% 54%;
-    --radius: 0.5rem;
+    --border: 240 10% 15%;
+    --input: 240 10% 15%;
+    --ring: 41 60% 50%;
+    --radius: 0.3rem;
   }
 }
 
@@ -33,21 +33,28 @@
   }
   body {
     @apply bg-background text-foreground font-body;
-    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
+    background-image: 
+      radial-gradient(circle at 50% 0%, hsla(41, 60%, 50%, 0.05) 0%, transparent 50%),
+      url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+    background-attachment: fixed;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-headline;
+    @apply font-headline tracking-tight;
   }
 }
 
 .magic-glow {
-  text-shadow: 0 0 15px hsla(41, 54%, 54%, 0.3);
+  text-shadow: 0 0 20px hsla(41, 60%, 50%, 0.4);
+}
+
+.magic-glow-emerald {
+  text-shadow: 0 0 20px hsla(153, 34%, 50%, 0.4);
 }
 
 .scroll-reveal {
   opacity: 0;
-  transform: translateY(8px);
-  transition: all 0.6s ease-out;
+  transform: translateY(12px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .scroll-reveal.visible {
@@ -57,32 +64,67 @@
 
 @keyframes particle-float {
   0% { transform: translateY(0) translateX(0); opacity: 0; }
-  50% { opacity: 0.5; }
-  100% { transform: translateY(-100px) translateX(20px); opacity: 0; }
+  20% { opacity: 0.4; }
+  80% { opacity: 0.4; }
+  100% { transform: translateY(-150px) translateX(30px); opacity: 0; }
 }
 
 .particle {
   position: absolute;
-  background: hsla(41, 54%, 54%, 0.4);
+  background: hsla(41, 60%, 50%, 0.3);
   border-radius: 50%;
   pointer-events: none;
   animation: particle-float linear infinite;
+  filter: blur(1px);
 }
 
 .frame-border {
   position: relative;
-  padding: 1rem;
+  padding: 1.5rem;
+  background: hsla(240, 10%, 10%, 0.5);
+  backdrop-filter: blur(8px);
 }
 
 .frame-border::before {
   content: '';
   position: absolute;
-  inset: 0.5rem;
+  inset: 0.75rem;
   border: 1px solid hsl(var(--primary));
-  opacity: 0.3;
+  opacity: 0.2;
   pointer-events: none;
 }
 
+.frame-border::after {
+  content: '✦';
+  position: absolute;
+  top: 0.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: hsl(var(--primary));
+  font-size: 0.75rem;
+  opacity: 0.5;
+}
+
 .cta-button {
-  @apply bg-accent text-accent-foreground hover:bg-accent/90 transition-all duration-300 shadow-lg hover:shadow-accent/20;
+  @apply bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-500 shadow-xl hover:shadow-primary/20 uppercase tracking-widest font-bold border border-primary/20;
+}
+
+.wizard-card {
+  @apply bg-card/60 border-primary/10 hover:border-primary/40 transition-all duration-700 backdrop-blur-md relative overflow-hidden;
+}
+
+.wizard-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, hsl(var(--primary)), transparent);
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.wizard-card:hover::before {
+  opacity: 0.5;
 }
