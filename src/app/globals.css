@@ -4,36 +4,36 @@
 
 @layer base {
   :root {
-    /* Paleta Baseada na Imagem: #1A2320 (Fundo), #877744 (Primário), #B4B7A4 (Detalhes) */
-    --background: 160 15% 10%;
-    --foreground: 69 11% 90%;
+    /* Paleta Oficial Caroline Renó */
+    --background: 160 15% 12%; /* Verde Musgo Profundo #1A2320 */
+    --foreground: 60 5% 95%;   /* Off-white suave #F5F5F0 */
     
-    --card: 160 15% 8%;
-    --card-foreground: 69 11% 85%;
+    --card: 160 5% 18%;        /* Verde Oliva Acinzentado */
+    --card-foreground: 60 5% 90%;
     
-    --popover: 160 15% 7%;
-    --popover-foreground: 69 11% 90%;
+    --popover: 160 15% 10%;
+    --popover-foreground: 60 5% 95%;
     
-    --primary: 46 33% 40%; /* Ouro Envelhecido #877744 */
-    --primary-foreground: 69 11% 95%;
+    --primary: 45 33% 40%;     /* Dourado Envelhecido #877744 */
+    --primary-foreground: 160 15% 5%;
     
-    --secondary: 69 11% 25%; /* Tom derivado do #B4B7A4 para elementos secundários */
-    --secondary-foreground: 69 11% 90%;
+    --secondary: 160 5% 25%;   /* Verde Oliva Secundário */
+    --secondary-foreground: 60 5% 95%;
     
     --muted: 160 10% 15%;
-    --muted-foreground: 69 11% 68%; /* Verde Sálvia #B4B7A4 */
+    --muted-foreground: 60 5% 75%;
     
-    --accent: 46 33% 50%; /* Ouro um pouco mais vibrante para interações */
-    --accent-foreground: 69 11% 95%;
+    --accent: 45 33% 50%;
+    --accent-foreground: 160 15% 5%;
     
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
     
-    --border: 46 33% 20%;
+    --border: 45 33% 30%;      /* Borda Dourada Fina */
     --input: 160 15% 15%;
-    --ring: 46 33% 40%;
+    --ring: 45 33% 40%;
     
-    --radius: 0.2rem;
+    --radius: 0.3rem;
   }
 }
 
@@ -42,29 +42,28 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground font-body;
+    @apply bg-background text-foreground font-body antialiased;
     background-image: 
-      radial-gradient(circle at 50% 0%, hsla(46, 33%, 40%, 0.08) 0%, transparent 50%),
-      url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.12'/%3E%3C/svg%3E");
+      url("https://imgur.com/7f2b52K.png"), /* Elemento gráfico de fundo sutil */
+      radial-gradient(circle at 50% 0%, hsla(45, 33%, 40%, 0.05) 0%, transparent 70%);
+    background-size: 400px, cover;
+    background-repeat: no-repeat, no-repeat;
+    background-position: top right, center;
     background-attachment: fixed;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-headline tracking-tighter;
+    @apply font-headline tracking-tight;
   }
 }
 
-.magic-glow {
-  text-shadow: 0 0 25px hsla(46, 33%, 40%, 0.5);
-}
-
-.magic-glow-sage {
-  text-shadow: 0 0 20px hsla(69, 11%, 68%, 0.3);
+.font-script {
+  font-family: 'Pinyon Script', cursive;
 }
 
 .scroll-reveal {
   opacity: 0;
-  transform: translateY(15px);
-  transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+  transform: translateY(10px);
+  transition: opacity 1.2s ease, transform 1.2s ease;
 }
 
 .scroll-reveal.visible {
@@ -72,63 +71,29 @@
   transform: translateY(0);
 }
 
-@keyframes particle-float {
-  0% { transform: translateY(0) translateX(0); opacity: 0; }
-  20% { opacity: 0.3; }
-  80% { opacity: 0.3; }
-  100% { transform: translateY(-180px) translateX(40px); opacity: 0; }
-}
-
-.particle {
-  position: absolute;
-  background: hsla(46, 33%, 40%, 0.25);
-  border-radius: 50%;
-  pointer-events: none;
-  animation: particle-float linear infinite;
-  filter: blur(1.5px);
-}
-
-.frame-border {
-  position: relative;
-  padding: 1.5rem;
-  background: hsla(160, 15%, 5%, 0.4);
-  backdrop-filter: blur(10px);
-}
-
-.frame-border::before {
-  content: '';
-  position: absolute;
-  inset: 0.5rem;
-  border: 1px solid hsla(46, 33%, 40%, 0.3);
-  pointer-events: none;
-}
-
-.frame-border::after {
-  content: '◈';
-  position: absolute;
-  top: 0.15rem;
-  left: 50%;
-  transform: translateX(-50%);
-  color: hsl(var(--primary));
-  font-size: 0.8rem;
-  opacity: 0.6;
+.brand-border {
+  border: 1px solid hsl(var(--primary) / 0.4);
 }
 
 .cta-button {
-  @apply bg-primary text-primary-foreground hover:bg-primary/80 transition-all duration-700 shadow-2xl hover:shadow-primary/30 uppercase tracking-[0.25em] font-bold border border-primary/40;
+  @apply bg-primary text-primary-foreground hover:brightness-110 transition-all duration-300 rounded-sm font-bold tracking-widest uppercase shadow-sm;
+  box-shadow: 0 4px 15px -3px hsla(45, 33%, 40%, 0.2);
 }
 
-.wizard-card {
-  @apply bg-card/40 border-primary/20 hover:border-primary/60 transition-all duration-1000 backdrop-blur-xl relative overflow-hidden;
+.brand-card {
+  @apply bg-card border border-primary/20 shadow-sm transition-all duration-500;
 }
 
-.wizard-card::before {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
+.brand-card:hover {
+  @apply border-primary/40;
+}
+
+.ornament-line {
   height: 1px;
-  background: linear-gradient(90deg, transparent, hsl(var(--primary)), transparent);
-  opacity: 0.3;
+  background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.5), transparent);
+  width: 100%;
+}
+
+.logo-glow {
+  filter: drop-shadow(0 0 8px hsla(45, 33%, 40%, 0.3));
 }

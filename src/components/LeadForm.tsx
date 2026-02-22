@@ -15,7 +15,7 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { generatePersonalizedFollowUpMessage } from '@/ai/flows/personalized-follow-up-message-flow';
-import { Loader2, Sparkles, CheckCircle2, Wand2 } from 'lucide-react';
+import { Loader2, Sparkles, Wand2 } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 
 const formSchema = z.object({
@@ -41,16 +41,16 @@ export function LeadForm() {
       const response = await generatePersonalizedFollowUpMessage({
         leadName: values.name,
         leadEmail: values.email,
-        registrationSource: 'Ritual de Inscrição Dark',
+        registrationSource: 'Landing Page Oficial Caroline Renó',
         courseName: 'Habilidade Ativa: O Despertar',
-        teacherName: 'Mestra Caroline Renó',
+        teacherName: 'Caroline Renó',
         courseGoal: 'Transmutar o medo em fluência absoluta e autoridade profissional.',
-        courseBenefits: '3 lições secretas, Metodologia de psicologia transmutativa, Santuário de prática seguro',
+        courseBenefits: '3 lições práticas, Metodologia de psicologia, Suporte VIP',
       });
       
       setSuccessData({ message: response.message, name: values.name });
     } catch (error) {
-      console.error('Iniciação falhou:', error);
+      console.error('Falha na inscrição:', error);
     } finally {
       setIsLoading(false);
     }
@@ -59,21 +59,21 @@ export function LeadForm() {
   return (
     <div className="w-full max-w-md mx-auto">
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
           <FormField
             control={form.control}
             name="name"
             render={({ field }) => (
               <FormItem className="text-left">
-                <FormLabel className="text-muted-foreground font-bold uppercase tracking-widest text-[10px]">Identificação</FormLabel>
+                <FormLabel className="text-muted-foreground uppercase tracking-widest text-[9px] font-bold">Identificação</FormLabel>
                 <FormControl>
                   <Input 
-                    placeholder="Como você é conhecido(a)?" 
+                    placeholder="Seu nome completo" 
                     {...field} 
-                    className="h-12 bg-card/40 border-primary/20 focus:border-primary/60 transition-all rounded-sm placeholder:text-muted-foreground/40" 
+                    className="h-12 bg-card/60 border-primary/20 focus:border-primary/50 transition-all rounded-sm placeholder:text-muted-foreground/30 text-sm" 
                   />
                 </FormControl>
-                <FormMessage className="text-[10px] text-accent font-bold" />
+                <FormMessage className="text-[10px] text-primary/80 font-medium" />
               </FormItem>
             )}
           />
@@ -82,32 +82,32 @@ export function LeadForm() {
             name="email"
             render={({ field }) => (
               <FormItem className="text-left">
-                <FormLabel className="text-muted-foreground font-bold uppercase tracking-widest text-[10px]">Endereço de Coruja Digital</FormLabel>
+                <FormLabel className="text-muted-foreground uppercase tracking-widest text-[9px] font-bold">Coruja Digital (E-mail)</FormLabel>
                 <FormControl>
                   <Input 
-                    placeholder="seu@grimorio.com" 
+                    placeholder="seu@email.com" 
                     {...field} 
-                    className="h-12 bg-card/40 border-primary/20 focus:border-primary/60 transition-all rounded-sm placeholder:text-muted-foreground/40" 
+                    className="h-12 bg-card/60 border-primary/20 focus:border-primary/50 transition-all rounded-sm placeholder:text-muted-foreground/30 text-sm" 
                   />
                 </FormControl>
-                <FormMessage className="text-[10px] text-accent font-bold" />
+                <FormMessage className="text-[10px] text-primary/80 font-medium" />
               </FormItem>
             )}
           />
           <Button 
             type="submit" 
-            className="w-full cta-button h-14 text-sm font-bold group relative overflow-hidden"
+            className="w-full cta-button h-14 text-xs group"
             disabled={isLoading}
           >
             {isLoading ? (
               <div className="flex items-center justify-center gap-3">
-                <Loader2 className="h-5 w-5 animate-spin text-background" />
-                <span className="tracking-[0.2em]">Iniciando Ritual...</span>
+                <Loader2 className="h-4 w-4 animate-spin" />
+                <span>Processando...</span>
               </div>
             ) : (
               <div className="flex items-center justify-center gap-3">
-                <span className="tracking-[0.2em]">Reclamar Meu Lugar</span>
-                <Sparkles className="h-4 w-4 opacity-50 group-hover:opacity-100 transition-opacity" />
+                <span>Quero Garantir Minha Vaga</span>
+                <Sparkles className="h-3.5 w-3.5 opacity-50 group-hover:opacity-100 transition-opacity" />
               </div>
             )}
           </Button>
@@ -119,19 +119,18 @@ export function LeadForm() {
           <DialogHeader>
             <DialogTitle className="flex items-center gap-3 text-2xl font-headline text-primary">
               <Wand2 className="w-6 h-6" />
-              Bem-vindo à Ordem, {successData?.name}!
+              Boas-vindas, {successData?.name}!
             </DialogTitle>
           </DialogHeader>
           <div className="mt-6 space-y-6">
-            <div className="p-8 bg-black/40 border border-primary/10 rounded-sm italic text-lg leading-relaxed text-muted-foreground relative">
-              <span className="absolute -top-4 -left-2 text-6xl text-primary/10 font-serif">"</span>
+            <div className="p-8 bg-black/20 border border-primary/10 rounded-sm italic text-base leading-relaxed text-muted-foreground relative font-serif">
               {successData?.message}
             </div>
-            <p className="text-center font-bold text-primary text-sm uppercase tracking-widest">
-              Sua primeira coruja está a caminho.
+            <p className="text-center font-bold text-primary text-[10px] uppercase tracking-[0.3em]">
+              Sua primeira lição chegará em breve.
             </p>
-            <Button onClick={() => setSuccessData(null)} className="w-full bg-primary/20 hover:bg-primary/40 text-primary border border-primary/30 h-12 uppercase tracking-widest text-xs font-bold">
-              Prosseguir com Cuidado
+            <Button onClick={() => setSuccessData(null)} className="w-full bg-primary/10 hover:bg-primary/20 text-primary border border-primary/20 h-12 uppercase tracking-widest text-[10px] font-bold">
+              Fechar Grimório
             </Button>
           </div>
         </DialogContent>
