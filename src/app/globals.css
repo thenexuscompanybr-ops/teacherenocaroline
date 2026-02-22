@@ -4,36 +4,36 @@
 
 @layer base {
   :root {
-    /* Paleta Oficial Caroline Renó */
-    --background: 160 15% 12%; /* Verde Musgo Profundo #1A2320 */
+    /* Paleta Oficial Caroline Renó - Sonserina Moderna */
+    --background: 160 15% 10%; /* Verde Musgo Profundo #1A2320 (Mais escuro para autoridade) */
     --foreground: 60 5% 95%;   /* Off-white suave #F5F5F0 */
     
-    --card: 160 5% 18%;        /* Verde Oliva Acinzentado */
+    --card: 160 10% 14%;       /* Verde Oliva Acinzentado */
     --card-foreground: 60 5% 90%;
     
-    --popover: 160 15% 10%;
+    --popover: 160 15% 8%;
     --popover-foreground: 60 5% 95%;
     
     --primary: 45 33% 40%;     /* Dourado Envelhecido #877744 */
     --primary-foreground: 160 15% 5%;
     
-    --secondary: 160 5% 25%;   /* Verde Oliva Secundário */
+    --secondary: 160 5% 20%;   /* Verde Oliva Secundário */
     --secondary-foreground: 60 5% 95%;
     
-    --muted: 160 10% 15%;
-    --muted-foreground: 60 5% 75%;
+    --muted: 160 10% 12%;
+    --muted-foreground: 160 5% 70%; /* Verde Sálvia Acinzentado para legibilidade */
     
-    --accent: 45 33% 50%;
-    --accent-foreground: 160 15% 5%;
+    --accent: 45 33% 30%;      /* Dourado Profundo */
+    --accent-foreground: 60 5% 95%;
     
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
     
-    --border: 45 33% 30%;      /* Borda Dourada Fina */
-    --input: 160 15% 15%;
+    --border: 45 33% 25%;      /* Borda Dourada Fina e Discreta */
+    --input: 160 15% 12%;
     --ring: 45 33% 40%;
     
-    --radius: 0.3rem;
+    --radius: 0.2rem;          /* Bordas mais secas e elegantes */
   }
 }
 
@@ -43,27 +43,27 @@
   }
   body {
     @apply bg-background text-foreground font-body antialiased;
+    /* Textura mística sutil e gradiente de profundidade */
     background-image: 
-      url("https://imgur.com/7f2b52K.png"), /* Elemento gráfico de fundo sutil */
-      radial-gradient(circle at 50% 0%, hsla(45, 33%, 40%, 0.05) 0%, transparent 70%);
-    background-size: 400px, cover;
-    background-repeat: no-repeat, no-repeat;
-    background-position: top right, center;
+      radial-gradient(circle at 50% -20%, hsla(45, 33%, 40%, 0.1) 0%, transparent 50%),
+      url("https://www.transparenttextures.com/patterns/dark-leather.png"); /* Textura sutil de pergaminho/couro escuro */
     background-attachment: fixed;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-headline tracking-tight;
+    @apply font-headline tracking-tighter;
   }
 }
 
+/* Tipografia de Prestígio */
 .font-script {
   font-family: 'Pinyon Script', cursive;
 }
 
+/* Animação de Revelação Suave (Academic Standard) */
 .scroll-reveal {
   opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 1.2s ease, transform 1.2s ease;
+  transform: translateY(15px);
+  transition: opacity 1.5s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1.5s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .scroll-reveal.visible {
@@ -71,29 +71,43 @@
   transform: translateY(0);
 }
 
+/* Elementos de Moldura e Autoridade */
 .brand-border {
-  border: 1px solid hsl(var(--primary) / 0.4);
+  border: 1px solid hsl(var(--primary) / 0.3);
 }
 
 .cta-button {
-  @apply bg-primary text-primary-foreground hover:brightness-110 transition-all duration-300 rounded-sm font-bold tracking-widest uppercase shadow-sm;
-  box-shadow: 0 4px 15px -3px hsla(45, 33%, 40%, 0.2);
+  @apply bg-primary text-primary-foreground transition-all duration-500 rounded-sm font-bold tracking-[0.2em] uppercase text-[10px];
+  box-shadow: 0 4px 20px -5px hsla(45, 33%, 40%, 0.3);
+}
+
+.cta-button:hover {
+  @apply brightness-110;
+  box-shadow: 0 0 15px hsla(45, 33%, 50%, 0.4);
 }
 
 .brand-card {
-  @apply bg-card border border-primary/20 shadow-sm transition-all duration-500;
+  @apply bg-card border border-primary/10 shadow-lg transition-all duration-700;
+  background-image: linear-gradient(135deg, transparent 0%, hsla(45, 33%, 40%, 0.02) 100%);
 }
 
 .brand-card:hover {
-  @apply border-primary/40;
+  @apply border-primary/30;
+  transform: translateY(-2px);
 }
 
 .ornament-line {
   height: 1px;
-  background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.5), transparent);
+  background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.4), transparent);
   width: 100%;
+  margin: 2rem 0;
 }
 
 .logo-glow {
-  filter: drop-shadow(0 0 8px hsla(45, 33%, 40%, 0.3));
+  filter: drop-shadow(0 0 10px hsla(45, 33%, 40%, 0.2));
+}
+
+/* Estilo Sonserino: Elegância Fria e Nobre */
+.selection-sonserina::selection {
+  @apply bg-primary/40 text-white;
 }
