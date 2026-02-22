@@ -98,8 +98,8 @@ export default function LandingPage() {
         
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <h2 className="text-2xl md:text-5xl font-headline text-foreground mb-12 scroll-reveal">
-            Você sente que o seu inglês é o <br />
-            <span className="text-primary italic mystic-script text-3xl md:text-6xl">‘elefante na sala’ da sua carreira?</span>
+            Você sente que poderia ir mais longe… <br />
+            <span className="text-primary italic mystic-script text-3xl md:text-6xl">se falasse inglês com confiança?</span>
           </h2>
           
           <div className="space-y-6 md:space-y-8 text-base md:text-lg text-muted-foreground leading-relaxed max-w-3xl mx-auto mb-16 scroll-reveal">
