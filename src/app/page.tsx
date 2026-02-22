@@ -111,6 +111,18 @@ export default function LandingPage() {
             </p>
           </div>
 
+          {/* CITAÇÃO DE IMPACTO */}
+          <div className="max-w-3xl mx-auto mb-16 scroll-reveal delay-200">
+            <div className="bg-card/40 border-l-4 border-primary p-8 md:p-12 text-left sanctuary-glow">
+              <p className="text-lg md:text-2xl text-foreground italic leading-relaxed mb-6">
+                "O problema não é seu vocabulário. É o seu cérebro entrando em modo de defesa, ativando o medo de passar vergonha, e ele literalmente 'trava' sua fala."
+              </p>
+              <p className="text-primary font-headline text-sm md:text-base tracking-widest uppercase opacity-80">
+                — Teacher Caroline Renó
+              </p>
+            </div>
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             {[
               { text: "Medo de ser julgado pelo sotaque", icon: EyeOff },
@@ -174,7 +186,7 @@ export default function LandingPage() {
           <div className="w-full md:w-1/2 scroll-reveal">
             <div className="relative p-2 md:p-4 border border-primary/15 bg-background/50 group mx-auto max-w-[500px] md:max-w-full sanctuary-glow">
               <Image 
-                src="https://i.imgur.com/iwVrdXg.png" 
+                src="https://imgur.com/iwVrdXg.png" 
                 alt="Caroline Renó" 
                 width={800} 
                 height={1000}
