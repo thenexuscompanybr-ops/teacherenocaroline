@@ -47,13 +47,13 @@ export default function LandingPage() {
       <MagicParticles />
       
       {/* SEÇÃO 1: HERO - Ascensão Otimizada */}
-      <section className="relative pt-4 md:pt-8 pb-16 md:pb-28 px-4 flex flex-col items-center overflow-hidden min-h-[85vh] justify-start md:justify-center text-center mystic-fog">
+      <section className="relative pt-2 md:pt-4 pb-16 md:pb-28 px-4 flex flex-col items-center overflow-hidden min-h-[85vh] justify-start md:justify-center text-center mystic-fog">
         {/* Elementos Gráficos de Fundo */}
         <div className="absolute top-0 right-0 opacity-15 pointer-events-none w-1/2 md:w-1/3 max-w-md">
           <Image src="https://i.imgur.com/bQxd94N.png" alt="Selo Místico" width={600} height={600} priority className="no-drag scale-110" />
         </div>
         
-        <header className="mb-4 md:mb-6 scroll-reveal z-10">
+        <header className="mb-2 md:mb-4 scroll-reveal z-10">
           <div className="logo-float">
             <Image 
               src="https://i.imgur.com/NtUqBYp.png" 
@@ -71,9 +71,9 @@ export default function LandingPage() {
             <Compass className="w-3.5 h-3.5" />
             Iniciação Gratuita • Grupo VIP
           </div>
-          <h1 className="text-4xl md:text-7xl font-headline text-foreground mb-6 md:mb-8 leading-[1.1] scroll-reveal">
+          <h1 className="text-4xl md:text-7xl font-headline text-foreground mb-6 md:mb-8 leading-[1.2] scroll-reveal">
             Safe & Sound: <br />
-            <span className="gold-leaf italic mystic-script text-5xl md:text-8xl block mt-3">Onde a Magia do Inglês Acontece.</span>
+            <span className="gold-leaf italic mystic-script text-5xl md:text-8xl block mt-4 mb-4 py-2">Onde a Magia do Inglês Acontece.</span>
             <span className="text-xl md:text-3xl block mt-4 font-body tracking-tight opacity-95">Fale Inglês Sem Medo e Destrave sua Carreira.</span>
           </h1>
           <p className="text-base md:text-lg text-muted-foreground mb-10 max-w-2xl font-body scroll-reveal delay-200 leading-relaxed mx-auto">
@@ -132,7 +132,7 @@ export default function LandingPage() {
 
           {/* CITAÇÃO DE IMPACTO - AUTORIDADE PSICOLÓGICA */}
           <div className="max-w-3xl mx-auto mb-24 scroll-reveal delay-200">
-            <div className="bg-card/60 backdrop-blur-md border-l-4 border-primary p-10 md:p-14 text-left sanctuary-glow mistic-border">
+            <div className="brand-card backdrop-blur-md border-l-4 border-primary p-10 md:p-14 text-left sanctuary-glow mistic-border">
               <p className="text-xl md:text-3xl text-foreground italic leading-relaxed mb-8">
                 "O problema não é seu vocabulário. É o seu cérebro ativando um pânico automático quando você precisa falar em inglês."
               </p>
