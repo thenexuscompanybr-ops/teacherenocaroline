@@ -173,7 +173,7 @@ export default function LandingPage() {
                 alt="Caroline Renó" 
                 width={800} 
                 height={1000}
-                className="grayscale opacity-90 transition-all duration-1000 group-hover:grayscale-0 group-hover:opacity-100 object-cover"
+                className="transition-all duration-1000 object-cover"
               />
                {/* Selo Místico na foto */}
                <div className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 opacity-20 hidden lg:block">
@@ -203,7 +203,7 @@ export default function LandingPage() {
                    alt="Caroline Renó" 
                    width={220} 
                    height={60} 
-                   className="opacity-60 grayscale hover:opacity-100 transition-opacity duration-700 w-full" 
+                   className="opacity-80 hover:opacity-100 transition-opacity duration-700 w-full" 
                  />
                </div>
                <div className="text-[8px] md:text-[8px] uppercase tracking-[0.4em] font-bold text-primary/40 leading-tight text-center md:text-left">
@@ -226,7 +226,7 @@ export default function LandingPage() {
             ].map((testi, idx) => (
               <div key={idx} className="p-8 md:p-10 brand-card scroll-reveal">
                 <div className="flex items-center gap-4 mb-8">
-                  <Image src={testi.img?.imageUrl || ''} alt={testi.name} width={45} height={45} className="rounded-none grayscale border border-primary/20 md:w-[50px] md:h-[50px]" />
+                  <Image src={testi.img?.imageUrl || ''} alt={testi.name} width={45} height={45} className="rounded-none border border-primary/20 md:w-[50px] md:h-[50px]" />
                   <div>
                     <h4 className="font-bold text-foreground tracking-wider uppercase text-[9px] md:text-[10px]">{testi.name}</h4>
                     <span className="text-[7px] text-primary font-bold uppercase tracking-[0.4em]">{testi.role}</span>
