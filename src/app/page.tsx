@@ -35,7 +35,7 @@ export default function LandingPage() {
           <Image src="https://imgur.com/bQxd94N.png" alt="Selo Místico" width={500} height={500} />
         </div>
         
-        <header className="mb-8 md:mb-12 scroll-reveal z-10">
+        <header className="mb-12 md:mb-16 scroll-reveal z-10">
           <div className="logo-float">
             <Image 
               src="https://imgur.com/NtUqBYp.png" 
@@ -47,39 +47,22 @@ export default function LandingPage() {
           </div>
         </header>
 
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-8 md:gap-12 relative z-10">
-          <div className="w-full md:w-3/5 text-center md:text-left">
-            <div className="mb-6 inline-flex items-center gap-3 py-1.5 px-6 border border-primary/20 bg-primary/5 text-primary text-[10px] font-bold tracking-[0.4em] uppercase">
-              <Compass className="w-3 h-3" />
-              Iniciação Gratuita
-            </div>
-            <h1 className="text-3xl md:text-6xl font-headline text-foreground mb-6 md:mb-8 leading-tight scroll-reveal">
-              Safe & Sound: <br />
-              <span className="text-primary italic mystic-script text-4xl md:text-7xl block mt-2">Onde a Magia do Inglês Acontece.</span>
-              <span className="text-xl md:text-3xl block mt-4 font-body tracking-tight opacity-90">Fale Inglês sem Medo e Destrave sua Carreira.</span>
-            </h1>
-            <p className="text-base md:text-lg text-muted-foreground mb-10 max-w-2xl font-body scroll-reveal delay-200 leading-relaxed mx-auto md:mx-0">
-              Não espere sua carta de Hogwarts chegar para começar a falar! Participe do minicurso gratuito **Habilidade Ativa** e aprenda como superar os **Dementadores do Medo** e as **Trevas do Bloqueio Mental**.
-            </p>
-            
-            <div className="scroll-reveal delay-300 max-w-md mx-auto md:mx-0">
-              <LeadForm />
-            </div>
+        <div className="max-w-4xl mx-auto text-center relative z-10">
+          <div className="mb-6 inline-flex items-center gap-3 py-1.5 px-6 border border-primary/20 bg-primary/5 text-primary text-[10px] font-bold tracking-[0.4em] uppercase">
+            <Compass className="w-3 h-3" />
+            Iniciação Gratuita
           </div>
-
-          <div className="w-full md:w-2/5 scroll-reveal delay-400 relative group mt-12 md:mt-0">
-            <div className="mistic-border p-2 bg-background/40 backdrop-blur-sm mx-auto max-w-[320px] md:max-w-none">
-              <Image 
-                src={teacherImg?.imageUrl || ''} 
-                alt="Caroline Renó" 
-                width={500} 
-                height={700}
-                className="grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000 shadow-2xl"
-              />
-              <div className="absolute -bottom-4 -left-4 bg-primary p-3 md:p-4 border border-background shadow-2xl">
-                <Image src="https://imgur.com/dHSjKcP.png" alt="Símbolo" width={20} height={20} className="invert brightness-0 md:w-6 md:h-6" />
-              </div>
-            </div>
+          <h1 className="text-3xl md:text-6xl font-headline text-foreground mb-6 md:mb-8 leading-tight scroll-reveal">
+            Safe & Sound: <br />
+            <span className="text-primary italic mystic-script text-4xl md:text-7xl block mt-2">Onde a Magia do Inglês Acontece.</span>
+            <span className="text-xl md:text-3xl block mt-4 font-body tracking-tight opacity-90">Fale Inglês sem Medo e Destrave sua Carreira.</span>
+          </h1>
+          <p className="text-base md:text-lg text-muted-foreground mb-10 max-w-2xl font-body scroll-reveal delay-200 leading-relaxed mx-auto">
+            Não espere sua carta de Hogwarts chegar para começar a falar! Participe do minicurso gratuito **Habilidade Ativa** e aprenda como superar os **Dementadores do Medo** e as **Trevas do Bloqueio Mental**.
+          </p>
+          
+          <div className="scroll-reveal delay-300 max-w-md mx-auto">
+            <LeadForm />
           </div>
         </div>
 
