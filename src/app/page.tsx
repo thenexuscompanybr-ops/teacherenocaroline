@@ -29,7 +29,7 @@ export default function LandingPage() {
       <MagicParticles />
       
       {/* SEÇÃO 1: HERO (Dobra de Cima) */}
-      <section className="relative pt-12 pb-20 md:pb-32 px-4 flex flex-col items-center overflow-hidden min-h-screen justify-center">
+      <section className="relative pt-12 pb-20 md:pb-32 px-4 flex flex-col items-center overflow-hidden min-h-[90vh] justify-center">
         {/* Elemento Gráfico de Fundo */}
         <div className="absolute top-0 right-0 opacity-10 pointer-events-none w-1/2 md:w-1/3 max-w-sm">
           <Image src="https://imgur.com/bQxd94N.png" alt="Selo Místico" width={500} height={500} />
@@ -161,18 +161,18 @@ export default function LandingPage() {
 
       {/* SEÇÃO 4: SOBRE A TEACHER */}
       <section className="py-20 md:py-32 px-4 bg-card/5 border-y border-primary/5">
-        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12 md:gap-16">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12 md:gap-20">
           <div className="w-full md:w-1/2 scroll-reveal">
-            <div className="relative p-2 md:p-3 border border-primary/10 bg-background/50 group mx-auto max-w-[320px] md:max-w-none">
+            <div className="relative p-2 md:p-4 border border-primary/15 bg-background/50 group mx-auto max-w-[400px] md:max-w-full sanctuary-glow">
               <Image 
                 src={teacherImg?.imageUrl || ''} 
                 alt="Caroline Renó" 
-                width={600} 
-                height={800}
-                className="grayscale opacity-90 transition-all duration-1000 group-hover:grayscale-0 group-hover:opacity-100"
+                width={800} 
+                height={1000}
+                className="grayscale opacity-90 transition-all duration-1000 group-hover:grayscale-0 group-hover:opacity-100 object-cover"
               />
-               <div className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 opacity-20 hidden md:block">
-                  <Image src="https://imgur.com/kmtinmG.png" alt="Graphic" width={150} height={150} />
+               <div className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 opacity-20 hidden lg:block">
+                  <Image src="https://imgur.com/kmtinmG.png" alt="Graphic" width={180} height={180} />
                </div>
             </div>
           </div>
