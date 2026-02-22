@@ -1,4 +1,3 @@
-
 "use client"
 
 import React from 'react';
@@ -24,7 +23,7 @@ export default function LandingPage() {
       <MagicParticles />
       
       {/* SEÇÃO 1: HERO - Ajustada para maior visibilidade inicial */}
-      <section className="relative pt-4 md:pt-8 pb-16 md:pb-24 px-4 flex flex-col items-center overflow-hidden min-h-[85vh] justify-start md:justify-center text-center">
+      <section className="relative pt-2 md:pt-4 pb-16 md:pb-24 px-4 flex flex-col items-center overflow-hidden min-h-[85vh] justify-start md:justify-center text-center">
         {/* Elementos Gráficos de Fundo */}
         <div className="absolute top-0 right-0 opacity-10 pointer-events-none w-1/2 md:w-1/3 max-w-sm">
           <Image src="https://i.imgur.com/bQxd94N.png" alt="Selo Místico" width={500} height={500} priority />
@@ -33,7 +32,7 @@ export default function LandingPage() {
           <Image src="https://i.imgur.com/7f2b52K.png" alt="Ornamental" width={500} height={500} />
         </div>
         
-        <header className="mb-6 md:mb-10 scroll-reveal z-10">
+        <header className="mb-2 md:mb-4 scroll-reveal z-10">
           <div className="logo-float">
             <Image 
               src="https://i.imgur.com/NtUqBYp.png" 
