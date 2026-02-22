@@ -54,6 +54,17 @@
   }
 }
 
+/* Proteção de Imagem e Seleção */
+.no-drag {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+  user-select: none;
+  pointer-events: none;
+}
+
 /* Tipografia Mística */
 .mystic-script {
   font-family: 'Pinyon Script', cursive;
@@ -233,3 +244,4 @@
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: hsl(var(--primary) / 0.6);
 }
+

@@ -1,6 +1,7 @@
+
 "use client"
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import Image from 'next/image';
 import { ShieldCheck, BookOpen, Compass, Wand2, Lock, EyeOff, Flame, Sparkles, Bird, MessageCircle, User } from 'lucide-react';
 import { LeadForm } from '@/components/LeadForm';
@@ -17,6 +18,30 @@ import { Card, CardContent } from '@/components/ui/card';
 export default function LandingPage() {
   useScrollReveal();
 
+  // Ritual de Proteção contra F12 e Downloads
+  useEffect(() => {
+    const handleContextMenu = (e: MouseEvent) => e.preventDefault();
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Bloqueia F12, Ctrl+Shift+I/J/C e Ctrl+U (ver código fonte)
+      if (
+        e.key === 'F12' ||
+        (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) ||
+        (e.ctrlKey && e.key === 'U')
+      ) {
+        e.preventDefault();
+        return false;
+      }
+    };
+
+    document.addEventListener('contextmenu', handleContextMenu);
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('contextmenu', handleContextMenu);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+
   return (
     <div className="min-h-screen selection-sonserina text-foreground bg-background relative overflow-x-hidden">
       {/* Partículas Místicas Globais */}
@@ -26,10 +51,10 @@ export default function LandingPage() {
       <section className="relative pt-2 md:pt-4 pb-16 md:pb-24 px-4 flex flex-col items-center overflow-hidden min-h-[85vh] justify-start md:justify-center text-center">
         {/* Elementos Gráficos de Fundo */}
         <div className="absolute top-0 right-0 opacity-10 pointer-events-none w-1/2 md:w-1/3 max-w-sm">
-          <Image src="https://i.imgur.com/bQxd94N.png" alt="Selo Místico" width={500} height={500} priority />
+          <Image src="https://i.imgur.com/bQxd94N.png" alt="Selo Místico" width={500} height={500} priority className="no-drag" />
         </div>
         <div className="absolute bottom-0 left-0 opacity-5 pointer-events-none w-1/2 md:w-1/3 max-w-sm rotate-180">
-          <Image src="https://i.imgur.com/7f2b52K.png" alt="Ornamental" width={500} height={500} />
+          <Image src="https://i.imgur.com/7f2b52K.png" alt="Ornamental" width={500} height={500} className="no-drag" />
         </div>
         
         <header className="mb-2 md:mb-4 scroll-reveal z-10">
@@ -39,7 +64,7 @@ export default function LandingPage() {
               alt="Caroline Renó Logo" 
               width={200} 
               height={55} 
-              className="logo-glow md:w-[260px] md:h-[75px]"
+              className="logo-glow md:w-[260px] md:h-[75px] no-drag"
               priority
             />
           </div>
@@ -88,7 +113,7 @@ export default function LandingPage() {
       {/* SEÇÃO 2: A DOR */}
       <section className="py-20 md:py-28 bg-card/10 border-y border-primary/10 relative overflow-hidden px-4">
         <div className="absolute top-1/2 left-0 -translate-y-1/2 opacity-5 pointer-events-none w-48 md:w-64">
-           <Image src="https://i.imgur.com/7f2b52K.png" alt="Ornamental" width={500} height={500} />
+           <Image src="https://i.imgur.com/7f2b52K.png" alt="Ornamental" width={500} height={500} className="no-drag" />
         </div>
         
         <div className="max-w-4xl mx-auto text-center relative z-10">
@@ -185,10 +210,10 @@ export default function LandingPage() {
                 alt="Caroline Renó" 
                 width={800} 
                 height={1000}
-                className="transition-all duration-1000 object-cover"
+                className="transition-all duration-1000 object-cover no-drag"
               />
                <div className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 opacity-20 hidden lg:block">
-                  <Image src="https://i.imgur.com/kmtinmG.png" alt="Graphic" width={180} height={180} />
+                  <Image src="https://i.imgur.com/kmtinmG.png" alt="Graphic" width={180} height={180} className="no-drag" />
                </div>
             </div>
           </div>
@@ -213,7 +238,7 @@ export default function LandingPage() {
                    alt="Caroline Renó" 
                    width={220} 
                    height={60} 
-                   className="opacity-80 hover:opacity-100 transition-opacity duration-700 w-full" 
+                   className="opacity-80 hover:opacity-100 transition-opacity duration-700 w-full no-drag" 
                  />
                </div>
                <div className="text-[8px] md:text-[8px] uppercase tracking-[0.4em] font-bold text-primary/40 leading-tight text-center md:text-left">
@@ -281,7 +306,7 @@ export default function LandingPage() {
       {/* SEÇÃO 7: RODAPÉ E CTA FINAL */}
       <section className="py-32 md:py-48 px-4 text-center relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-10 pointer-events-none w-full max-w-2xl">
-           <Image src="https://i.imgur.com/7f2b52K.png" alt="Graphic" width={1000} height={1000} />
+           <Image src="https://i.imgur.com/7f2b52K.png" alt="Graphic" width={1000} height={1000} className="no-drag" />
         </div>
         
         <div className="max-w-4xl mx-auto relative z-10 scroll-reveal text-center">
@@ -305,7 +330,7 @@ export default function LandingPage() {
           alt="Caroline Renó Logo" 
           width={150} 
           height={45} 
-          className="mx-auto mb-10 opacity-20 grayscale hover:opacity-100 transition-opacity duration-1000 md:w-[180px] md:h-[50px]"
+          className="mx-auto mb-10 opacity-20 grayscale hover:opacity-100 transition-opacity duration-1000 md:w-[180px] md:h-[50px] no-drag"
         />
         <p className="text-[8px] md:text-[9px] tracking-[0.3em] md:tracking-[0.5em] uppercase mb-6 text-primary/30 font-bold">&copy; {new Date().getFullYear()} Caroline Renó | Safe & Sound</p>
         <div className="flex justify-center gap-6 md:gap-8 text-[7px] md:text-[8px] uppercase tracking-[0.2em] md:tracking-[0.3em] font-bold text-muted-foreground/30">
@@ -317,3 +342,4 @@ export default function LandingPage() {
     </div>
   );
 }
+
