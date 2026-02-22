@@ -1,4 +1,3 @@
-
 "use client"
 
 import React from 'react';
@@ -19,9 +18,9 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 export default function LandingPage() {
   useScrollReveal();
 
-  const student1 = PlaceHolderImages.find(img => img.id === 'student-1');
-  const student2 = PlaceHolderImages.find(img => img.id === 'student-2');
-  const student3 = PlaceHolderImages.find(img => img.id === 'student-3');
+  const student1 = PlaceHolderImages.find(img => img.id === 'anon-1');
+  const student2 = PlaceHolderImages.find(img => img.id === 'anon-2');
+  const student3 = PlaceHolderImages.find(img => img.id === 'anon-3');
 
   return (
     <div className="min-h-screen selection-sonserina text-foreground bg-background relative overflow-x-hidden">
@@ -241,7 +240,16 @@ export default function LandingPage() {
             ].map((testi, idx) => (
               <div key={idx} className="p-8 md:p-10 brand-card scroll-reveal">
                 <div className="flex items-center gap-4 mb-8">
-                  <Image src={testi.img?.imageUrl || ''} alt={testi.name} width={45} height={45} className="rounded-none border border-primary/20 md:w-[50px] md:h-[50px]" />
+                  <div className="w-[45px] h-[45px] md:w-[50px] md:h-[50px] rounded-none border border-primary/20 bg-muted flex items-center justify-center overflow-hidden">
+                    <Image 
+                      src={testi.img?.imageUrl || ''} 
+                      alt={testi.name} 
+                      width={50} 
+                      height={50} 
+                      className="opacity-40 grayscale"
+                      data-ai-hint="user profile"
+                    />
+                  </div>
                   <div>
                     <h4 className="font-bold text-foreground tracking-wider uppercase text-[9px] md:text-[10px]">{testi.name}</h4>
                     <span className="text-[7px] text-primary font-bold uppercase tracking-[0.4em]">{testi.role}</span>
