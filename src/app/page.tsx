@@ -185,7 +185,7 @@ export default function LandingPage() {
               <span className="gold-leaf italic mystic-script text-4xl md:text-7xl block mt-2">Aulas de Defesa Contra as Travas</span>
             </h2>
             <div className="ornament-line mx-auto max-w-sm mb-8 opacity-60"></div>
-            <p className="text-[10px] md:text-[11px] uppercase tracking-[0.5em] text-primary/70 font-bold mb-10">Minicurso entregue via Grupo VIP de WhatsApp</p>
+            <p className="text-[10px] md:text-[11px] uppercase tracking-[0.5em] text-primary/70 font-bold mb-10">Aulas exclusivas para integrantes da Grupo Vip</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
@@ -327,9 +327,9 @@ export default function LandingPage() {
       </section>
 
       {/* RODAPÉ */}
-      <footer className="pt-12 md:pt-16 pb-20 md:pb-32 text-center border-t border-primary/15 bg-background/95 backdrop-blur-xl relative z-20 px-4">
+      <footer className="pt-6 md:pt-10 pb-20 md:pb-32 text-center border-t border-primary/15 bg-background/95 backdrop-blur-xl relative z-20 px-4">
         <div className="max-w-6xl mx-auto">
-          <div className="mb-12 transition-all duration-1000 hover:scale-105 group">
+          <div className="mb-8 md:mb-12 transition-all duration-1000 hover:scale-105 group">
             <Image 
               src={images.logo.imageUrl} 
               alt={images.logo.description} 
