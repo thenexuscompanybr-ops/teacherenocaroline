@@ -1,4 +1,3 @@
-
 "use client"
 
 import React, { useState } from 'react';
@@ -17,7 +16,7 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { generatePersonalizedFollowUpMessage } from '@/ai/flows/personalized-follow-up-message-flow';
-import { Loader2, Compass, Bird, MessageCircle, Sparkles } from 'lucide-react';
+import { Loader2, Compass, Bird, MessageCircle, Sparkles, Wand2 } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { useFirestore, addDocumentNonBlocking } from '@/firebase';
 import { collection, serverTimestamp } from 'firebase/firestore';
@@ -147,42 +146,60 @@ export function LeadForm() {
 
       <Dialog open={!!successData} onOpenChange={() => setSuccessData(null)}>
         <DialogContent className="bg-background border-primary/20 w-[95vw] md:max-w-2xl text-foreground rounded-none p-0 overflow-hidden outline-none sanctuary-glow">
-          <div className="relative p-6 md:p-10">
-            <div className="absolute top-0 right-0 opacity-10 pointer-events-none w-1/2">
-               <Image src="https://i.imgur.com/bQxd94N.png" alt="Seal" width={400} height={400} />
+          <div className="relative p-6 md:p-10 min-h-[500px] flex flex-col justify-center">
+            {/* Fundo de Portal Místico */}
+            <div className="absolute inset-0 flex items-center justify-center opacity-10 pointer-events-none overflow-hidden">
+               <div className="w-[800px] h-[800px] border-[2px] border-dashed border-primary rounded-full animate-portal-spin" />
             </div>
             
-            <DialogHeader>
-              <DialogTitle className="flex items-center gap-4 text-2xl md:text-3xl font-headline text-primary">
-                <Bird className="w-6 h-6 md:w-8 md:h-8" />
-                A Coruja chegou.
-              </DialogTitle>
-            </DialogHeader>
-            <div className="mt-6 md:mt-8 space-y-6 md:space-y-8 relative z-10">
-              <div className="p-4 md:p-8 bg-card/40 border border-primary/10 italic text-sm md:text-base leading-relaxed text-muted-foreground font-body max-h-[40vh] overflow-y-auto selection-sonserina custom-scrollbar">
-                {successData?.message}
-              </div>
-              
-              <div className="space-y-4">
-                <p className="text-center font-bold text-primary/80 text-[10px] md:text-[12px] uppercase tracking-[0.2em] md:tracking-[0.3em] flex items-center justify-center gap-2">
-                  <Sparkles className="w-3 h-3" />
-                  Ritual Final: Entre no Grupo VIP
-                  <Sparkles className="w-3 h-3" />
-                </p>
-                <Button 
-                  onClick={handleJoinWhatsApp} 
-                  className="w-full cta-button h-16 text-[10px] md:text-[12px] group gold-shimmer bg-primary hover:bg-primary/90 magic-pulse shadow-[0_0_25px_-5px_hsla(45,33%,40%,0.6)]"
-                >
-                  <div className="flex items-center justify-center gap-3">
-                    <MessageCircle className="h-5 w-5 animate-bounce" />
-                    <span className="tracking-[0.2em] font-bold">ATRAVESSAR O PORTAL (GRUPO VIP)</span>
-                  </div>
-                </Button>
+            <div className="relative z-10 flex flex-col items-center">
+              {/* Animação da Coruja Chegando */}
+              <div className="mb-8 relative animate-owl-arrival">
+                <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full scale-150 animate-pulse" />
+                <div className="w-24 h-24 md:w-32 md:h-32 bg-card/60 border-2 border-primary/30 flex items-center justify-center sanctuary-glow relative overflow-hidden group">
+                   <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-primary/10 animate-pulse" />
+                   <Bird className="w-12 h-12 md:w-16 md:h-16 text-primary animate-magical-float" />
+                </div>
+                {/* Partículas ao redor da Coruja */}
+                <Sparkles className="absolute -top-4 -right-4 w-6 h-6 text-primary/60 animate-bounce" />
+                <Wand2 className="absolute -bottom-2 -left-6 w-5 h-5 text-primary/40 rotate-12" />
               </div>
 
-              <p className="text-center text-[7px] md:text-[8px] uppercase tracking-[0.4em] text-muted-foreground/40 font-bold">
-                Sua vaga no Santuário expira em breve.
-              </p>
+              <DialogHeader className="text-center w-full">
+                <DialogTitle className="text-3xl md:text-4xl font-headline text-primary text-center mb-2 animate-in fade-in slide-in-from-bottom-4 duration-1000">
+                  A Coruja Chegou.
+                </DialogTitle>
+                <p className="text-[10px] uppercase tracking-[0.4em] text-primary/40 font-bold mb-6">Convite Preservado em Pergaminho</p>
+              </DialogHeader>
+
+              <div className="w-full space-y-8 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-500 fill-mode-both">
+                <div className="p-6 md:p-10 bg-card/60 border border-primary/20 italic text-sm md:text-base leading-relaxed text-muted-foreground font-body max-h-[35vh] overflow-y-auto selection-sonserina custom-scrollbar relative">
+                  <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-primary/30" />
+                  <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-primary/30" />
+                  {successData?.message}
+                </div>
+                
+                <div className="space-y-4">
+                  <p className="text-center font-bold text-primary/80 text-[10px] md:text-[11px] uppercase tracking-[0.3em] flex items-center justify-center gap-2">
+                    <Sparkles className="w-3 h-3 animate-pulse" />
+                    Atravessar o Portal Final
+                    <Sparkles className="w-3 h-3 animate-pulse" />
+                  </p>
+                  <Button 
+                    onClick={handleJoinWhatsApp} 
+                    className="w-full cta-button h-16 text-[10px] md:text-[12px] group gold-shimmer bg-primary hover:bg-primary/90 magic-pulse shadow-[0_0_40px_-10px_hsla(45,33%,40%,0.8)]"
+                  >
+                    <div className="flex items-center justify-center gap-3">
+                      <MessageCircle className="h-5 w-5 animate-bounce" />
+                      <span className="tracking-[0.2em] font-bold">ENTRAR NO GRUPO VIP (GRATUITO)</span>
+                    </div>
+                  </Button>
+                </div>
+
+                <p className="text-center text-[8px] uppercase tracking-[0.5em] text-muted-foreground/30 font-bold">
+                  Sua herança linguística espera por você.
+                </p>
+              </div>
             </div>
           </div>
         </DialogContent>
