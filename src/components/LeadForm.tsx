@@ -1,4 +1,3 @@
-
 "use client"
 
 import React, { useState } from 'react';
@@ -183,7 +182,7 @@ export function LeadForm() {
                 </div>
               </DialogHeader>
 
-              <div className="space-y-10 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-500 fill-mode-both">
+              <div className="space-y-10 animate-in fade-in slide-in-from-bottom-4 duration-500 delay-150 fill-mode-both">
                 <div className="relative p-8 md:p-12 bg-[#fffdf5]/50 border border-[#8b7355]/20 shadow-inner">
                   {/* Selo de Cera Virtual */}
                   <div className="absolute -top-6 -right-6 w-16 h-16 md:w-20 md:h-20 bg-[#8b0000] rounded-full shadow-lg flex items-center justify-center border-4 border-[#6b0000] rotate-12 z-20">
