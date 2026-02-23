@@ -1,10 +1,10 @@
+
 "use client"
 
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import {
   Form,
@@ -16,11 +16,23 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { generatePersonalizedFollowUpMessage } from '@/ai/flows/personalized-follow-up-message-flow';
-import { Loader2, Compass, Bird, MessageCircle, Sparkles, Wand2 } from 'lucide-react';
+import { Loader2, Compass, MessageCircle, Sparkles, Wand2 } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { useFirestore, addDocumentNonBlocking } from '@/firebase';
 import { collection, serverTimestamp } from 'firebase/firestore';
 import { useToast } from '@/hooks/use-toast';
+
+// Componente da Coruja Sagrada (SVG personalizado baseado na imagem fornecida)
+const SacredOwl = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 100 100" className={className} fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M15 30 L10 15 Q30 25 50 25 Q70 25 90 15 L85 30 Q95 45 85 75 Q50 85 15 75 Q5 45 15 30 Z" fill="none" strokeWidth="5" />
+    <circle cx="35" cy="52" r="14" strokeWidth="4" />
+    <circle cx="35" cy="52" r="5" fill="currentColor" />
+    <circle cx="65" cy="52" r="14" strokeWidth="4" />
+    <circle cx="65" cy="52" r="5" fill="currentColor" />
+    <path d="M50 55 L45 68 L55 68 Z" fill="currentColor" stroke="none" />
+  </svg>
+);
 
 const formSchema = z.object({
   name: z.string().min(2, { message: 'Sua identificação mística é necessária.' }),
@@ -44,7 +56,7 @@ export function LeadForm() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true);
     try {
-      // 1. Salva o Lead no Pergaminho Digital (Firestore) - Não bloqueante
+      // 1. Salva o Lead no Pergaminho Digital (Firestore)
       const leadsRef = collection(firestore, 'leads');
       addDocumentNonBlocking(leadsRef, {
         name: values.name,
@@ -53,22 +65,29 @@ export function LeadForm() {
         source: 'Landing Page Safe & Sound',
       });
 
-      // 2. Invoca a Inteligência para a Mensagem Personalizada
-      const response = await generatePersonalizedFollowUpMessage({
-        leadName: values.name,
-        leadEmail: values.email,
-        registrationSource: 'Santuário Safe & Sound',
-        courseName: 'Safe & Sound: Habilidade Ativa',
-        teacherName: 'Caroline Renó',
-        courseGoal: 'Superar os Dementadores do Medo e as Trevas do Bloqueio Mental.',
-        courseBenefits: 'Protego Mental, Defesa Contra Travas, Suporte via Coruja',
-      });
-      
-      if (response && response.message) {
-        setSuccessData({ message: response.message, name: values.name });
-      } else {
-        throw new Error("A coruja se perdeu no caminho.");
+      // 2. Invoca a Inteligência com Contingência
+      let message = "";
+      try {
+        const response = await generatePersonalizedFollowUpMessage({
+          leadName: values.name,
+          leadEmail: values.email,
+          registrationSource: 'Santuário Safe & Sound',
+          courseName: 'Safe & Sound: Habilidade Ativa',
+          teacherName: 'Caroline Renó',
+          courseGoal: 'Superar os Dementadores do Medo e as Trevas do Bloqueio Mental.',
+          courseBenefits: 'Protego Mental, Defesa Contra Travas, Suporte via Coruja',
+        });
+        message = response?.message || "";
+      } catch (e) {
+        console.error("Ventos contrários na IA:", e);
       }
+
+      // Mensagem de fallback caso a IA falhe
+      if (!message) {
+        message = `Prezado(a) ${values.name}, sua convocação para o Santuário Safe & Sound foi aceita. Você deu o primeiro passo para silenciar a Maldição do Silêncio e retomar o poder da sua voz em inglês. O mensageiro já está a caminho com as instruções para o primeiro ritual.`;
+      }
+      
+      setSuccessData({ message, name: values.name });
     } catch (error: any) {
       console.error('Falha no ritual de inscrição:', error);
       toast({
@@ -82,7 +101,6 @@ export function LeadForm() {
   }
 
   const handleJoinWhatsApp = () => {
-    // Inserir link real do grupo de WhatsApp aqui
     window.open('https://chat.whatsapp.com/seu-link-aqui', '_blank');
   };
 
@@ -145,59 +163,70 @@ export function LeadForm() {
       </Form>
 
       <Dialog open={!!successData} onOpenChange={() => setSuccessData(null)}>
-        <DialogContent className="bg-background border-primary/20 w-[95vw] md:max-w-2xl text-foreground rounded-none p-0 overflow-hidden outline-none sanctuary-glow">
-          <div className="relative p-6 md:p-10 min-h-[500px] flex flex-col justify-center">
-            {/* Fundo de Portal Místico */}
-            <div className="absolute inset-0 flex items-center justify-center opacity-10 pointer-events-none overflow-hidden">
-               <div className="w-[800px] h-[800px] border-[2px] border-dashed border-primary rounded-full animate-portal-spin" />
-            </div>
+        <DialogContent className="bg-[#f4ecd8] border-[#8b7355] w-[95vw] md:max-w-2xl text-[#4a3728] rounded-none p-0 overflow-hidden outline-none shadow-2xl sanctuary-glow">
+          <div className="relative p-6 md:p-12 min-h-[550px] flex flex-col justify-center items-center text-center">
+            {/* Textura de Papel Pergaminho */}
+            <div className="absolute inset-0 opacity-40 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/parchment.png')]" />
             
-            <div className="relative z-10 flex flex-col items-center">
-              {/* Animação da Coruja Chegando */}
-              <div className="mb-8 relative animate-owl-arrival">
-                <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full scale-150 animate-pulse" />
-                <div className="w-24 h-24 md:w-32 md:h-32 bg-card/60 border-2 border-primary/30 flex items-center justify-center sanctuary-glow relative overflow-hidden group">
-                   <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-primary/10 animate-pulse" />
-                   <Bird className="w-12 h-12 md:w-16 md:h-16 text-primary animate-magical-float" />
+            {/* Moldura Ornamental */}
+            <div className="absolute inset-4 border border-[#8b7355]/30 pointer-events-none" />
+            <div className="absolute inset-6 border-2 border-[#8b7355]/10 pointer-events-none" />
+
+            <div className="relative z-10 w-full">
+              {/* Entrega da Coruja */}
+              <div className="mb-10 relative flex justify-center animate-owl-arrival">
+                <div className="absolute inset-0 bg-primary/10 blur-3xl rounded-full scale-150 animate-pulse" />
+                <div className="w-32 h-32 md:w-40 md:h-40 bg-[#e8dec0] border-2 border-[#8b7355]/40 flex items-center justify-center shadow-xl rounded-full relative overflow-hidden group">
+                   <SacredOwl className="w-20 h-20 md:w-24 h-24 text-[#8b7355] animate-magical-float" />
                 </div>
-                {/* Partículas ao redor da Coruja */}
-                <Sparkles className="absolute -top-4 -right-4 w-6 h-6 text-primary/60 animate-bounce" />
-                <Wand2 className="absolute -bottom-2 -left-6 w-5 h-5 text-primary/40 rotate-12" />
+                <Sparkles className="absolute -top-4 -right-4 w-8 h-8 text-primary/40 animate-bounce" />
+                <Wand2 className="absolute -bottom-2 -left-6 w-6 h-6 text-[#8b7355]/30 rotate-12" />
               </div>
 
-              <DialogHeader className="text-center w-full">
-                <DialogTitle className="text-3xl md:text-4xl font-headline text-primary text-center mb-2 animate-in fade-in slide-in-from-bottom-4 duration-1000">
+              <DialogHeader className="mb-8">
+                <DialogTitle className="text-3xl md:text-5xl font-headline text-[#4a3728] mb-2">
                   A Coruja Chegou.
                 </DialogTitle>
-                <p className="text-[10px] uppercase tracking-[0.4em] text-primary/40 font-bold mb-6">Convite Preservado em Pergaminho</p>
+                <div className="flex items-center justify-center gap-3">
+                  <div className="h-[1px] w-12 bg-[#8b7355]/30" />
+                  <p className="text-[10px] uppercase tracking-[0.4em] text-[#8b7355] font-bold">Convite de Iniciação</p>
+                  <div className="h-[1px] w-12 bg-[#8b7355]/30" />
+                </div>
               </DialogHeader>
 
-              <div className="w-full space-y-8 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-500 fill-mode-both">
-                <div className="p-6 md:p-10 bg-card/60 border border-primary/20 italic text-sm md:text-base leading-relaxed text-muted-foreground font-body max-h-[35vh] overflow-y-auto selection-sonserina custom-scrollbar relative">
-                  <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-primary/30" />
-                  <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-primary/30" />
-                  {successData?.message}
+              <div className="space-y-10 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-500 fill-mode-both">
+                <div className="relative p-8 md:p-12 bg-[#fffdf5]/50 border border-[#8b7355]/20 shadow-inner">
+                  {/* Selo de Cera Virtual */}
+                  <div className="absolute -top-6 -right-6 w-16 h-16 md:w-20 md:h-20 bg-[#8b0000] rounded-full shadow-lg flex items-center justify-center border-4 border-[#6b0000] rotate-12 z-20">
+                    <span className="font-headline text-white text-xl md:text-2xl opacity-80">CR</span>
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-black/20 rounded-full" />
+                  </div>
+                  
+                  <div className="max-h-[30vh] overflow-y-auto custom-scrollbar italic font-body text-base md:text-lg leading-relaxed text-[#5c4a3a]">
+                    {successData?.message}
+                  </div>
                 </div>
                 
-                <div className="space-y-4">
-                  <p className="text-center font-bold text-primary/80 text-[10px] md:text-[11px] uppercase tracking-[0.3em] flex items-center justify-center gap-2">
-                    <Sparkles className="w-3 h-3 animate-pulse" />
+                <div className="space-y-6">
+                  <p className="font-bold text-[#8b7355] text-[10px] md:text-[12px] uppercase tracking-[0.4em] flex items-center justify-center gap-3">
+                    <Sparkles className="w-3.5 h-3.5 animate-pulse" />
                     Atravessar o Portal Final
-                    <Sparkles className="w-3 h-3 animate-pulse" />
+                    <Sparkles className="w-3.5 h-3.5 animate-pulse" />
                   </p>
                   <Button 
                     onClick={handleJoinWhatsApp} 
-                    className="w-full cta-button h-16 text-[10px] md:text-[12px] group gold-shimmer bg-primary hover:bg-primary/90 magic-pulse shadow-[0_0_40px_-10px_hsla(45,33%,40%,0.8)]"
+                    className="w-full bg-[#1a2320] hover:bg-[#2a3330] text-primary h-16 rounded-none border border-primary/30 transition-all duration-500 shadow-2xl group relative overflow-hidden magic-pulse"
                   >
-                    <div className="flex items-center justify-center gap-3">
-                      <MessageCircle className="h-5 w-5 animate-bounce" />
-                      <span className="tracking-[0.2em] font-bold">ENTRAR NO GRUPO VIP (GRATUITO)</span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                    <div className="flex items-center justify-center gap-4 relative z-10">
+                      <MessageCircle className="h-6 w-6 animate-bounce" />
+                      <span className="tracking-[0.3em] font-bold text-xs">ENTRAR NO GRUPO VIP (GRATUITO)</span>
                     </div>
                   </Button>
                 </div>
 
-                <p className="text-center text-[8px] uppercase tracking-[0.5em] text-muted-foreground/30 font-bold">
-                  Sua herança linguística espera por você.
+                <p className="text-[9px] uppercase tracking-[0.6em] text-[#8b7355]/40 font-bold">
+                  Sua herança linguística foi preservada.
                 </p>
               </div>
             </div>
