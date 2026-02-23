@@ -89,7 +89,7 @@ export default function LandingPage() {
           
           <h1 className="text-3xl md:text-6xl font-headline text-foreground mb-4 md:mb-6 leading-[1.1] scroll-reveal w-full">
             Safe & Sound: <br />
-            <span className="gold-leaf mystic-script text-[24px] sm:text-4xl md:text-8xl block mt-1 py-2 px-2 sm:px-6 whitespace-nowrap">Onde a Magia do Inglês Acontece.</span>
+            <span className="gold-leaf mystic-script text-[32px] sm:text-5xl md:text-8xl block mt-1 py-2 px-2 sm:px-6 whitespace-nowrap">Onde a Magia do Inglês Acontece.</span>
             <span className="text-base md:text-2xl block mt-2 font-body tracking-tight opacity-95">Fale Inglês Sem Medo e Destrave sua Carreira.</span>
           </h1>
           
