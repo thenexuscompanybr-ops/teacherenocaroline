@@ -103,7 +103,7 @@ export default function LandingPage() {
       content: [
         "Para rir, aprender, se soltar, desabafar.",
         "Já me disseram que minhas aulas parecem uma segunda terapia, e quer saber? Eu levo isso como elogio.",
-        "Porque aprender uma nova língua também é um jeito de se ouvir com mais carinho."
+        "Because aprender uma nova língua também é um jeito de se ouvir com mais carinho."
       ]
     },
     {
@@ -124,7 +124,7 @@ export default function LandingPage() {
       <MagicParticles />
       
       {/* SEÇÃO 1: HERO */}
-      <section className="relative pt-2 md:pt-10 pb-12 md:pb-24 px-4 flex flex-col items-center justify-center text-center mystic-fog min-h-svh w-full">
+      <section className="relative pt-2 md:pt-12 pb-12 md:pb-24 px-4 flex flex-col items-center justify-center text-center mystic-fog min-h-svh w-full">
         <div className="absolute top-0 right-0 opacity-10 pointer-events-none w-1/2 md:w-1/3 max-w-md overflow-hidden">
           <Image 
             src={images.seal.imageUrl} 
@@ -137,7 +137,7 @@ export default function LandingPage() {
           />
         </div>
         
-        <header className="mb-2 md:mb-8 scroll-reveal z-10 w-full flex justify-center">
+        <header className="mb-4 md:mb-10 scroll-reveal z-10 w-full flex justify-center">
           <div className="logo-float max-w-[150px] md:max-w-[280px] w-full">
             <Image 
               src={images.logo.imageUrl} 
@@ -151,19 +151,23 @@ export default function LandingPage() {
           </div>
         </header>
 
-        <div className="max-w-4xl mx-auto relative z-10 w-full px-2 flex flex-col items-center">
+        <div className="max-w-5xl mx-auto relative z-10 w-full px-2 flex flex-col items-center">
           <div className="mb-4 inline-flex items-center gap-3 py-1.5 px-4 border border-primary text-primary text-[9px] md:text-[11px] font-bold tracking-[0.4em] uppercase whitespace-nowrap">
             <Compass className="w-3.5 h-3.5" />
             Iniciação Gratuita • Grupo VIP
           </div>
           
-          <h1 className="text-3xl md:text-6xl font-headline text-foreground mb-4 md:mb-6 leading-[1.1] scroll-reveal w-full">
-            Safe & Sound: <br />
-            <span className="gold-leaf mystic-script text-[32px] sm:text-5xl md:text-8xl block mt-1 py-2 px-2 sm:px-6 whitespace-nowrap">Onde a Magia do Inglês Acontece.</span>
-            <span className="text-base md:text-2xl block mt-2 font-body tracking-tight opacity-95">Fale Inglês Sem Medo e Destrave sua Carreira.</span>
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-headline text-foreground mb-4 md:mb-8 leading-[1.1] scroll-reveal w-full flex flex-col items-center">
+            Safe & Sound:
+            <span className="gold-leaf mystic-script text-[7.5vw] sm:text-5xl md:text-6xl lg:text-7xl block mt-2 py-2 px-2 sm:px-6 whitespace-nowrap text-center">
+              Onde a Magia do Inglês Acontece.
+            </span>
+            <span className="text-base md:text-xl lg:text-2xl block mt-3 font-body tracking-tight opacity-95">
+              Fale Inglês Sem Medo e Destrave sua Carreira.
+            </span>
           </h1>
           
-          <p className="text-xs md:text-base text-muted-foreground mb-6 md:mb-10 max-w-2xl font-body scroll-reveal leading-relaxed mx-auto px-2">
+          <p className="text-xs md:text-base text-muted-foreground mb-8 md:mb-12 max-w-2xl font-body scroll-reveal leading-relaxed mx-auto px-2">
             Não precisa mais esperar sua carta de Hogwarts chegar... Participe do minicurso gratuito: <span className="magic-emphasis text-primary">Habilidade Ativa</span> e aprenda como superar o pânico na hora de falar inglês.
           </p>
           
@@ -171,7 +175,7 @@ export default function LandingPage() {
             <LeadForm />
           </div>
 
-          <p className="mt-6 md:mt-10 text-[9px] md:text-[10px] uppercase tracking-[0.3em] md:tracking-[0.5em] text-primary font-bold scroll-reveal">
+          <p className="mt-6 md:mt-12 text-[9px] md:text-[10px] uppercase tracking-[0.3em] md:tracking-[0.5em] text-primary font-bold scroll-reveal">
             Acesso imediato ao Grupo VIP de Iniciação
           </p>
         </div>
