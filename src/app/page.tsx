@@ -1,8 +1,9 @@
+
 "use client"
 
 import React, { useEffect } from 'react';
 import Image from 'next/image';
-import { ShieldCheck, BookOpen, Compass, Lock, EyeOff, Flame, Sparkles, MessageCircle, User } from 'lucide-react';
+import { ShieldCheck, BookOpen, Compass, Lock, EyeOff, Flame, Sparkles, MessageCircle } from 'lucide-react';
 import { LeadForm } from '@/components/LeadForm';
 import { useScrollReveal } from '@/hooks/use-scroll-reveal';
 import { MagicParticles } from '@/components/ui/magic-particles';
@@ -326,7 +327,7 @@ export default function LandingPage() {
       </section>
 
       {/* RODAPÉ */}
-      <footer className="py-20 md:py-32 text-center border-t border-primary/15 bg-background/95 backdrop-blur-xl relative z-20 px-4">
+      <footer className="pt-12 md:pt-16 pb-20 md:pb-32 text-center border-t border-primary/15 bg-background/95 backdrop-blur-xl relative z-20 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="mb-12 transition-all duration-1000 hover:scale-105 group">
             <Image 
