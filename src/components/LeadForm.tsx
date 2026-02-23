@@ -20,7 +20,6 @@ import { Loader2, Compass, MessageCircle, Sparkles, X } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogClose } from '@/components/ui/dialog';
 import { useFirestore, addDocumentNonBlocking } from '@/firebase';
 import { collection, serverTimestamp } from 'firebase/firestore';
-import { useToast } from '@/hooks/use-toast';
 import { SacredOwl } from '@/components/ui/sacred-owl';
 
 const formSchema = z.object({
@@ -32,7 +31,6 @@ export function LeadForm() {
   const [isLoading, setIsLoading] = useState(false);
   const [successData, setSuccessData] = useState<{ message: string; name: string } | null>(null);
   const firestore = useFirestore();
-  const { toast } = useToast();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -66,10 +64,9 @@ export function LeadForm() {
         courseBenefits: 'Protego Mental, Defesa Contra Travas, Suporte via Coruja',
       }).catch(() => null);
 
-      // Invocação Acelerada: O portal abre quase instantaneamente
       const aiResponse = await Promise.race([
         aiPromise,
-        new Promise(resolve => setTimeout(() => resolve(null), 500))
+        new Promise(resolve => setTimeout(() => resolve(null), 1500))
       ]) as any;
 
       setSuccessData({ 
@@ -102,7 +99,7 @@ export function LeadForm() {
                   <Input 
                     placeholder="Seu nome completo" 
                     {...field} 
-                    className="h-14 bg-card/40 border-primary/20 focus:border-primary/50 transition-all rounded-none placeholder:text-muted-foreground/30 text-base font-medium" 
+                    className="h-14 bg-card/40 border-primary/20 focus:border-primary/50 transition-all rounded-none placeholder:text-muted-foreground/30 text-base font-medium shadow-none" 
                   />
                 </FormControl>
                 <FormMessage className="text-[10px] text-primary/90 font-bold uppercase mt-2" />
@@ -119,7 +116,7 @@ export function LeadForm() {
                   <Input 
                     placeholder="seu@email.com" 
                     {...field} 
-                    className="h-14 bg-card/40 border-primary/20 focus:border-primary/50 transition-all rounded-none placeholder:text-muted-foreground/30 text-base font-medium" 
+                    className="h-14 bg-card/40 border-primary/20 focus:border-primary/50 transition-all rounded-none placeholder:text-muted-foreground/30 text-base font-medium shadow-none" 
                   />
                 </FormControl>
                 <FormMessage className="text-[10px] text-primary/90 font-bold uppercase mt-2" />
@@ -128,7 +125,7 @@ export function LeadForm() {
           />
           <Button 
             type="submit" 
-            className="w-full cta-button h-16 text-[10px] md:text-[11px] group gold-shimmer mt-6"
+            className="w-full cta-button h-16 text-[10px] md:text-[11px] group gold-shimmer mt-6 shadow-none"
             disabled={isLoading}
           >
             {isLoading ? (
@@ -147,14 +144,13 @@ export function LeadForm() {
       </Form>
 
       <Dialog open={!!successData} onOpenChange={() => setSuccessData(null)}>
-        <DialogContent className="bg-[#f4ecd8] border-[#8b7355] w-[95vw] md:max-w-2xl text-[#4a3728] rounded-none p-0 overflow-y-auto max-h-[90vh] outline-none shadow-2xl border-2">
-          {/* Botão de fechamento com prioridade mística */}
+        <DialogContent className="bg-[#f4ecd8] border-[#8b7355] w-[95vw] md:max-w-2xl text-[#4a3728] rounded-none p-0 overflow-hidden outline-none shadow-2xl border-2">
           <DialogClose className="absolute right-4 top-4 z-[120] text-[#8b7355] hover:text-[#4a3728] transition-all p-2 rounded-full hover:bg-black/5 active:scale-95">
             <X className="h-7 w-7" />
             <span className="sr-only">Fechar</span>
           </DialogClose>
 
-          <div className="relative p-8 md:p-14 flex flex-col justify-center items-center text-center w-full">
+          <div className="relative p-8 md:p-14 flex flex-col justify-center items-center text-center w-full max-h-[90vh] overflow-y-auto custom-scrollbar">
             <div className="absolute inset-0 opacity-40 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/parchment.png')]" />
             <div className="absolute inset-4 border border-[#8b7355]/30 pointer-events-none" />
             <div className="absolute inset-6 border-2 border-[#8b7355]/10 pointer-events-none" />
@@ -169,7 +165,7 @@ export function LeadForm() {
               </div>
 
               <DialogHeader className="mb-8">
-                <DialogTitle className="text-3xl md:text-5xl font-headline text-[#4a3728] mb-3">
+                <DialogTitle className="text-3xl md:text-5xl font-headline text-[#4a3728] mb-3 leading-tight">
                   A Coruja Chegou.
                 </DialogTitle>
                 <div className="flex items-center justify-center gap-4">
@@ -185,7 +181,7 @@ export function LeadForm() {
                     <span className="font-headline text-white text-xl md:text-2xl opacity-90">CR</span>
                   </div>
                   
-                  <div className="max-h-[35vh] overflow-y-auto custom-scrollbar italic font-body text-base md:text-xl leading-relaxed text-[#5c4a3a]">
+                  <div className="italic font-body text-base md:text-xl leading-relaxed text-[#5c4a3a]">
                     {successData?.message}
                   </div>
                 </div>

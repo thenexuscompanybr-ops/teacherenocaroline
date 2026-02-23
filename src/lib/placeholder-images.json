@@ -1,28 +1,40 @@
 {
   "placeholderImages": [
     {
+      "id": "hero-seal",
+      "description": "Selo Místico Hero",
+      "imageUrl": "https://i.imgur.com/bQxd94N.png",
+      "imageHint": "mystic seal"
+    },
+    {
+      "id": "brand-logo",
+      "description": "Logo Caroline Renó",
+      "imageUrl": "https://i.imgur.com/NtUqBYp.png",
+      "imageHint": "brand logo"
+    },
+    {
+      "id": "ornamental-element",
+      "description": "Elemento Ornamental",
+      "imageUrl": "https://i.imgur.com/7f2b52K.png",
+      "imageHint": "ornamental graphic"
+    },
+    {
       "id": "teacher-caroline",
-      "description": "Teacher Caroline Renó",
-      "imageUrl": "https://images.unsplash.com/photo-1634015190762-c5332c150284?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx0ZWFjaGVyJTIwY2Fyb2xpbmV8ZW58MHx8fHwxNzcxNzc2NTQ2fDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "teacher caroline"
+      "description": "Caroline Renó Professional",
+      "imageUrl": "https://imgur.com/iwVrdXg.png",
+      "imageHint": "teacher profile"
     },
     {
-      "id": "anon-1",
-      "description": "Anonymous User 1",
-      "imageUrl": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHx1c2VyJTIwcHJvZmlsZXxlbnwwfHx8fDE3NzE2ODgzNDd8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "user profile"
+      "id": "brand-signature",
+      "description": "Assinatura Caroline Renó",
+      "imageUrl": "https://i.imgur.com/DIW3kra.png",
+      "imageHint": "signature"
     },
     {
-      "id": "anon-2",
-      "description": "Anonymous User 2",
-      "imageUrl": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx1c2VyJTIwcHJvZmlsZXxlbnwwfHx8fDE3NzE2ODgzNDd8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "user profile"
-    },
-    {
-      "id": "anon-3",
-      "description": "Anonymous User 3",
-      "imageUrl": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHx1c2VyJTIwcHJvZmlsZXxlbnwwfHx8fDE3NzE2ODgzNDd8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "user profile"
+      "id": "parchment-texture",
+      "description": "Textura de Pergaminho",
+      "imageUrl": "https://www.transparenttextures.com/patterns/parchment.png",
+      "imageHint": "parchment texture"
     }
   ]
 }
