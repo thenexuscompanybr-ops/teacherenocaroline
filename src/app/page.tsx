@@ -3,6 +3,7 @@
 
 import React, { useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { ShieldCheck, BookOpen, Compass, Lock, EyeOff, Flame, Sparkles, MessageCircle } from 'lucide-react';
 import { LeadForm } from '@/components/LeadForm';
 import { useScrollReveal } from '@/hooks/use-scroll-reveal';
@@ -347,14 +348,14 @@ export default function LandingPage() {
           </p>
           
           <div className="flex flex-wrap justify-center gap-10 md:gap-20 text-[9px] uppercase tracking-[0.5em] font-bold text-muted-foreground/40">
-            <span className="cursor-pointer hover:text-primary transition-all duration-700 hover:tracking-[0.8em] relative group">
+            <Link href="/termos" className="cursor-pointer hover:text-primary transition-all duration-700 hover:tracking-[0.8em] relative group">
               Termos de Uso
               <span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-primary/40 transition-all duration-700 group-hover:w-full"></span>
-            </span>
-            <span className="cursor-pointer hover:text-primary transition-all duration-700 hover:tracking-[0.8em] relative group">
+            </Link>
+            <Link href="/privacidade" className="cursor-pointer hover:text-primary transition-all duration-700 hover:tracking-[0.8em] relative group">
               Política de Privacidade
               <span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-primary/40 transition-all duration-700 group-hover:w-full"></span>
-            </span>
+            </Link>
             <span className="cursor-pointer hover:text-primary transition-all duration-700 hover:tracking-[0.8em] relative group">
               Instagram Oficial
               <span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-primary/40 transition-all duration-700 group-hover:w-full"></span>
