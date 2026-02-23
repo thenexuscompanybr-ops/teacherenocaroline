@@ -3,10 +3,11 @@
 
 import React, { useEffect } from 'react';
 import Image from 'next/image';
-import { ShieldCheck, BookOpen, Compass, Wand2, Lock, EyeOff, Flame, Sparkles, Bird, MessageCircle, User } from 'lucide-react';
+import { ShieldCheck, BookOpen, Compass, Wand2, Lock, EyeOff, Flame, Sparkles, MessageCircle, User } from 'lucide-react';
 import { LeadForm } from '@/components/LeadForm';
 import { useScrollReveal } from '@/hooks/use-scroll-reveal';
 import { MagicParticles } from '@/components/ui/magic-particles';
+import { SacredOwl } from '@/components/ui/sacred-owl';
 import {
   Accordion,
   AccordionContent,
@@ -91,7 +92,7 @@ export default function LandingPage() {
         {/* Detalhes de Autoridade */}
         <div className="mt-8 md:mt-12 flex flex-wrap justify-center gap-6 md:gap-10 text-primary/50 font-bold tracking-[0.4em] scroll-reveal delay-500">
            <div className="flex items-center gap-3 group cursor-default">
-            <Bird className="w-4 h-4 group-hover:scale-110 transition-transform" />
+            <SacredOwl className="w-5 h-5 group-hover:scale-110 transition-transform duration-500" />
             <span className="text-[9px] uppercase">Suporte via Coruja</span>
           </div>
           <div className="flex items-center gap-3 group cursor-default">
@@ -358,8 +359,8 @@ export default function LandingPage() {
             </span>
           </div>
           
-          <div className="mt-12 opacity-10 pointer-events-none select-none">
-            <Bird className="w-6 h-6 mx-auto text-primary" />
+          <div className="mt-12 opacity-10 pointer-events-none select-none flex justify-center">
+            <SacredOwl className="w-8 h-8 text-primary" />
           </div>
         </div>
       </footer>

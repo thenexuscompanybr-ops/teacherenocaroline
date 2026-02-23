@@ -21,18 +21,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/u
 import { useFirestore, addDocumentNonBlocking } from '@/firebase';
 import { collection, serverTimestamp } from 'firebase/firestore';
 import { useToast } from '@/hooks/use-toast';
-
-// Componente da Coruja Sagrada (SVG personalizado baseado na imagem fornecida)
-const SacredOwl = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 100 100" className={className} fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M15 30 L10 15 Q30 25 50 25 Q70 25 90 15 L85 30 Q95 45 85 75 Q50 85 15 75 Q5 45 15 30 Z" fill="none" strokeWidth="5" />
-    <circle cx="35" cy="52" r="14" strokeWidth="4" />
-    <circle cx="35" cy="52" r="5" fill="currentColor" />
-    <circle cx="65" cy="52" r="14" strokeWidth="4" />
-    <circle cx="65" cy="52" r="5" fill="currentColor" />
-    <path d="M50 55 L45 68 L55 68 Z" fill="currentColor" stroke="none" />
-  </svg>
-);
+import { SacredOwl } from '@/components/ui/sacred-owl';
 
 const formSchema = z.object({
   name: z.string().min(2, { message: 'Sua identificação mística é necessária.' }),
@@ -175,11 +164,11 @@ export function LeadForm() {
             <div className="relative z-10 w-full">
               {/* Entrega da Coruja */}
               <div className="mb-10 relative flex justify-center animate-owl-arrival">
-                <div className="absolute inset-0 bg-primary/10 blur-3xl rounded-full scale-150 animate-pulse" />
+                <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full scale-150 animate-portal-spin" />
                 <div className="w-32 h-32 md:w-40 md:h-40 bg-[#e8dec0] border-2 border-[#8b7355]/40 flex items-center justify-center shadow-xl rounded-full relative overflow-hidden group">
                    <SacredOwl className="w-20 h-20 md:w-24 h-24 text-[#8b7355] animate-magical-float" />
                 </div>
-                <Sparkles className="absolute -top-4 -right-4 w-8 h-8 text-primary/40 animate-bounce" />
+                <Sparkles className="absolute -top-4 -right-4 w-8 h-8 text-primary/60 animate-bounce" />
                 <Wand2 className="absolute -bottom-2 -left-6 w-6 h-6 text-[#8b7355]/30 rotate-12" />
               </div>
 
