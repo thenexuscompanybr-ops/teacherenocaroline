@@ -66,7 +66,7 @@ export function LeadForm() {
 
       const aiResponse = await Promise.race([
         aiPromise,
-        new Promise(resolve => setTimeout(() => resolve(null), 1500))
+        new Promise(resolve => setTimeout(() => resolve(null), 1200))
       ]) as any;
 
       setSuccessData({ 
@@ -156,7 +156,8 @@ export function LeadForm() {
                 <div className="w-32 h-32 md:w-40 md:h-40 bg-[#e8dec0] border-2 border-[#8b7355]/40 flex items-center justify-center shadow-2xl rounded-full relative overflow-hidden">
                    <SacredOwl className="w-20 h-20 md:w-24 h-24 text-[#8b7355] animate-magical-float" />
                 </div>
-                <Sparkles className="absolute -top-2 -right-2 w-8 h-8 text-primary/70 animate-bounce" />
+                {/* Movido para a esquerda para evitar sobreposição com o botão de fechar no canto superior direito */}
+                <Sparkles className="absolute -top-4 -left-4 w-10 h-10 text-primary/70 animate-bounce" />
               </div>
 
               <DialogHeader className="mb-8">
