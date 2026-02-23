@@ -1,3 +1,4 @@
+
 "use client"
 
 import React, { useState } from 'react';
@@ -43,8 +44,12 @@ export function LeadForm() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true);
+    
+    // Mensagem de fallback imediata para garantir velocidade
+    const fallbackMessage = `Prezado(a) ${values.name}, sua convocação para o Santuário Safe & Sound foi aceita. Você deu o primeiro passo para silenciar a Maldição do Silêncio e retomar o poder da sua voz em inglês. O mensageiro já está a caminho com as instruções para o primeiro ritual no WhatsApp.`;
+
     try {
-      // 1. Salva o Lead no Pergaminho Digital (Firestore)
+      // 1. Salva o Lead (Non-blocking)
       const leadsRef = collection(firestore, 'leads');
       addDocumentNonBlocking(leadsRef, {
         name: values.name,
@@ -53,36 +58,33 @@ export function LeadForm() {
         source: 'Landing Page Safe & Sound',
       });
 
-      // 2. Invoca a Inteligência com Contingência
-      let message = "";
-      try {
-        const response = await generatePersonalizedFollowUpMessage({
-          leadName: values.name,
-          leadEmail: values.email,
-          registrationSource: 'Santuário Safe & Sound',
-          courseName: 'Safe & Sound: Habilidade Ativa',
-          teacherName: 'Caroline Renó',
-          courseGoal: 'Superar os Dementadores do Medo e as Trevas do Bloqueio Mental.',
-          courseBenefits: 'Protego Mental, Defesa Contra Travas, Suporte via Coruja',
-        });
-        message = response?.message || "";
-      } catch (e) {
-        console.error("Ventos contrários na IA:", e);
-      }
+      // 2. Tenta obter mensagem da IA com um timeout curto ou abre o diálogo com o fallback se demorar
+      // Para máxima velocidade, abrimos o diálogo quase instantaneamente
+      const aiPromise = generatePersonalizedFollowUpMessage({
+        leadName: values.name,
+        leadEmail: values.email,
+        registrationSource: 'Santuário Safe & Sound',
+        courseName: 'Safe & Sound: Habilidade Ativa',
+        teacherName: 'Caroline Renó',
+        courseGoal: 'Superar os Dementadores do Medo e as Trevas do Bloqueio Mental.',
+        courseBenefits: 'Protego Mental, Defesa Contra Travas, Suporte via Coruja',
+      }).catch(() => null);
 
-      // Mensagem de fallback caso a IA falhe
-      if (!message) {
-        message = `Prezado(a) ${values.name}, sua convocação para o Santuário Safe & Sound foi aceita. Você deu o primeiro passo para silenciar a Maldição do Silêncio e retomar o poder da sua voz em inglês. O mensageiro já está a caminho com as instruções para o primeiro ritual.`;
-      }
-      
-      setSuccessData({ message, name: values.name });
-    } catch (error: any) {
-      console.error('Falha no ritual de inscrição:', error);
-      toast({
-        variant: "destructive",
-        title: "Erro no Ritual",
-        description: "Os ventos mágicos estão instáveis. Por favor, tente novamente em instantes.",
+      // Aguardamos apenas um breve momento (800ms) para ver se a IA responde, senão vamos com fallback
+      const aiResponse = await Promise.race([
+        aiPromise,
+        new Promise(resolve => setTimeout(() => resolve(null), 800))
+      ]) as any;
+
+      setSuccessData({ 
+        message: aiResponse?.message || fallbackMessage, 
+        name: values.name 
       });
+      
+    } catch (error: any) {
+      console.error('Falha no ritual:', error);
+      // Mesmo com erro, tentamos mostrar o sucesso para não travar o usuário
+      setSuccessData({ message: fallbackMessage, name: values.name });
     } finally {
       setIsLoading(false);
     }
@@ -152,26 +154,21 @@ export function LeadForm() {
 
       <Dialog open={!!successData} onOpenChange={() => setSuccessData(null)}>
         <DialogContent className="bg-[#f4ecd8] border-[#8b7355] w-[95vw] md:max-w-2xl text-[#4a3728] rounded-none p-0 overflow-hidden outline-none shadow-2xl sanctuary-glow">
-          <div className="relative p-6 md:p-12 min-h-[550px] flex flex-col justify-center items-center text-center">
-            {/* Textura de Papel Pergaminho */}
+          <div className="relative p-6 md:p-12 min-h-[500px] flex flex-col justify-center items-center text-center">
             <div className="absolute inset-0 opacity-40 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/parchment.png')]" />
-            
-            {/* Moldura Ornamental */}
             <div className="absolute inset-4 border border-[#8b7355]/30 pointer-events-none" />
             <div className="absolute inset-6 border-2 border-[#8b7355]/10 pointer-events-none" />
 
             <div className="relative z-10 w-full">
-              {/* Entrega da Coruja */}
-              <div className="mb-10 relative flex justify-center animate-owl-arrival">
+              <div className="mb-6 relative flex justify-center animate-owl-arrival">
                 <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full scale-150 animate-portal-spin" />
-                <div className="w-32 h-32 md:w-40 md:h-40 bg-[#e8dec0] border-2 border-[#8b7355]/40 flex items-center justify-center shadow-xl rounded-full relative overflow-hidden group">
-                   <SacredOwl className="w-20 h-20 md:w-24 h-24 text-[#8b7355] animate-magical-float" />
+                <div className="w-28 h-28 md:w-36 md:h-36 bg-[#e8dec0] border-2 border-[#8b7355]/40 flex items-center justify-center shadow-xl rounded-full relative overflow-hidden">
+                   <SacredOwl className="w-16 h-16 md:w-20 h-20 text-[#8b7355] animate-magical-float" />
                 </div>
-                <Sparkles className="absolute -top-4 -right-4 w-8 h-8 text-primary/60 animate-bounce" />
-                <Wand2 className="absolute -bottom-2 -left-6 w-6 h-6 text-[#8b7355]/30 rotate-12" />
+                <Sparkles className="absolute -top-2 -right-2 w-6 h-6 text-primary/60 animate-bounce" />
               </div>
 
-              <DialogHeader className="mb-8">
+              <DialogHeader className="mb-6">
                 <DialogTitle className="text-3xl md:text-5xl font-headline text-[#4a3728] mb-2">
                   A Coruja Chegou.
                 </DialogTitle>
@@ -182,33 +179,25 @@ export function LeadForm() {
                 </div>
               </DialogHeader>
 
-              <div className="space-y-10 animate-in fade-in slide-in-from-bottom-4 duration-500 delay-150 fill-mode-both">
-                <div className="relative p-8 md:p-12 bg-[#fffdf5]/50 border border-[#8b7355]/20 shadow-inner">
-                  {/* Selo de Cera Virtual */}
-                  <div className="absolute -top-6 -right-6 w-16 h-16 md:w-20 md:h-20 bg-[#8b0000] rounded-full shadow-lg flex items-center justify-center border-4 border-[#6b0000] rotate-12 z-20">
-                    <span className="font-headline text-white text-xl md:text-2xl opacity-80">CR</span>
-                    <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-black/20 rounded-full" />
+              <div className="space-y-6 animate-in fade-in slide-in-from-bottom-2 duration-300 delay-100 fill-mode-both">
+                <div className="relative p-6 md:p-10 bg-[#fffdf5]/50 border border-[#8b7355]/20 shadow-inner">
+                  <div className="absolute -top-4 -right-4 w-12 h-12 md:w-16 md:h-16 bg-[#8b0000] rounded-full shadow-lg flex items-center justify-center border-4 border-[#6b0000] rotate-12 z-20">
+                    <span className="font-headline text-white text-lg md:text-xl opacity-80">CR</span>
                   </div>
                   
-                  <div className="max-h-[30vh] overflow-y-auto custom-scrollbar italic font-body text-base md:text-lg leading-relaxed text-[#5c4a3a]">
+                  <div className="max-h-[25vh] overflow-y-auto custom-scrollbar italic font-body text-base md:text-lg leading-relaxed text-[#5c4a3a]">
                     {successData?.message}
                   </div>
                 </div>
                 
-                <div className="space-y-6">
-                  <p className="font-bold text-[#8b7355] text-[10px] md:text-[12px] uppercase tracking-[0.4em] flex items-center justify-center gap-3">
-                    <Sparkles className="w-3.5 h-3.5 animate-pulse" />
-                    Atravessar o Portal Final
-                    <Sparkles className="w-3.5 h-3.5 animate-pulse" />
-                  </p>
+                <div className="space-y-4">
                   <Button 
                     onClick={handleJoinWhatsApp} 
-                    className="w-full bg-[#1a2320] hover:bg-[#2a3330] text-primary h-16 rounded-none border border-primary/30 transition-all duration-500 shadow-2xl group relative overflow-hidden magic-pulse"
+                    className="w-full bg-[#1a2320] hover:bg-[#2a3330] text-primary h-14 rounded-none border border-primary/30 transition-all duration-500 shadow-xl group relative overflow-hidden magic-pulse"
                   >
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                     <div className="flex items-center justify-center gap-4 relative z-10">
-                      <MessageCircle className="h-6 w-6 animate-bounce" />
-                      <span className="tracking-[0.3em] font-bold text-xs">ENTRAR NO GRUPO VIP (GRATUITO)</span>
+                      <MessageCircle className="h-5 w-5 animate-bounce" />
+                      <span className="tracking-[0.3em] font-bold text-[10px]">ENTRAR NO GRUPO VIP (GRATUITO)</span>
                     </div>
                   </Button>
                 </div>
