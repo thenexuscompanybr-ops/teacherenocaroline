@@ -1,3 +1,4 @@
+
 "use client"
 
 import React, { useState } from 'react';
@@ -98,7 +99,7 @@ export function LeadForm() {
                   <Input 
                     placeholder="Seu nome completo" 
                     {...field} 
-                    className="h-12 md:h-14 bg-background/95 border-primary/40 focus:border-primary/80 transition-all rounded-none placeholder:text-muted-foreground/50 text-sm md:text-base font-medium shadow-lg" 
+                    className="h-12 md:h-14 bg-foreground text-background border-primary/40 focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all rounded-none placeholder:text-background/40 text-sm md:text-base font-medium shadow-lg" 
                   />
                 </FormControl>
                 <FormMessage className="text-[9px] md:text-[10px] text-primary font-bold uppercase mt-1 md:mt-2" />
@@ -115,7 +116,7 @@ export function LeadForm() {
                   <Input 
                     placeholder="seu@email.com" 
                     {...field} 
-                    className="h-12 md:h-14 bg-background/95 border-primary/40 focus:border-primary/80 transition-all rounded-none placeholder:text-muted-foreground/50 text-sm md:text-base font-medium shadow-lg" 
+                    className="h-12 md:h-14 bg-foreground text-background border-primary/40 focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all rounded-none placeholder:text-background/40 text-sm md:text-base font-medium shadow-lg" 
                   />
                 </FormControl>
                 <FormMessage className="text-[9px] md:text-[10px] text-primary font-bold uppercase mt-1 md:mt-2" />
