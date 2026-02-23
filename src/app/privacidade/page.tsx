@@ -1,14 +1,16 @@
-
 "use client"
 
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowLeft, ShieldCheck } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import { MagicParticles } from '@/components/ui/magic-particles';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { SacredOwl } from '@/components/ui/sacred-owl';
+import { useScrollReveal } from '@/hooks/use-scroll-reveal';
 
 export default function PrivacyPage() {
+  useScrollReveal();
   const logo = PlaceHolderImages.find(img => img.id === 'brand-logo')!;
 
   return (
@@ -16,7 +18,7 @@ export default function PrivacyPage() {
       <MagicParticles />
       
       <main className="relative z-10 max-w-4xl mx-auto px-6 py-20 md:py-32">
-        <div className="mb-12 flex flex-col items-center text-center">
+        <div className="mb-12 flex flex-col items-center text-center scroll-reveal">
           <Link href="/" className="mb-12 hover:scale-105 transition-transform duration-500">
             <Image 
               src={logo.imageUrl} 
@@ -29,17 +31,17 @@ export default function PrivacyPage() {
           </Link>
           
           <div className="inline-flex items-center gap-3 py-1.5 px-6 border border-primary/30 bg-primary/5 text-primary text-[10px] font-bold tracking-[0.5em] uppercase mb-8">
-            <ShieldCheck className="w-3.5 h-3.5" />
+            <SacredOwl className="w-3.5 h-3.5" />
             Protego Mental e Dados
           </div>
           
-          <h1 className="text-4xl md:text-6xl font-headline mb-6">
-            Política de <span className="gold-leaf italic mystic-script text-5xl md:text-8xl block mt-2">Privacidade</span>
+          <h1 className="text-4xl md:text-6xl font-headline mb-6 leading-tight">
+            Política de <span className="gold-leaf italic mystic-script text-5xl md:text-8xl block mt-2 py-4 px-2">Privacidade</span>
           </h1>
           <div className="ornament-line mx-auto max-w-xs opacity-40"></div>
         </div>
 
-        <div className="brand-card p-8 md:p-16 space-y-12 text-muted-foreground leading-relaxed text-sm md:text-base border-primary/20 bg-card/20 backdrop-blur-xl">
+        <div className="brand-card p-8 md:p-16 space-y-12 text-muted-foreground leading-relaxed text-sm md:text-base border-primary/20 bg-card/20 backdrop-blur-xl scroll-reveal">
           <section>
             <h2 className="text-primary font-headline text-xl mb-4 tracking-widest uppercase">1. Coleta de Identidade</h2>
             <p>
@@ -76,7 +78,7 @@ export default function PrivacyPage() {
           </section>
         </div>
 
-        <div className="mt-16 text-center">
+        <div className="mt-16 text-center scroll-reveal">
           <Link href="/" className="inline-flex items-center gap-3 text-[10px] font-bold tracking-[0.4em] uppercase text-primary/60 hover:text-primary transition-all group">
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-2 transition-transform" />
             Retornar ao Portal Principal
