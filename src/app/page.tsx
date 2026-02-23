@@ -4,7 +4,7 @@
 import React, { useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ShieldCheck, BookOpen, Compass, Lock, EyeOff, Flame, Sparkles, MessageCircle } from 'lucide-react';
+import { ShieldCheck, BookOpen, Compass, Lock, EyeOff, Flame, Sparkles, MessageCircle, Heart, MapPin, Palette, Globe, Coffee } from 'lucide-react';
 import { LeadForm } from '@/components/LeadForm';
 import { useScrollReveal } from '@/hooks/use-scroll-reveal';
 import { MagicParticles } from '@/components/ui/magic-particles';
@@ -17,6 +17,13 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Card, CardContent } from '@/components/ui/card';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 export default function LandingPage() {
   useScrollReveal();
@@ -48,6 +55,66 @@ export default function LandingPage() {
       document.removeEventListener('keydown', handleKeyDown);
     };
   }, []);
+
+  const aboutSlides = [
+    {
+      title: "Quem é a CAROLINE por trás das aulas?",
+      subtitle: "e o que a minha história tem a ver com a sua, mesmo que você ainda não saiba",
+      icon: Heart,
+      content: []
+    },
+    {
+      title: "Nasci em Piranguinho",
+      subtitle: "uma cidadezinha no sul de Minas Gerais",
+      icon: MapPin,
+      content: [
+        "Daquelas onde o tempo passa mais devagar, o café é coado na hora...",
+        "E a gente aprende cedo que escutar também é uma forma de cuidar",
+        "Aqui eu percebi que o silêncio ensina",
+        "E talvez por isso ensinar, para mim, nunca foi corrigir, mas acolher"
+      ]
+    },
+    {
+      title: "Me formei em MODA E DESIGN",
+      subtitle: "observando o mundo pelas formas e cores",
+      icon: Palette,
+      content: [
+        "Mas foi na Psicologia que comecei a entender o que não se vê",
+        "Ensinar sempre fez parte de mim: já dei aula de informática, artes, desenho e inglês",
+        "Hoje, quando ensino, levo tudo isso comigo: a beleza da arte, a leveza da escuta, e a alma que cabe nas palavras"
+      ]
+    },
+    {
+      title: "Durante a pandemia, eu morava nos EUA",
+      subtitle: "Longe da minha terra, da minha língua, de mim",
+      icon: Globe,
+      content: [
+        "Comecei a dar aulas de inglês aos domingos, só pra passar o tempo",
+        "MAS O QUE ERA DISTRAÇÃO virou destino",
+        "As aulas criaram raízes, e eu me redescobri professora. De alma"
+      ]
+    },
+    {
+      title: "Aqui, a aula não é palco. É espaço.",
+      subtitle: "Para rir, aprender, se soltar, desabafar",
+      icon: Coffee,
+      content: [
+        "Já me disseram que minhas aulas parecem uma segunda terapia, e quer saber? Eu levo isso como elogio",
+        "Porque aprender uma nova língua também é um jeito de se ouvir com mais carinho"
+      ]
+    },
+    {
+      title: "E o que tudo isso tem a ver com você?",
+      subtitle: "Talvez você também esteja se sentindo fora do lugar",
+      icon: Sparkles,
+      content: [
+        "Com medo de falar. Com vergonha de travar.",
+        "E talvez tudo que você precise seja um espaço seguro. Leve. Real.",
+        "Se for o seu caso... fica.",
+        "Porque essa história tem tudo para continuar com você aqui."
+      ]
+    }
+  ];
 
   return (
     <div className="min-h-svh selection-sonserina text-foreground bg-background relative overflow-x-hidden flex flex-col">
@@ -221,55 +288,80 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* SEÇÃO 4: SOBRE A TEACHER */}
+      {/* SEÇÃO 4: CRÔNICAS DA MESTRA (CARROSSEL) */}
       <section className="py-20 md:py-32 px-4 bg-card/5 border-y border-primary/10 overflow-hidden mystic-fog w-full">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12 md:gap-24 w-full">
-          <div className="w-full md:w-1/2 scroll-reveal flex justify-center">
-            <div className="relative p-2 md:p-6 border border-primary/30 bg-background/80 group mx-auto max-w-[400px] md:max-w-none w-full mistic-border shadow-2xl">
-              <Image 
-                src={images.teacher.imageUrl} 
-                alt={images.teacher.description} 
-                width={800} 
-                height={1000}
-                className="transition-all duration-1000 object-cover no-drag brightness-90 group-hover:brightness-105 w-full h-auto"
-                data-ai-hint={images.teacher.imageHint}
-              />
+        <div className="max-w-6xl mx-auto w-full">
+          <div className="flex flex-col md:flex-row items-center gap-12 md:gap-24">
+            <div className="w-full md:w-1/3 scroll-reveal flex justify-center order-2 md:order-1">
+              <div className="relative p-2 md:p-4 border border-primary/30 bg-background/80 group mx-auto max-w-[300px] md:max-w-none w-full mistic-border shadow-2xl">
+                <Image 
+                  src={images.teacher.imageUrl} 
+                  alt={images.teacher.description} 
+                  width={800} 
+                  height={1000}
+                  className="transition-all duration-1000 object-cover no-drag brightness-90 group-hover:brightness-105 w-full h-auto"
+                  data-ai-hint={images.teacher.imageHint}
+                />
+                <div className="mt-6 text-center">
+                  <div className="relative w-[120px] md:w-[160px] mx-auto">
+                    <Image 
+                      src={images.signature.imageUrl} 
+                      alt={images.signature.description} 
+                      width={240} 
+                      height={70} 
+                      className="opacity-95 hover:opacity-100 transition-opacity duration-700 w-full h-auto no-drag" 
+                      data-ai-hint={images.signature.imageHint}
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-          <div className="w-full md:w-1/2 scroll-reveal text-center md:text-left">
-            <div className="mb-6 md:mb-8 flex items-center justify-center md:justify-start gap-4 md:gap-6 text-primary">
-              <BookOpen className="w-5 h-5 md:w-6 md:h-6" />
-              <span className="text-[10px] md:text-[11px] font-bold tracking-[0.4em] md:tracking-[0.7em] uppercase">Guia da Jornada</span>
-            </div>
-            <h2 className="text-3xl md:text-6xl font-headline text-foreground mb-8 md:mb-10 leading-tight">Eu Sou Caroline Renó</h2>
-            <div className="space-y-6 md:space-y-8 text-base md:text-lg text-muted-foreground/95 leading-relaxed">
-              <p>
-                Há 7 anos, eu era você. Profissional competente, mas travava em inglês. Perdia oportunidades, evitava reuniões internacionais, tinha medo de ser julgada.
-              </p>
-              <p className="font-bold text-foreground italic">
-                Então descobri algo: o problema não era meu inglês. Era meu medo.
-              </p>
-              <p>
-                Comecei a estudar Psicologia e descobri técnicas que funcionam. Apliquei em mim mesma, e em 3 meses consegui apresentar um projeto inteiro em inglês para uma multinacional.
-              </p>
-              <p>
-                Desde então, ajudei mais de <span className="magic-emphasis text-primary">1.200 profissionais</span> a destravar seu inglês usando o mesmo método. Hoje, eu ensino o que aprendi: <span className="magic-emphasis text-primary">Psicologia + Inglês + Acolhimento</span>.
-              </p>
-            </div>
-            <div className="mt-10 md:mt-12 pt-8 md:pt-10 border-t border-primary/20 flex flex-col md:flex-row items-center justify-center md:justify-start gap-8 md:gap-16">
-               <div className="relative w-[140px] md:w-[220px]">
-                 <Image 
-                   src={images.signature.imageUrl} 
-                   alt={images.signature.description} 
-                   width={240} 
-                   height={70} 
-                   className="opacity-95 hover:opacity-100 transition-opacity duration-700 w-full h-auto no-drag" 
-                   data-ai-hint={images.signature.imageHint}
-                 />
-               </div>
-               <div className="text-[9px] md:text-[11px] uppercase tracking-[0.4em] md:tracking-[0.6em] font-bold text-primary leading-tight text-center md:text-left">
-                Habilidade Ativa <br /> Academy
-               </div>
+
+            <div className="w-full md:w-2/3 scroll-reveal order-1 md:order-2">
+              <div className="mb-8 flex items-center justify-center md:justify-start gap-4 text-primary">
+                <BookOpen className="w-5 h-5" />
+                <span className="text-[10px] font-bold tracking-[0.4em] uppercase">Crônicas do Santuário</span>
+              </div>
+
+              <Carousel className="w-full">
+                <CarouselContent>
+                  {aboutSlides.map((slide, index) => (
+                    <CarouselItem key={index}>
+                      <div className="p-1">
+                        <h2 className="text-2xl md:text-5xl font-headline text-foreground mb-4 leading-tight">
+                          {slide.title}
+                        </h2>
+                        <h3 className="gold-leaf mystic-script text-2xl md:text-5xl mb-8 block py-2">
+                          {slide.subtitle}
+                        </h3>
+                        
+                        {slide.content.length > 0 && (
+                          <div className="space-y-4 md:space-y-6 text-base md:text-lg text-muted-foreground/95 leading-relaxed font-body">
+                            {slide.content.map((text, idx) => (
+                              <p key={idx} className={idx === slide.content.length - 1 && index === aboutSlides.length - 1 ? "magic-emphasis text-primary italic" : ""}>
+                                {text}
+                              </p>
+                            ))}
+                          </div>
+                        )}
+                        
+                        {index === 0 && (
+                          <div className="mt-8 flex justify-center md:justify-start">
+                             <div className="p-8 brand-card bg-primary/5 border-primary/20 flex items-center gap-6 max-w-sm">
+                               <slide.icon className="w-8 h-8 text-primary animate-magical-float" />
+                               <p className="text-xs uppercase tracking-[0.3em] font-bold text-primary">Folheie esta história para nos conhecermos melhor</p>
+                             </div>
+                          </div>
+                        )}
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <div className="flex justify-center md:justify-start gap-4 mt-12">
+                  <CarouselPrevious className="static translate-y-0 border-primary/30 text-primary hover:bg-primary/10" />
+                  <CarouselNext className="static translate-y-0 border-primary/30 text-primary hover:bg-primary/10" />
+                </div>
+              </Carousel>
             </div>
           </div>
         </div>
