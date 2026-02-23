@@ -37,7 +37,7 @@ export default function PrivacyPage() {
           </div>
           
           <h1 className="text-4xl md:text-6xl font-headline mb-6 leading-tight">
-            Política de <span className="gold-leaf italic mystic-script text-5xl md:text-8xl block mt-2 py-10 px-2">Privacidade</span>
+            Política de <span className="gold-leaf mystic-script text-5xl md:text-8xl block mt-2 py-10 px-10">Privacidade</span>
           </h1>
           <div className="ornament-line mx-auto max-w-xs opacity-40"></div>
         </div>

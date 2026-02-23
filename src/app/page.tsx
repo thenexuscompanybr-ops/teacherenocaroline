@@ -53,7 +53,7 @@ export default function LandingPage() {
       <MagicParticles />
       
       {/* SEÇÃO 1: HERO */}
-      <section className="relative pt-4 md:pt-10 pb-12 md:pb-24 px-4 flex flex-col items-center justify-center text-center mystic-fog min-h-svh w-full">
+      <section className="relative pt-2 md:pt-10 pb-12 md:pb-24 px-4 flex flex-col items-center justify-center text-center mystic-fog min-h-svh w-full">
         <div className="absolute top-0 right-0 opacity-10 pointer-events-none w-1/2 md:w-1/3 max-w-md overflow-hidden">
           <Image 
             src={images.seal.imageUrl} 
@@ -66,8 +66,8 @@ export default function LandingPage() {
           />
         </div>
         
-        <header className="mb-4 md:mb-10 scroll-reveal z-10 w-full flex justify-center">
-          <div className="logo-float max-w-[180px] md:max-w-[300px] w-full">
+        <header className="mb-2 md:mb-8 scroll-reveal z-10 w-full flex justify-center">
+          <div className="logo-float max-w-[150px] md:max-w-[280px] w-full">
             <Image 
               src={images.logo.imageUrl} 
               alt={images.logo.description} 
@@ -88,12 +88,12 @@ export default function LandingPage() {
           
           <h1 className="text-3xl md:text-6xl font-headline text-foreground mb-4 md:mb-6 leading-[1.1] scroll-reveal w-full">
             Safe & Sound: <br />
-            <span className="gold-leaf italic mystic-script text-4xl md:text-8xl block mt-1 py-2 px-1">Onde a Magia do Inglês Acontece.</span>
+            <span className="gold-leaf mystic-script text-4xl md:text-8xl block mt-1 py-2 px-6">Onde a Magia do Inglês Acontece.</span>
             <span className="text-base md:text-2xl block mt-2 font-body tracking-tight opacity-95">Fale Inglês Sem Medo e Destrave sua Carreira.</span>
           </h1>
           
-          <p className="text-xs md:text-base text-muted-foreground mb-8 md:mb-12 max-w-2xl font-body scroll-reveal leading-relaxed mx-auto px-2">
-            Não espere mais para começar a falar! Participe do minicurso gratuito: <span className="magic-emphasis">Habilidade Ativa</span> e aprenda como superar o pânico na hora de falar inglês.
+          <p className="text-xs md:text-base text-muted-foreground mb-6 md:mb-10 max-w-2xl font-body scroll-reveal leading-relaxed mx-auto px-2">
+            Não espere mais para começar a falar! Participe do minicurso gratuito: <span className="magic-emphasis text-primary">Habilidade Ativa</span> e aprenda como superar o pânico na hora de falar inglês.
           </p>
           
           <div className="scroll-reveal w-full max-w-md mx-auto relative px-2">
@@ -105,7 +105,7 @@ export default function LandingPage() {
           </p>
         </div>
 
-        <div className="mt-10 md:mt-20 flex flex-wrap justify-center gap-6 md:gap-12 text-primary font-bold tracking-[0.2em] md:tracking-[0.4em] scroll-reveal z-10 w-full px-4">
+        <div className="mt-8 md:mt-16 flex flex-wrap justify-center gap-6 md:gap-12 text-primary font-bold tracking-[0.2em] md:tracking-[0.4em] scroll-reveal z-10 w-full px-4">
            <div className="flex items-center gap-2 group cursor-default">
             <SacredOwl className="w-4 h-4 group-hover:scale-110 transition-transform duration-500" />
             <span className="text-[8px] md:text-[10px] uppercase">Suporte via Coruja</span>
@@ -137,18 +137,18 @@ export default function LandingPage() {
         <div className="max-w-4xl mx-auto text-center relative z-10 w-full">
           <h2 className="text-2xl md:text-5xl font-headline text-foreground mb-10 md:mb-16 scroll-reveal leading-tight px-2">
             Você sente que poderia ir mais longe… <br />
-            <span className="gold-leaf italic mystic-script text-3xl md:text-7xl mt-2 block py-2">se falasse inglês com confiança?</span>
+            <span className="gold-leaf mystic-script text-3xl md:text-7xl mt-2 block py-2 px-6">se falasse inglês com confiança?</span>
           </h2>
           
           <div className="space-y-6 md:space-y-8 text-base md:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto mb-12 md:mb-20 scroll-reveal px-2">
             <p>
-              O método <span className="magic-emphasis">Safe & Sound</span> combina <span className="magic-emphasis">Psicologia & Acolhimento</span> com Aulas para Destravar Seu Inglês.
+              O método <span className="magic-emphasis text-primary">Safe & Sound</span> combina <span className="magic-emphasis text-primary">Psicologia & Acolhimento</span> com Aulas para Destravar Seu Inglês.
             </p>
             <p className="font-bold text-foreground/95">
               Você é um profissional competente, mas na hora de uma reunião em inglês ou de uma entrevista para aquela vaga dos sonhos, sente aquele pânico?
             </p>
             <p>
-              O coração dispara e as palavras somem? <span className="magic-emphasis">Você não está sozinho</span>. O problema não é a sua inteligência, é o medo que trava sua fala.
+              O coração dispara e as palavras somem? <span className="magic-emphasis text-primary">Você não está sozinho</span>. O problema não é a sua inteligência, é o medo que trava sua fala.
             </p>
           </div>
 
@@ -184,7 +184,7 @@ export default function LandingPage() {
           <div className="text-center mb-16 md:mb-28">
             <h2 className="text-3xl md:text-6xl font-headline text-foreground mb-8 md:mb-10 scroll-reveal leading-tight">
               O que você vai aprender nas <br />
-              <span className="gold-leaf italic mystic-script text-3xl md:text-8xl block mt-2 py-2">Aulas de Defesa Contra as Travas</span>
+              <span className="gold-leaf mystic-script text-3xl md:text-8xl block mt-2 py-2 px-6">Aulas de Defesa Contra as Travas</span>
             </h2>
             <div className="ornament-line mx-auto max-w-sm mb-8 opacity-60"></div>
             <p className="text-[10px] md:text-[12px] uppercase tracking-[0.4em] md:tracking-[0.6em] text-primary font-bold mb-4">Aulas exclusivas do Grupo VIP</p>
@@ -252,7 +252,7 @@ export default function LandingPage() {
                 Comecei a estudar Psicologia e descobri técnicas que funcionam. Apliquei em mim mesma, e em 3 meses consegui apresentar um projeto inteiro em inglês para uma multinacional.
               </p>
               <p>
-                Desde então, ajudei mais de <span className="magic-emphasis">1.200 profissionais</span> a destravar seu inglês usando o mesmo método. Hoje, eu ensino o que aprendi: <span className="magic-emphasis">Psicologia + Inglês + Acolhimento</span>.
+                Desde então, ajudei mais de <span className="magic-emphasis text-primary">1.200 profissionais</span> a destravar seu inglês usando o mesmo método. Hoje, eu ensino o que aprendi: <span className="magic-emphasis text-primary">Psicologia + Inglês + Acolhimento</span>.
               </p>
             </div>
             <div className="mt-10 md:mt-12 pt-8 md:pt-10 border-t border-primary/20 flex flex-col md:flex-row items-center justify-center md:justify-start gap-8 md:gap-16">
@@ -317,7 +317,7 @@ export default function LandingPage() {
         <div className="max-w-5xl mx-auto relative z-10 scroll-reveal text-center w-full px-2">
           <h2 className="text-3xl md:text-7xl font-headline text-foreground mb-8 md:mb-12 leading-[1.1] px-1">
             Não deixe o medo decidir <br />
-            <span className="gold-leaf italic mystic-script text-4xl md:text-9xl mt-2 block py-4">o futuro da sua carreira.</span>
+            <span className="gold-leaf mystic-script text-4xl md:text-9xl mt-2 block py-4 px-10">o futuro da sua carreira.</span>
           </h2>
           <p className="text-primary mb-8 md:mb-12 max-w-lg mx-auto uppercase tracking-[0.3em] md:tracking-[0.6em] text-[10px] md:text-[12px] font-bold">
             Garantir minha vaga no Habilidade Ativa
