@@ -147,14 +147,14 @@ export function LeadForm() {
       </Form>
 
       <Dialog open={!!successData} onOpenChange={() => setSuccessData(null)}>
-        <DialogContent className="bg-[#f4ecd8] border-[#8b7355] w-[95vw] md:max-w-2xl text-[#4a3728] rounded-none p-0 overflow-hidden outline-none shadow-2xl sanctuary-glow border-2">
+        <DialogContent className="bg-[#f4ecd8] border-[#8b7355] w-[95vw] md:max-w-2xl text-[#4a3728] rounded-none p-0 overflow-y-auto max-h-[90vh] outline-none shadow-2xl sanctuary-glow border-2">
           {/* Botão de fechamento com prioridade mística */}
           <DialogClose className="absolute right-4 top-4 z-[120] text-[#8b7355] hover:text-[#4a3728] transition-all p-2 rounded-full hover:bg-black/5 active:scale-95">
             <X className="h-7 w-7" />
             <span className="sr-only">Fechar</span>
           </DialogClose>
 
-          <div className="relative p-8 md:p-14 min-h-[550px] flex flex-col justify-center items-center text-center">
+          <div className="relative p-8 md:p-14 flex flex-col justify-center items-center text-center w-full">
             <div className="absolute inset-0 opacity-40 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/parchment.png')]" />
             <div className="absolute inset-4 border border-[#8b7355]/30 pointer-events-none" />
             <div className="absolute inset-6 border-2 border-[#8b7355]/10 pointer-events-none" />
@@ -169,7 +169,7 @@ export function LeadForm() {
               </div>
 
               <DialogHeader className="mb-8">
-                <DialogTitle className="text-4xl md:text-5xl font-headline text-[#4a3728] mb-3">
+                <DialogTitle className="text-3xl md:text-5xl font-headline text-[#4a3728] mb-3">
                   A Coruja Chegou.
                 </DialogTitle>
                 <div className="flex items-center justify-center gap-4">
@@ -179,13 +179,13 @@ export function LeadForm() {
                 </div>
               </DialogHeader>
 
-              <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500 fill-mode-both">
-                <div className="relative p-8 md:p-12 bg-[#fffdf5]/60 border border-[#8b7355]/20 shadow-inner">
+              <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500 fill-mode-both w-full">
+                <div className="relative p-6 md:p-12 bg-[#fffdf5]/60 border border-[#8b7355]/20 shadow-inner">
                   <div className="absolute -top-5 -right-5 w-14 h-14 md:w-18 md:h-18 bg-[#8b0000] rounded-full shadow-2xl flex items-center justify-center border-4 border-[#6b0000] rotate-12 z-20">
                     <span className="font-headline text-white text-xl md:text-2xl opacity-90">CR</span>
                   </div>
                   
-                  <div className="max-h-[30vh] overflow-y-auto custom-scrollbar italic font-body text-lg md:text-xl leading-relaxed text-[#5c4a3a]">
+                  <div className="max-h-[35vh] overflow-y-auto custom-scrollbar italic font-body text-base md:text-xl leading-relaxed text-[#5c4a3a]">
                     {successData?.message}
                   </div>
                 </div>
@@ -197,12 +197,12 @@ export function LeadForm() {
                   >
                     <div className="flex items-center justify-center gap-5 relative z-10">
                       <MessageCircle className="h-6 w-6 animate-bounce" />
-                      <span className="tracking-[0.4em] font-bold text-[11px]">ENTRAR NO GRUPO VIP (GRATUITO)</span>
+                      <span className="tracking-[0.3em] md:tracking-[0.4em] font-bold text-[10px] md:text-[11px]">ENTRAR NO GRUPO VIP (GRATUITO)</span>
                     </div>
                   </Button>
                 </div>
 
-                <p className="text-[10px] uppercase tracking-[0.7em] text-[#8b7355]/50 font-bold">
+                <p className="text-[10px] uppercase tracking-[0.5em] md:tracking-[0.7em] text-[#8b7355]/50 font-bold">
                   Sua herança linguística foi preservada.
                 </p>
               </div>

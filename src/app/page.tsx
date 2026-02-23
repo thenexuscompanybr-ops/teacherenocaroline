@@ -48,12 +48,12 @@ export default function LandingPage() {
       <MagicParticles />
       
       {/* SEÇÃO 1: HERO - Expansiva e Fluida */}
-      <section className="relative pt-6 md:pt-12 pb-16 md:pb-24 px-4 flex flex-col items-center min-h-[85vh] justify-center text-center mystic-fog">
+      <section className="relative pt-12 md:pt-20 pb-20 md:pb-32 px-4 flex flex-col items-center min-h-screen justify-center text-center mystic-fog">
         <div className="absolute top-0 right-0 opacity-15 pointer-events-none w-1/2 md:w-1/3 max-w-md">
           <Image src="https://i.imgur.com/bQxd94N.png" alt="Selo Místico" width={600} height={600} priority className="no-drag scale-110" />
         </div>
         
-        <header className="mb-6 md:mb-8 scroll-reveal z-10">
+        <header className="mb-8 md:mb-12 scroll-reveal z-10">
           <div className="logo-float">
             <Image 
               src="https://i.imgur.com/NtUqBYp.png" 
@@ -66,7 +66,7 @@ export default function LandingPage() {
           </div>
         </header>
 
-        <div className="max-w-4xl mx-auto relative z-10">
+        <div className="max-w-4xl mx-auto relative z-10 w-full">
           <div className="mb-6 inline-flex items-center gap-3 py-1.5 px-6 border border-primary/30 bg-primary/10 text-primary text-[10px] font-bold tracking-[0.5em] uppercase sanctuary-glow">
             <Compass className="w-3.5 h-3.5" />
             Iniciação Gratuita • Grupo VIP
@@ -76,21 +76,21 @@ export default function LandingPage() {
             <span className="gold-leaf italic mystic-script text-5xl md:text-8xl block mt-2 mb-2 py-2">Onde a Magia do Inglês Acontece.</span>
             <span className="text-xl md:text-3xl block mt-1 font-body tracking-tight opacity-95">Fale Inglês Sem Medo e Destrave sua Carreira.</span>
           </h1>
-          <p className="text-base md:text-lg text-muted-foreground mb-8 max-w-2xl font-body scroll-reveal delay-200 leading-relaxed mx-auto">
+          <p className="text-base md:text-lg text-muted-foreground mb-10 max-w-2xl font-body scroll-reveal delay-200 leading-relaxed mx-auto px-4">
             Não espere mais para começar a falar! Participe do minicurso gratuito: <span className="magic-emphasis">Habilidade Ativa</span> e aprenda como superar o pânico na hora de falar inglês.
           </p>
           
-          <div className="scroll-reveal delay-300 max-w-md mx-auto sanctuary-glow-heavy relative">
+          <div className="scroll-reveal delay-300 max-w-md mx-auto sanctuary-glow-heavy relative px-4">
             <LeadForm />
           </div>
 
-          <p className="mt-8 text-[10px] uppercase tracking-[0.4em] text-primary/70 font-bold scroll-reveal delay-400">
+          <p className="mt-10 text-[10px] uppercase tracking-[0.4em] text-primary/70 font-bold scroll-reveal delay-400">
             Acesso imediato ao Grupo VIP de Iniciação
           </p>
         </div>
 
-        {/* Detalhes de Autoridade - Espaçamento Corrigido */}
-        <div className="mt-12 md:mt-16 flex flex-wrap justify-center gap-8 md:gap-12 text-primary/60 font-bold tracking-[0.4em] scroll-reveal delay-500 z-10">
+        {/* Detalhes de Autoridade */}
+        <div className="mt-16 md:mt-24 flex flex-wrap justify-center gap-8 md:gap-12 text-primary/60 font-bold tracking-[0.4em] scroll-reveal delay-500 z-10">
            <div className="flex items-center gap-3 group cursor-default">
             <SacredOwl className="w-5 h-5 group-hover:scale-110 transition-transform duration-500" />
             <span className="text-[9px] uppercase">Suporte via Coruja</span>
@@ -107,7 +107,7 @@ export default function LandingPage() {
       </section>
 
       {/* SEÇÃO 2: A DOR - IMPACTO PSICOLÓGICO REFINADO */}
-      <section className="py-16 md:py-24 bg-card/20 border-y border-primary/10 relative overflow-hidden px-4 mystic-fog">
+      <section className="py-20 md:py-32 bg-card/20 border-y border-primary/10 relative overflow-hidden px-4 mystic-fog">
         <div className="absolute top-1/2 left-0 -translate-y-1/2 opacity-10 pointer-events-none w-56 md:w-80">
            <Image src="https://i.imgur.com/7f2b52K.png" alt="Ornamental" width={600} height={600} className="no-drag" />
         </div>
@@ -130,7 +130,7 @@ export default function LandingPage() {
             </p>
           </div>
 
-          <div className="max-w-3xl mx-auto mb-16 scroll-reveal delay-200">
+          <div className="max-w-3xl mx-auto mb-16 scroll-reveal delay-200 px-4">
             <div className="brand-card backdrop-blur-md border-l-4 border-primary p-8 md:p-12 text-left sanctuary-glow mistic-border">
               <p className="text-xl md:text-2xl text-foreground italic leading-relaxed mb-6">
                 "O problema não é seu vocabulário. É o seu cérebro ativando um pânico automático quando você precisa falar em inglês."
@@ -141,7 +141,7 @@ export default function LandingPage() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
             {[
               { text: "Pânico automático ao falar", icon: EyeOff },
               { text: "Sensação de bloqueio emocional", icon: Lock },
@@ -157,9 +157,9 @@ export default function LandingPage() {
       </section>
 
       {/* SEÇÃO 3: A SOLUÇÃO - RITUAL DE APRENDIZADO */}
-      <section className="py-16 md:py-24 px-4 relative overflow-hidden">
+      <section className="py-20 md:py-32 px-4 relative overflow-hidden">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16 md:mb-20">
+          <div className="text-center mb-16 md:mb-24">
             <h2 className="text-4xl md:text-6xl font-headline text-foreground mb-8 scroll-reveal">
               O que você vai aprender nas <br />
               <span className="gold-leaf italic mystic-script text-4xl md:text-7xl block mt-2">Aulas de Defesa Contra as Travas</span>
@@ -168,7 +168,7 @@ export default function LandingPage() {
             <p className="text-[10px] md:text-[11px] uppercase tracking-[0.5em] text-primary/70 font-bold mb-10">Minicurso entregue via Grupo VIP de WhatsApp</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 px-4">
             {[
               { 
                 num: "Aula 1", 
@@ -199,7 +199,7 @@ export default function LandingPage() {
       </section>
 
       {/* SEÇÃO 4: SOBRE A TEACHER - RELATO PESSOAL */}
-      <section className="py-16 md:py-24 px-4 bg-card/10 border-y border-primary/10 overflow-hidden mystic-fog">
+      <section className="py-20 md:py-32 px-4 bg-card/10 border-y border-primary/10 overflow-hidden mystic-fog">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12 md:gap-20">
           <div className="w-full md:w-1/2 scroll-reveal">
             <div className="relative p-3 md:p-5 border border-primary/25 bg-background/60 group mx-auto max-w-[500px] md:max-w-full sanctuary-glow mistic-border">
@@ -251,10 +251,10 @@ export default function LandingPage() {
       </section>
 
       {/* SEÇÃO 5: PROVA SOCIAL - VÉU DO ANONIMATO */}
-      <section className="py-16 md:py-24 px-4">
+      <section className="py-20 md:py-32 px-4">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-headline text-foreground text-center mb-16 md:mb-20 scroll-reveal tracking-[0.3em] uppercase">Quem já destravou</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
+          <h2 className="text-3xl md:text-4xl font-headline text-foreground text-center mb-16 md:mb-24 scroll-reveal tracking-[0.3em] uppercase">Quem já destravou</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 px-4">
             {[
               { name: "João Silva", role: "Profissional de TI", text: "Depois de aplicar o método, apresentei um projeto inteiro em inglês para a matriz nos EUA. Sem medo, com confiança!" },
               { name: "Maria Santos", role: "Gerente de Projetos", text: "Finalmente consigo participar de reuniões internacionais sem aquele pânico. Minha carreira mudou!" },
@@ -278,10 +278,10 @@ export default function LandingPage() {
       </section>
 
       {/* SEÇÃO 6: FAQ - CÂMARA DE ESCLARECIMENTOS */}
-      <section className="py-16 md:py-24 px-4 border-t border-primary/15 mystic-fog">
+      <section className="py-20 md:py-32 px-4 border-t border-primary/15 mystic-fog">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-headline text-foreground text-center mb-12 md:mb-16 scroll-reveal tracking-[0.4em] uppercase">Câmara de Esclarecimentos</h2>
-          <Accordion type="single" collapsible className="w-full scroll-reveal space-y-4">
+          <h2 className="text-3xl md:text-4xl font-headline text-foreground text-center mb-12 md:mb-20 scroll-reveal tracking-[0.4em] uppercase">Câmara de Esclarecimentos</h2>
+          <Accordion type="single" collapsible className="w-full scroll-reveal space-y-4 px-4">
             {[
               { q: "O curso é realmente gratuito?", a: "Sim. Este minicurso é o seu ritual de entrada gratuito para conhecer o poder do Habilidade Ativa." },
               { q: "Como vou receber as aulas?", a: "As aulas e orientações serão enviadas diretamente no nosso grupo exclusivo de WhatsApp." },
@@ -305,12 +305,12 @@ export default function LandingPage() {
       </section>
 
       {/* SEÇÃO 7: CTA FINAL - O CHAMADO */}
-      <section className="py-24 md:py-32 px-4 text-center relative overflow-hidden">
+      <section className="py-32 md:py-48 px-4 text-center relative overflow-hidden flex flex-col items-center justify-center">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-15 pointer-events-none w-full max-w-3xl scale-125">
            <Image src="https://i.imgur.com/7f2b52K.png" alt="Graphic" width={1200} height={1200} className="no-drag" />
         </div>
         
-        <div className="max-w-5xl mx-auto relative z-10 scroll-reveal text-center">
+        <div className="max-w-5xl mx-auto relative z-10 scroll-reveal text-center w-full">
           <h2 className="text-4xl md:text-7xl font-headline text-foreground mb-10 leading-[1.1]">
             Não deixe o medo decidir <br />
             <span className="gold-leaf italic mystic-script text-5xl md:text-9xl mt-2 block">o futuro da sua carreira.</span>
@@ -318,14 +318,14 @@ export default function LandingPage() {
           <p className="text-primary/70 mb-10 max-w-lg mx-auto uppercase tracking-[0.5em] text-[10px] font-bold">
             Garantir minha vaga no Habilidade Ativa
           </p>
-          <div className="max-w-md mx-auto sanctuary-glow-heavy">
+          <div className="max-w-md mx-auto sanctuary-glow-heavy px-4">
             <LeadForm />
           </div>
         </div>
       </section>
 
       {/* RODAPÉ FINAL REFINADO - Assinatura de Elite */}
-      <footer className="py-16 md:py-24 text-center border-t border-primary/15 bg-background/95 backdrop-blur-xl relative z-20 px-4">
+      <footer className="py-20 md:py-32 text-center border-t border-primary/15 bg-background/95 backdrop-blur-xl relative z-20 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="mb-12 transition-all duration-1000 hover:scale-105 group">
             <Image 
