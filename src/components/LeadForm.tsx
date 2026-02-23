@@ -15,8 +15,8 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { generatePersonalizedFollowUpMessage } from '@/ai/flows/personalized-follow-up-message-flow';
-import { Loader2, Compass, MessageCircle, Sparkles, X } from 'lucide-react';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogClose } from '@/components/ui/dialog';
+import { Loader2, Compass, MessageCircle, Sparkles } from 'lucide-react';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { useFirestore, addDocumentNonBlocking } from '@/firebase';
 import { collection, serverTimestamp } from 'firebase/firestore';
 import { SacredOwl } from '@/components/ui/sacred-owl';
@@ -146,12 +146,6 @@ export function LeadForm() {
 
       <Dialog open={!!successData} onOpenChange={() => setSuccessData(null)}>
         <DialogContent className="bg-[#f4ecd8] border-[#8b7355] w-[95vw] md:max-w-2xl text-[#4a3728] rounded-none p-0 overflow-hidden outline-none shadow-2xl border-2">
-          {/* Botão X com Z-index prioritário */}
-          <DialogClose className="absolute right-4 top-4 z-[120] text-[#8b7355] hover:text-[#4a3728] transition-all p-2 rounded-full hover:bg-black/5 active:scale-95">
-            <X className="h-7 w-7" />
-            <span className="sr-only">Fechar</span>
-          </DialogClose>
-
           <div className="relative p-8 md:p-14 flex flex-col justify-center items-center text-center w-full max-h-[90vh] overflow-y-auto custom-scrollbar">
             {/* Textura de Pergaminho */}
             <div className="absolute inset-0 opacity-40 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/parchment.png')]" />
