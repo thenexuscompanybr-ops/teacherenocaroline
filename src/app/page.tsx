@@ -52,7 +52,7 @@ export default function LandingPage() {
     <div className="min-h-screen selection-sonserina text-foreground bg-background relative overflow-x-hidden">
       <MagicParticles />
       
-      {/* SEÇÃO 1: HERO - Otimizada para Mobile e Desktop */}
+      {/* SEÇÃO 1: HERO */}
       <section className="relative pt-2 md:pt-10 pb-8 md:pb-24 px-4 flex flex-col items-center justify-center text-center mystic-fog min-h-svh">
         <div className="absolute top-0 right-0 opacity-10 pointer-events-none w-1/3 md:w-1/3 max-w-md overflow-hidden">
           <Image 
@@ -98,12 +98,12 @@ export default function LandingPage() {
             <LeadForm />
           </div>
 
-          <p className="mt-4 md:mt-8 text-[8px] md:text-[9px] uppercase tracking-[0.3em] md:tracking-[0.4em] text-primary/70 font-bold scroll-reveal">
+          <p className="mt-4 md:mt-8 text-[8px] md:text-[9px] uppercase tracking-[0.3em] md:tracking-[0.4em] text-primary font-bold scroll-reveal">
             Acesso imediato ao Grupo VIP de Iniciação
           </p>
         </div>
 
-        <div className="mt-6 md:mt-16 flex flex-wrap justify-center gap-4 md:gap-10 text-primary/60 font-bold tracking-[0.2em] md:tracking-[0.4em] scroll-reveal z-10">
+        <div className="mt-6 md:mt-16 flex flex-wrap justify-center gap-4 md:gap-10 text-primary font-bold tracking-[0.2em] md:tracking-[0.4em] scroll-reveal z-10">
            <div className="flex items-center gap-2 group cursor-default">
             <SacredOwl className="w-3.5 h-3.5 md:w-4 md:h-4 group-hover:scale-110 transition-transform duration-500" />
             <span className="text-[7px] md:text-[9px] uppercase">Suporte via Coruja</span>
@@ -155,7 +155,7 @@ export default function LandingPage() {
               <p className="text-lg md:text-2xl text-foreground italic leading-relaxed mb-4 md:mb-6">
                 "O problema não é seu vocabulário. É o seu cérebro ativando um pânico automático quando você precisa falar em inglês."
               </p>
-              <p className="text-primary font-headline text-[10px] md:text-base tracking-[0.2em] md:tracking-[0.3em] uppercase opacity-90">
+              <p className="text-primary font-headline text-[10px] md:text-base tracking-[0.2em] md:tracking-[0.3em] uppercase">
                 — Teacher Caroline Renó
               </p>
             </div>
@@ -168,7 +168,7 @@ export default function LandingPage() {
               { text: "Potencial travado pelo medo", icon: Flame },
             ].map((item, idx) => (
               <div key={idx} className="p-6 md:p-10 brand-card scroll-reveal shadow-none bg-card/40">
-                <item.icon className="w-4 h-4 md:w-5 md:h-5 text-primary/70 mx-auto mb-3 md:mb-4" />
+                <item.icon className="w-4 h-4 md:w-5 md:h-5 text-primary mx-auto mb-3 md:mb-4" />
                 <p className="text-[9px] md:text-[10px] text-muted-foreground tracking-[0.2em] md:tracking-[0.3em] leading-relaxed font-bold uppercase">{item.text}</p>
               </div>
             ))}
@@ -185,7 +185,7 @@ export default function LandingPage() {
               <span className="gold-leaf italic mystic-script text-3xl md:text-7xl block mt-2">Aulas de Defesa Contra as Travas</span>
             </h2>
             <div className="ornament-line mx-auto max-w-sm mb-6 md:mb-8 opacity-60"></div>
-            <p className="text-[9px] md:text-[11px] uppercase tracking-[0.4em] md:tracking-[0.5em] text-primary/70 font-bold mb-6 md:mb-10">Aulas exclusivas do Grupo VIP</p>
+            <p className="text-[9px] md:text-[11px] uppercase tracking-[0.4em] md:tracking-[0.5em] text-primary font-bold mb-6 md:mb-10">Aulas exclusivas do Grupo VIP</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10">
@@ -208,7 +208,7 @@ export default function LandingPage() {
             ].map((card, idx) => (
               <Card key={idx} className="brand-card scroll-reveal border-primary/10 bg-card/60 shadow-none">
                 <CardContent className="p-8 md:p-12 text-center">
-                  <span className="block text-primary/50 font-bold uppercase tracking-[0.4em] md:tracking-[0.5em] text-[9px] md:text-[10px] mb-4 md:mb-6">{card.num}</span>
+                  <span className="block text-primary/80 font-bold uppercase tracking-[0.4em] md:tracking-[0.5em] text-[9px] md:text-[10px] mb-4 md:mb-6">{card.num}</span>
                   <h3 className="text-base md:text-xl font-headline text-primary mb-4 md:mb-6 tracking-[0.1em] md:tracking-[0.15em] uppercase leading-snug">{card.title}</h3>
                   <p className="text-muted-foreground/90 leading-relaxed text-xs md:text-sm">{card.desc}</p>
                 </CardContent>
@@ -234,7 +234,7 @@ export default function LandingPage() {
             </div>
           </div>
           <div className="w-full md:w-1/2 scroll-reveal text-center md:text-left">
-            <div className="mb-4 md:mb-6 flex items-center justify-center md:justify-start gap-4 md:gap-5 text-primary/70">
+            <div className="mb-4 md:mb-6 flex items-center justify-center md:justify-start gap-4 md:gap-5 text-primary">
               <BookOpen className="w-4 h-4 md:w-5 md:h-5" />
               <span className="text-[9px] md:text-[10px] font-bold tracking-[0.4em] md:tracking-[0.6em] uppercase">Guia da Jornada</span>
             </div>
@@ -264,7 +264,7 @@ export default function LandingPage() {
                    data-ai-hint={images.signature.imageHint}
                  />
                </div>
-               <div className="text-[8px] md:text-[9px] uppercase tracking-[0.4em] md:tracking-[0.5em] font-bold text-primary/50 leading-tight text-center md:text-left">
+               <div className="text-[8px] md:text-[9px] uppercase tracking-[0.4em] md:tracking-[0.5em] font-bold text-primary leading-tight text-center md:text-left">
                 Habilidade Ativa <br /> Academy
                </div>
             </div>
@@ -286,7 +286,7 @@ export default function LandingPage() {
               <AccordionItem key={idx} value={`item-${idx}`} className="border border-primary/10 bg-card/20 hover:bg-card/30 transition-all">
                 <AccordionTrigger className="text-left font-headline text-xs md:text-base hover:text-primary transition-all p-6 md:p-8 no-underline hover:no-underline group">
                   <span className="flex items-center gap-4 md:gap-5">
-                    <Sparkles className="w-3.5 h-3.5 md:w-4 md:h-4 text-primary/50 group-hover:rotate-12 transition-transform shrink-0" />
+                    <Sparkles className="w-3.5 h-3.5 md:w-4 md:h-4 text-primary group-hover:rotate-12 transition-transform shrink-0" />
                     {item.q}
                   </span>
                 </AccordionTrigger>
@@ -317,7 +317,7 @@ export default function LandingPage() {
             Não deixe o medo decidir <br />
             <span className="gold-leaf italic mystic-script text-4xl md:text-9xl mt-2 block">o futuro da sua carreira.</span>
           </h2>
-          <p className="text-primary/70 mb-6 md:mb-10 max-w-lg mx-auto uppercase tracking-[0.3em] md:tracking-[0.5em] text-[9px] md:text-[10px] font-bold">
+          <p className="text-primary mb-6 md:mb-10 max-w-lg mx-auto uppercase tracking-[0.3em] md:tracking-[0.5em] text-[9px] md:text-[10px] font-bold">
             Garantir minha vaga no Habilidade Ativa
           </p>
           <div className="max-w-md mx-auto w-full">
@@ -342,7 +342,7 @@ export default function LandingPage() {
           
           <div className="ornament-line mx-auto max-w-[200px] md:max-w-[240px] mb-8 md:mb-10 opacity-30"></div>
           
-          <p className="text-[8px] md:text-[10px] tracking-[0.4em] md:tracking-[1em] uppercase mb-8 md:mb-10 text-primary/50 font-bold">
+          <p className="text-[8px] md:text-[10px] tracking-[0.4em] md:tracking-[1em] uppercase mb-8 md:mb-10 text-primary font-bold">
             &copy; {new Date().getFullYear()} Caroline Renó | Safe & Sound • Habilidade Ativa Academy
           </p>
           

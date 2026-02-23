@@ -1,4 +1,3 @@
-
 "use client"
 
 import React, { useState } from 'react';
@@ -94,7 +93,7 @@ export function LeadForm() {
             name="name"
             render={({ field }) => (
               <FormItem className="text-left">
-                <FormLabel className="text-primary/90 uppercase tracking-[0.2em] md:tracking-[0.3em] text-[8px] md:text-[10px] font-bold">Identificação do Iniciado</FormLabel>
+                <FormLabel className="text-primary uppercase tracking-[0.2em] md:tracking-[0.3em] text-[8px] md:text-[10px] font-bold">Identificação do Iniciado</FormLabel>
                 <FormControl>
                   <Input 
                     placeholder="Seu nome completo" 
@@ -102,7 +101,7 @@ export function LeadForm() {
                     className="h-12 md:h-14 bg-card/40 border-primary/20 focus:border-primary/50 transition-all rounded-none placeholder:text-muted-foreground/30 text-sm md:text-base font-medium shadow-none" 
                   />
                 </FormControl>
-                <FormMessage className="text-[9px] md:text-[10px] text-primary/90 font-bold uppercase mt-1 md:mt-2" />
+                <FormMessage className="text-[9px] md:text-[10px] text-primary font-bold uppercase mt-1 md:mt-2" />
               </FormItem>
             )}
           />
@@ -111,7 +110,7 @@ export function LeadForm() {
             name="email"
             render={({ field }) => (
               <FormItem className="text-left">
-                <FormLabel className="text-primary/90 uppercase tracking-[0.2em] md:tracking-[0.3em] text-[8px] md:text-[10px] font-bold">Coruja Digital (E-mail)</FormLabel>
+                <FormLabel className="text-primary uppercase tracking-[0.2em] md:tracking-[0.3em] text-[8px] md:text-[10px] font-bold">Coruja Digital (E-mail)</FormLabel>
                 <FormControl>
                   <Input 
                     placeholder="seu@email.com" 
@@ -119,7 +118,7 @@ export function LeadForm() {
                     className="h-12 md:h-14 bg-card/40 border-primary/20 focus:border-primary/50 transition-all rounded-none placeholder:text-muted-foreground/30 text-sm md:text-base font-medium shadow-none" 
                   />
                 </FormControl>
-                <FormMessage className="text-[9px] md:text-[10px] text-primary/90 font-bold uppercase mt-1 md:mt-2" />
+                <FormMessage className="text-[9px] md:text-[10px] text-primary font-bold uppercase mt-1 md:mt-2" />
               </FormItem>
             )}
           />
