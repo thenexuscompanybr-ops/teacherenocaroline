@@ -1,3 +1,4 @@
+
 "use client"
 
 import React, { useEffect } from 'react';
@@ -93,7 +94,7 @@ export default function LandingPage() {
           </h1>
           
           <p className="text-xs md:text-base text-muted-foreground mb-6 md:mb-10 max-w-2xl font-body scroll-reveal leading-relaxed mx-auto px-2">
-            Não espere mais para começar a falar! Participe do minicurso gratuito: <span className="magic-emphasis text-primary">Habilidade Ativa</span> e aprenda como superar o pânico na hora de falar inglês.
+            Não precisa mais esperar sua carta de Hogwarts chegar... Participe do minicurso gratuito: <span className="magic-emphasis text-primary">Habilidade Ativa</span> e aprenda como superar o pânico na hora de falar inglês.
           </p>
           
           <div className="scroll-reveal w-full max-w-md mx-auto relative px-2">
