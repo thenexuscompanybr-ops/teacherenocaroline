@@ -102,7 +102,7 @@ export function LeadForm() {
                   <Input 
                     placeholder="Seu nome completo" 
                     {...field} 
-                    className="h-14 bg-card/40 border-primary/20 focus:border-primary/50 transition-all rounded-none placeholder:text-muted-foreground/30 text-base font-medium sanctuary-glow" 
+                    className="h-14 bg-card/40 border-primary/20 focus:border-primary/50 transition-all rounded-none placeholder:text-muted-foreground/30 text-base font-medium" 
                   />
                 </FormControl>
                 <FormMessage className="text-[10px] text-primary/90 font-bold uppercase mt-2" />
@@ -119,7 +119,7 @@ export function LeadForm() {
                   <Input 
                     placeholder="seu@email.com" 
                     {...field} 
-                    className="h-14 bg-card/40 border-primary/20 focus:border-primary/50 transition-all rounded-none placeholder:text-muted-foreground/30 text-base font-medium sanctuary-glow" 
+                    className="h-14 bg-card/40 border-primary/20 focus:border-primary/50 transition-all rounded-none placeholder:text-muted-foreground/30 text-base font-medium" 
                   />
                 </FormControl>
                 <FormMessage className="text-[10px] text-primary/90 font-bold uppercase mt-2" />
@@ -147,7 +147,7 @@ export function LeadForm() {
       </Form>
 
       <Dialog open={!!successData} onOpenChange={() => setSuccessData(null)}>
-        <DialogContent className="bg-[#f4ecd8] border-[#8b7355] w-[95vw] md:max-w-2xl text-[#4a3728] rounded-none p-0 overflow-y-auto max-h-[90vh] outline-none shadow-2xl sanctuary-glow border-2">
+        <DialogContent className="bg-[#f4ecd8] border-[#8b7355] w-[95vw] md:max-w-2xl text-[#4a3728] rounded-none p-0 overflow-y-auto max-h-[90vh] outline-none shadow-2xl border-2">
           {/* Botão de fechamento com prioridade mística */}
           <DialogClose className="absolute right-4 top-4 z-[120] text-[#8b7355] hover:text-[#4a3728] transition-all p-2 rounded-full hover:bg-black/5 active:scale-95">
             <X className="h-7 w-7" />

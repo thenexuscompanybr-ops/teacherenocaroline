@@ -67,7 +67,7 @@ export default function LandingPage() {
         </header>
 
         <div className="max-w-4xl mx-auto relative z-10 w-full">
-          <div className="mb-6 inline-flex items-center gap-3 py-1.5 px-6 border border-primary/30 bg-primary/10 text-primary text-[10px] font-bold tracking-[0.5em] uppercase sanctuary-glow">
+          <div className="mb-6 inline-flex items-center gap-3 py-1.5 px-6 border border-primary/30 bg-primary/10 text-primary text-[10px] font-bold tracking-[0.5em] uppercase">
             <Compass className="w-3.5 h-3.5" />
             Iniciação Gratuita • Grupo VIP
           </div>
@@ -80,7 +80,7 @@ export default function LandingPage() {
             Não espere mais para começar a falar! Participe do minicurso gratuito: <span className="magic-emphasis">Habilidade Ativa</span> e aprenda como superar o pânico na hora de falar inglês.
           </p>
           
-          <div className="scroll-reveal delay-300 max-w-md mx-auto sanctuary-glow-heavy relative px-4">
+          <div className="scroll-reveal delay-300 max-w-md mx-auto relative px-4">
             <LeadForm />
           </div>
 
@@ -131,7 +131,7 @@ export default function LandingPage() {
           </div>
 
           <div className="max-w-3xl mx-auto mb-16 scroll-reveal delay-200 px-4">
-            <div className="brand-card backdrop-blur-md border-l-4 border-primary p-8 md:p-12 text-left sanctuary-glow mistic-border">
+            <div className="brand-card backdrop-blur-md border-l-4 border-primary p-8 md:p-12 text-left mistic-border">
               <p className="text-xl md:text-2xl text-foreground italic leading-relaxed mb-6">
                 "O problema não é seu vocabulário. É o seu cérebro ativando um pânico automático quando você precisa falar em inglês."
               </p>
@@ -202,7 +202,7 @@ export default function LandingPage() {
       <section className="py-20 md:py-32 px-4 bg-card/10 border-y border-primary/10 overflow-hidden mystic-fog">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12 md:gap-20">
           <div className="w-full md:w-1/2 scroll-reveal">
-            <div className="relative p-3 md:p-5 border border-primary/25 bg-background/60 group mx-auto max-w-[500px] md:max-w-full sanctuary-glow mistic-border">
+            <div className="relative p-3 md:p-5 border border-primary/25 bg-background/60 group mx-auto max-w-[500px] md:max-w-full mistic-border">
               <Image 
                 src="https://imgur.com/iwVrdXg.png" 
                 alt="Caroline Renó" 
@@ -262,7 +262,7 @@ export default function LandingPage() {
             ].map((testi, idx) => (
               <div key={idx} className="p-10 md:p-12 brand-card scroll-reveal">
                 <div className="flex items-center gap-6 mb-8">
-                  <div className="w-[50px] h-[50px] rounded-none border border-primary/30 bg-card/80 flex items-center justify-center sanctuary-glow">
+                  <div className="w-[50px] h-[50px] rounded-none border border-primary/30 bg-card/80 flex items-center justify-center">
                     <User className="w-6 h-6 text-primary/40" />
                   </div>
                   <div>
@@ -288,7 +288,7 @@ export default function LandingPage() {
               { q: "Preciso ter nível avançado?", a: "Não. O Habilidade Ativa é para quem tem pânico de falar, independentemente do seu nível atual de conhecimento." },
               { q: "O que é o Protego Mental?", a: "É a nossa metodologia exclusiva que une psicologia e acolhimento para neutralizar os bloqueios emocionais ao falar." },
             ].map((item, idx) => (
-              <AccordionItem key={idx} value={`item-${idx}`} className="border border-primary/10 bg-card/10 hover:bg-card/20 transition-all sanctuary-glow">
+              <AccordionItem key={idx} value={`item-${idx}`} className="border border-primary/10 bg-card/10 hover:bg-card/20 transition-all">
                 <AccordionTrigger className="text-left font-headline text-sm md:text-base hover:text-primary transition-all p-8 no-underline hover:no-underline group">
                   <span className="flex items-center gap-5">
                     <Sparkles className="w-4 h-4 text-primary/50 group-hover:rotate-12 transition-transform shrink-0" />
@@ -318,7 +318,7 @@ export default function LandingPage() {
           <p className="text-primary/70 mb-10 max-w-lg mx-auto uppercase tracking-[0.5em] text-[10px] font-bold">
             Garantir minha vaga no Habilidade Ativa
           </p>
-          <div className="max-w-md mx-auto sanctuary-glow-heavy px-4">
+          <div className="max-w-md mx-auto px-4">
             <LeadForm />
           </div>
         </div>
