@@ -98,7 +98,7 @@ export function LeadForm() {
                   <Input 
                     placeholder="Seu nome completo" 
                     {...field} 
-                    className="h-12 md:h-14 bg-card/40 border-primary/20 focus:border-primary/50 transition-all rounded-none placeholder:text-muted-foreground/30 text-sm md:text-base font-medium shadow-none" 
+                    className="h-12 md:h-14 bg-background/95 border-primary/40 focus:border-primary/80 transition-all rounded-none placeholder:text-muted-foreground/50 text-sm md:text-base font-medium shadow-lg" 
                   />
                 </FormControl>
                 <FormMessage className="text-[9px] md:text-[10px] text-primary font-bold uppercase mt-1 md:mt-2" />
@@ -115,7 +115,7 @@ export function LeadForm() {
                   <Input 
                     placeholder="seu@email.com" 
                     {...field} 
-                    className="h-12 md:h-14 bg-card/40 border-primary/20 focus:border-primary/50 transition-all rounded-none placeholder:text-muted-foreground/30 text-sm md:text-base font-medium shadow-none" 
+                    className="h-12 md:h-14 bg-background/95 border-primary/40 focus:border-primary/80 transition-all rounded-none placeholder:text-muted-foreground/50 text-sm md:text-base font-medium shadow-lg" 
                   />
                 </FormControl>
                 <FormMessage className="text-[9px] md:text-[10px] text-primary font-bold uppercase mt-1 md:mt-2" />
@@ -124,7 +124,7 @@ export function LeadForm() {
           />
           <Button 
             type="submit" 
-            className="w-full cta-button h-14 md:h-16 text-[9px] md:text-[11px] group gold-shimmer mt-4 md:mt-6 shadow-none"
+            className="w-full cta-button h-14 md:h-16 text-[9px] md:text-[11px] group gold-shimmer mt-4 md:mt-6 shadow-xl"
             disabled={isLoading}
           >
             {isLoading ? (
@@ -155,7 +155,7 @@ export function LeadForm() {
                 <div className="w-24 h-24 md:w-40 md:h-40 bg-[#e8dec0] border-2 border-[#8b7355]/40 flex items-center justify-center shadow-2xl rounded-full relative overflow-hidden">
                    <SacredOwl className="w-16 h-16 md:w-24 h-24 text-[#8b7355] animate-magical-float" />
                 </div>
-                <Sparkles className="absolute -top-2 -left-2 md:-top-4 md:-left-4 w-8 h-8 md:w-10 md:h-10 text-primary/70 animate-bounce" />
+                <Sparkles className="absolute -top-2 -right-2 md:-top-4 md:-right-4 w-8 h-8 md:w-10 md:h-10 text-primary/70 animate-bounce" />
               </div>
 
               <DialogHeader className="mb-6 md:mb-8">
