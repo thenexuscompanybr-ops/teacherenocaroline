@@ -1,4 +1,3 @@
-
 "use client"
 
 import React, { useState } from 'react';
@@ -54,6 +53,7 @@ export function LeadForm() {
         source: 'Landing Page Safe & Sound',
       });
 
+      // Chamada otimizada para a IA
       const aiPromise = generatePersonalizedFollowUpMessage({
         leadName: values.name,
         leadEmail: values.email,
@@ -64,6 +64,7 @@ export function LeadForm() {
         courseBenefits: 'Protego Mental, Defesa Contra Travas, Suporte via Coruja',
       }).catch(() => null);
 
+      // Timeout agressivo para garantir que o portal abra rápido
       const aiResponse = await Promise.race([
         aiPromise,
         new Promise(resolve => setTimeout(() => resolve(null), 1500))
@@ -145,17 +146,20 @@ export function LeadForm() {
 
       <Dialog open={!!successData} onOpenChange={() => setSuccessData(null)}>
         <DialogContent className="bg-[#f4ecd8] border-[#8b7355] w-[95vw] md:max-w-2xl text-[#4a3728] rounded-none p-0 overflow-hidden outline-none shadow-2xl border-2">
+          {/* Botão X com Z-index prioritário */}
           <DialogClose className="absolute right-4 top-4 z-[120] text-[#8b7355] hover:text-[#4a3728] transition-all p-2 rounded-full hover:bg-black/5 active:scale-95">
             <X className="h-7 w-7" />
             <span className="sr-only">Fechar</span>
           </DialogClose>
 
           <div className="relative p-8 md:p-14 flex flex-col justify-center items-center text-center w-full max-h-[90vh] overflow-y-auto custom-scrollbar">
+            {/* Textura de Pergaminho */}
             <div className="absolute inset-0 opacity-40 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/parchment.png')]" />
             <div className="absolute inset-4 border border-[#8b7355]/30 pointer-events-none" />
             <div className="absolute inset-6 border-2 border-[#8b7355]/10 pointer-events-none" />
 
             <div className="relative z-10 w-full">
+              {/* Animação da Coruja Mensageira */}
               <div className="mb-8 relative flex justify-center animate-owl-arrival">
                 <div className="absolute inset-0 bg-primary/25 blur-3xl rounded-full scale-150 animate-portal-spin" />
                 <div className="w-32 h-32 md:w-40 md:h-40 bg-[#e8dec0] border-2 border-[#8b7355]/40 flex items-center justify-center shadow-2xl rounded-full relative overflow-hidden">
@@ -177,6 +181,7 @@ export function LeadForm() {
 
               <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500 fill-mode-both w-full">
                 <div className="relative p-6 md:p-12 bg-[#fffdf5]/60 border border-[#8b7355]/20 shadow-inner">
+                  {/* Selo de Cera Real */}
                   <div className="absolute -top-5 -right-5 w-14 h-14 md:w-18 md:h-18 bg-[#8b0000] rounded-full shadow-2xl flex items-center justify-center border-4 border-[#6b0000] rotate-12 z-20">
                     <span className="font-headline text-white text-xl md:text-2xl opacity-90">CR</span>
                   </div>

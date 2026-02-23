@@ -1,4 +1,3 @@
-
 "use client"
 
 import React, { useEffect } from 'react';
@@ -90,20 +89,20 @@ export default function LandingPage() {
             <span className="gold-leaf italic mystic-script text-5xl md:text-8xl block mt-2 mb-2 py-2">Onde a Magia do Inglês Acontece.</span>
             <span className="text-xl md:text-3xl block mt-1 font-body tracking-tight opacity-95">Fale Inglês Sem Medo e Destrave sua Carreira.</span>
           </h1>
-          <p className="text-base md:text-lg text-muted-foreground mb-10 max-w-2xl font-body scroll-reveal delay-100 leading-relaxed mx-auto">
+          <p className="text-base md:text-lg text-muted-foreground mb-10 max-w-2xl font-body scroll-reveal leading-relaxed mx-auto">
             Não espere mais para começar a falar! Participe do minicurso gratuito: <span className="magic-emphasis">Habilidade Ativa</span> e aprenda como superar o pânico na hora de falar inglês.
           </p>
           
-          <div className="scroll-reveal delay-200 max-w-md mx-auto relative">
+          <div className="scroll-reveal max-w-md mx-auto relative">
             <LeadForm />
           </div>
 
-          <p className="mt-10 text-[10px] uppercase tracking-[0.4em] text-primary/70 font-bold scroll-reveal delay-300">
+          <p className="mt-10 text-[10px] uppercase tracking-[0.4em] text-primary/70 font-bold scroll-reveal">
             Acesso imediato ao Grupo VIP de Iniciação
           </p>
         </div>
 
-        <div className="mt-16 md:mt-24 flex flex-wrap justify-center gap-8 md:gap-12 text-primary/60 font-bold tracking-[0.4em] scroll-reveal delay-400 z-10">
+        <div className="mt-16 md:mt-24 flex flex-wrap justify-center gap-8 md:gap-12 text-primary/60 font-bold tracking-[0.4em] scroll-reveal z-10">
            <div className="flex items-center gap-3 group cursor-default">
             <SacredOwl className="w-5 h-5 group-hover:scale-110 transition-transform duration-500" />
             <span className="text-[9px] uppercase">Suporte via Coruja</span>
@@ -150,7 +149,7 @@ export default function LandingPage() {
             </p>
           </div>
 
-          <div className="max-w-3xl mx-auto mb-16 scroll-reveal delay-100 px-4">
+          <div className="max-w-3xl mx-auto mb-16 scroll-reveal px-4">
             <div className="brand-card backdrop-blur-md border-l-4 border-primary p-8 md:p-12 text-left mistic-border shadow-none">
               <p className="text-xl md:text-2xl text-foreground italic leading-relaxed mb-6">
                 "O problema não é seu vocabulário. É o seu cérebro ativando um pânico automático quando você precisa falar em inglês."
@@ -299,7 +298,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* SEÇÃO 7: CTA FINAL */}
+      {/* SEÇÃO 6: CTA FINAL */}
       <section className="py-32 md:py-48 px-4 text-center relative overflow-hidden flex flex-col items-center justify-center min-h-[70vh]">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-15 pointer-events-none w-full max-w-3xl scale-125">
            <Image 
