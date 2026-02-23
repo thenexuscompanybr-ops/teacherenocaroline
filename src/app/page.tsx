@@ -1,4 +1,3 @@
-
 "use client"
 
 import React, { useEffect } from 'react';
@@ -53,8 +52,8 @@ export default function LandingPage() {
     <div className="min-h-screen selection-sonserina text-foreground bg-background relative overflow-x-hidden">
       <MagicParticles />
       
-      {/* SEÇÃO 1: HERO - Otimizada para Mobile */}
-      <section className="relative pt-6 md:pt-20 pb-12 md:pb-32 px-4 flex flex-col items-center justify-center text-center mystic-fog min-h-svh">
+      {/* SEÇÃO 1: HERO - Otimizada para Mobile e Desktop */}
+      <section className="relative pt-2 md:pt-10 pb-8 md:pb-24 px-4 flex flex-col items-center justify-center text-center mystic-fog min-h-svh">
         <div className="absolute top-0 right-0 opacity-10 pointer-events-none w-1/3 md:w-1/3 max-w-md overflow-hidden">
           <Image 
             src={images.seal.imageUrl} 
@@ -67,14 +66,14 @@ export default function LandingPage() {
           />
         </div>
         
-        <header className="mb-4 md:mb-12 scroll-reveal z-10">
+        <header className="mb-2 md:mb-8 scroll-reveal z-10">
           <div className="logo-float">
             <Image 
               src={images.logo.imageUrl} 
               alt={images.logo.description} 
-              width={180} 
-              height={50} 
-              className="logo-glow md:w-[280px] md:h-[80px] no-drag"
+              width={160} 
+              height={45} 
+              className="logo-glow md:w-[260px] md:h-[75px] no-drag"
               priority
               data-ai-hint={images.logo.imageHint}
             />
@@ -82,16 +81,16 @@ export default function LandingPage() {
         </header>
 
         <div className="max-w-4xl mx-auto relative z-10 w-full px-2">
-          <div className="mb-4 inline-flex items-center gap-3 py-1 px-4 border border-primary/30 bg-primary/5 text-primary text-[9px] md:text-[10px] font-bold tracking-[0.4em] uppercase">
+          <div className="mb-3 inline-flex items-center gap-3 py-1 px-4 border border-primary/30 bg-primary/5 text-primary text-[8px] md:text-[10px] font-bold tracking-[0.4em] uppercase">
             <Compass className="w-3 h-3 md:w-3.5 md:h-3.5" />
             Iniciação Gratuita • Grupo VIP
           </div>
-          <h1 className="text-3xl md:text-7xl font-headline text-foreground mb-4 leading-[1.1] scroll-reveal">
+          <h1 className="text-3xl md:text-6xl font-headline text-foreground mb-3 md:mb-4 leading-[1.1] scroll-reveal">
             Safe & Sound: <br />
-            <span className="gold-leaf italic mystic-script text-4xl md:text-8xl block mt-1 mb-1 py-1">Onde a Magia do Inglês Acontece.</span>
-            <span className="text-lg md:text-3xl block mt-1 font-body tracking-tight opacity-95">Fale Inglês Sem Medo e Destrave sua Carreira.</span>
+            <span className="gold-leaf italic mystic-script text-4xl md:text-7xl block mt-1 mb-1 py-1">Onde a Magia do Inglês Acontece.</span>
+            <span className="text-base md:text-2xl block mt-1 font-body tracking-tight opacity-95">Fale Inglês Sem Medo e Destrave sua Carreira.</span>
           </h1>
-          <p className="text-sm md:text-lg text-muted-foreground mb-6 md:mb-10 max-w-2xl font-body scroll-reveal leading-relaxed mx-auto px-4">
+          <p className="text-xs md:text-base text-muted-foreground mb-4 md:mb-8 max-w-2xl font-body scroll-reveal leading-relaxed mx-auto px-4">
             Não espere mais para começar a falar! Participe do minicurso gratuito: <span className="magic-emphasis">Habilidade Ativa</span> e aprenda como superar o pânico na hora de falar inglês.
           </p>
           
@@ -99,23 +98,23 @@ export default function LandingPage() {
             <LeadForm />
           </div>
 
-          <p className="mt-6 md:mt-10 text-[9px] md:text-[10px] uppercase tracking-[0.3em] md:tracking-[0.4em] text-primary/70 font-bold scroll-reveal">
+          <p className="mt-4 md:mt-8 text-[8px] md:text-[9px] uppercase tracking-[0.3em] md:tracking-[0.4em] text-primary/70 font-bold scroll-reveal">
             Acesso imediato ao Grupo VIP de Iniciação
           </p>
         </div>
 
-        <div className="mt-8 md:mt-24 flex flex-wrap justify-center gap-6 md:gap-12 text-primary/60 font-bold tracking-[0.3em] md:tracking-[0.4em] scroll-reveal z-10">
-           <div className="flex items-center gap-2 md:gap-3 group cursor-default">
-            <SacredOwl className="w-4 h-4 md:w-5 md:h-5 group-hover:scale-110 transition-transform duration-500" />
-            <span className="text-[8px] md:text-[9px] uppercase">Suporte via Coruja</span>
+        <div className="mt-6 md:mt-16 flex flex-wrap justify-center gap-4 md:gap-10 text-primary/60 font-bold tracking-[0.2em] md:tracking-[0.4em] scroll-reveal z-10">
+           <div className="flex items-center gap-2 group cursor-default">
+            <SacredOwl className="w-3.5 h-3.5 md:w-4 md:h-4 group-hover:scale-110 transition-transform duration-500" />
+            <span className="text-[7px] md:text-[9px] uppercase">Suporte via Coruja</span>
           </div>
-          <div className="flex items-center gap-2 md:gap-3 group cursor-default">
+          <div className="flex items-center gap-2 group cursor-default">
             <ShieldCheck className="w-3.5 h-3.5 md:w-4 md:h-4 group-hover:scale-110 transition-transform" />
-            <span className="text-[8px] md:text-[9px] uppercase">Protego Mental</span>
+            <span className="text-[7px] md:text-[9px] uppercase">Protego Mental</span>
           </div>
-          <div className="flex items-center gap-2 md:gap-3 group cursor-default">
+          <div className="flex items-center gap-2 group cursor-default">
             <MessageCircle className="w-3.5 h-3.5 md:w-4 md:h-4 group-hover:scale-110 transition-transform" />
-            <span className="text-[8px] md:text-[9px] uppercase">Aulas via WhatsApp</span>
+            <span className="text-[7px] md:text-[9px] uppercase">Aulas via WhatsApp</span>
           </div>
         </div>
       </section>
@@ -300,7 +299,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* SEÇÃO 6: CTA FINAL - Otimizada para Mobile */}
+      {/* SEÇÃO 6: CTA FINAL */}
       <section className="py-20 md:py-48 px-4 text-center relative overflow-hidden flex flex-col items-center justify-center min-h-[60vh]">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-10 pointer-events-none w-full max-w-3xl scale-150">
            <Image 
@@ -327,7 +326,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* RODAPÉ - Compactado e Otimizado */}
+      {/* RODAPÉ */}
       <footer className="pt-10 md:pt-16 pb-16 md:pb-32 text-center border-t border-primary/15 bg-background/95 backdrop-blur-xl relative z-20 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="mb-6 md:mb-12 transition-all duration-1000 hover:scale-105 group">
