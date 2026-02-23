@@ -69,9 +69,9 @@ export default function LandingPage() {
       icon: MapPin,
       content: [
         "Daquelas onde o tempo passa mais devagar, o café é coado na hora...",
-        "E a gente aprende cedo que escutar também é uma forma de cuidar",
-        "Aqui eu percebi que o silêncio ensina",
-        "E talvez por isso ensinar, para mim, nunca foi corrigir, mas acolher"
+        "E a gente aprende cedo que escutar também é uma forma de cuidar.",
+        "Aqui eu percebi que o silêncio ensina.",
+        "E talvez por isso ensinar, para mim, nunca foi corrigir, mas acolher."
       ]
     },
     {
@@ -79,9 +79,10 @@ export default function LandingPage() {
       subtitle: "observando o mundo pelas formas e cores",
       icon: Palette,
       content: [
-        "Mas foi na Psicologia que comecei a entender o que não se vê",
-        "Ensinar sempre fez parte de mim: já dei aula de informática, artes, desenho e inglês",
-        "Hoje, quando ensino, levo tudo isso comigo: a beleza da arte, a leveza da escuta, e a alma que cabe nas palavras"
+        "Aprendi a observar o mundo pelas formas, pelas cores, pelos detalhes.",
+        "Mas foi na Psicologia que comecei a entender o que não se vê.",
+        "Ensinar sempre fez parte de mim: já dei aula de informática, artes, desenho e inglês.",
+        "E hoje, quando ensino, levo tudo isso comigo: a beleza da arte, a leveza da escuta, e a alma que cabe nas palavras."
       ]
     },
     {
@@ -89,9 +90,10 @@ export default function LandingPage() {
       subtitle: "Longe da minha terra, da minha língua, de mim",
       icon: Globe,
       content: [
-        "Comecei a dar aulas de inglês aos domingos, só pra passar o tempo",
-        "MAS O QUE ERA DISTRAÇÃO virou destino",
-        "As aulas criaram raízes, e eu me redescobri professora. De alma"
+        "Longe da minha terra, da minha língua, de mim...",
+        "Comecei a dar aulas de inglês aos domingos, só pra passar o tempo.",
+        "MAS O QUE ERA DISTRAÇÃO virou destino.",
+        "As aulas criaram raízes, e eu me redescobri professora. De alma."
       ]
     },
     {
@@ -99,8 +101,9 @@ export default function LandingPage() {
       subtitle: "Para rir, aprender, se soltar, desabafar",
       icon: Coffee,
       content: [
-        "Já me disseram que minhas aulas parecem uma segunda terapia, e quer saber? Eu levo isso como elogio",
-        "Porque aprender uma nova língua também é um jeito de se ouvir com mais carinho"
+        "Para rir, aprender, se soltar, desabafar.",
+        "Já me disseram que minhas aulas parecem uma segunda terapia, e quer saber? Eu levo isso como elogio.",
+        "Porque aprender uma nova língua também é um jeito de se ouvir com mais carinho."
       ]
     },
     {
@@ -108,7 +111,7 @@ export default function LandingPage() {
       subtitle: "Talvez você também esteja se sentindo fora do lugar",
       icon: Sparkles,
       content: [
-        "Com medo de falar. Com vergonha de travar.",
+        "Talvez você também esteja se sentindo fora do lugar. Com medo de falar. Com vergonha de travar.",
         "E talvez tudo que você precise seja um espaço seguro. Leve. Real.",
         "Se for o seu caso... fica.",
         "Porque essa história tem tudo para continuar com você aqui."
@@ -149,7 +152,7 @@ export default function LandingPage() {
         </header>
 
         <div className="max-w-4xl mx-auto relative z-10 w-full px-2 flex flex-col items-center">
-          <div className="mb-4 inline-flex items-center gap-3 py-1.5 px-4 border border-primary/30 bg-primary/5 text-primary text-[9px] md:text-[11px] font-bold tracking-[0.4em] uppercase whitespace-nowrap">
+          <div className="mb-4 inline-flex items-center gap-3 py-1.5 px-4 border border-primary text-primary text-[9px] md:text-[11px] font-bold tracking-[0.4em] uppercase whitespace-nowrap">
             <Compass className="w-3.5 h-3.5" />
             Iniciação Gratuita • Grupo VIP
           </div>
@@ -292,7 +295,7 @@ export default function LandingPage() {
       <section className="py-20 md:py-32 px-4 bg-card/5 border-y border-primary/10 overflow-hidden mystic-fog w-full">
         <div className="max-w-6xl mx-auto w-full">
           <div className="flex flex-col md:flex-row items-center gap-12 md:gap-24">
-            <div className="w-full md:w-1/3 scroll-reveal flex justify-center order-2 md:order-1">
+            <div className="w-full md:w-2/5 scroll-reveal flex justify-center order-2 md:order-1">
               <div className="relative p-2 md:p-4 border border-primary/30 bg-background/80 group mx-auto max-w-[300px] md:max-w-none w-full mistic-border shadow-2xl">
                 <Image 
                   src={images.teacher.imageUrl} 
@@ -317,49 +320,53 @@ export default function LandingPage() {
               </div>
             </div>
 
-            <div className="w-full md:w-2/3 scroll-reveal order-1 md:order-2">
-              <div className="mb-8 flex items-center justify-center md:justify-start gap-4 text-primary">
+            <div className="w-full md:w-3/5 scroll-reveal order-1 md:order-2">
+              <div className="mb-10 flex items-center justify-center md:justify-start gap-4 text-primary">
                 <BookOpen className="w-5 h-5" />
-                <span className="text-[10px] font-bold tracking-[0.4em] uppercase">Crônicas do Santuário</span>
+                <span className="text-[10px] font-bold tracking-[0.4em] uppercase">Memórias do Santuário</span>
               </div>
 
               <Carousel className="w-full">
                 <CarouselContent>
                   {aboutSlides.map((slide, index) => (
                     <CarouselItem key={index}>
-                      <div className="p-1">
-                        <h2 className="text-2xl md:text-5xl font-headline text-foreground mb-4 leading-tight">
+                      <div className="flex flex-col h-full min-h-[400px]">
+                        <h2 className="text-2xl md:text-5xl font-headline text-foreground mb-6 leading-tight tracking-tight">
                           {slide.title}
                         </h2>
-                        <h3 className="gold-leaf mystic-script text-2xl md:text-5xl mb-8 block py-2">
-                          {slide.subtitle}
-                        </h3>
                         
-                        {slide.content.length > 0 && (
-                          <div className="space-y-4 md:space-y-6 text-base md:text-lg text-muted-foreground/95 leading-relaxed font-body">
+                        <div className="mb-10">
+                          <h3 className="gold-leaf mystic-script text-2xl md:text-5xl block py-2 leading-relaxed">
+                            {slide.subtitle}
+                          </h3>
+                          <div className="h-[1px] w-24 bg-primary/30 mt-4"></div>
+                        </div>
+                        
+                        {slide.content.length > 0 ? (
+                          <div className="space-y-6 md:space-y-8 text-base md:text-xl text-muted-foreground/95 leading-relaxed font-body">
                             {slide.content.map((text, idx) => (
-                              <p key={idx} className={idx === slide.content.length - 1 && index === aboutSlides.length - 1 ? "magic-emphasis text-primary italic" : ""}>
+                              <p key={idx} className={idx === slide.content.length - 1 && index === aboutSlides.length - 1 ? "magic-emphasis text-primary italic pt-4" : ""}>
                                 {text}
                               </p>
                             ))}
                           </div>
-                        )}
-                        
-                        {index === 0 && (
-                          <div className="mt-8 flex justify-center md:justify-start">
-                             <div className="p-8 brand-card bg-primary/5 border-primary/20 flex items-center gap-6 max-w-sm">
-                               <slide.icon className="w-8 h-8 text-primary animate-magical-float" />
-                               <p className="text-xs uppercase tracking-[0.3em] font-bold text-primary">Folheie esta história para nos conhecermos melhor</p>
-                             </div>
-                          </div>
+                        ) : (
+                          index === 0 && (
+                            <div className="mt-12 flex justify-center md:justify-start">
+                               <div className="p-8 brand-card bg-primary/5 border-primary/20 flex items-center gap-6 max-w-sm">
+                                 <slide.icon className="w-10 h-10 text-primary animate-magical-float" />
+                                 <p className="text-[11px] uppercase tracking-[0.3em] font-bold text-primary leading-relaxed">Folheie estas crônicas para iniciarmos nossa jornada</p>
+                               </div>
+                            </div>
+                          )
                         )}
                       </div>
                     </CarouselItem>
                   ))}
                 </CarouselContent>
-                <div className="flex justify-center md:justify-start gap-4 mt-12">
-                  <CarouselPrevious className="static translate-y-0 border-primary/30 text-primary hover:bg-primary/10" />
-                  <CarouselNext className="static translate-y-0 border-primary/30 text-primary hover:bg-primary/10" />
+                <div className="flex justify-center md:justify-start gap-6 mt-16">
+                  <CarouselPrevious className="static translate-y-0 border-primary/40 text-primary hover:bg-primary/20 h-12 w-12" />
+                  <CarouselNext className="static translate-y-0 border-primary/40 text-primary hover:bg-primary/20 h-12 w-12" />
                 </div>
               </Carousel>
             </div>
