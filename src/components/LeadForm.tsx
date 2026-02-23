@@ -1,4 +1,3 @@
-
 "use client"
 
 import React, { useState } from 'react';
@@ -16,8 +15,8 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { generatePersonalizedFollowUpMessage } from '@/ai/flows/personalized-follow-up-message-flow';
-import { Loader2, Compass, MessageCircle, Sparkles, Wand2 } from 'lucide-react';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Loader2, Compass, MessageCircle, Sparkles, X } from 'lucide-react';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogClose } from '@/components/ui/dialog';
 import { useFirestore, addDocumentNonBlocking } from '@/firebase';
 import { collection, serverTimestamp } from 'firebase/firestore';
 import { useToast } from '@/hooks/use-toast';
@@ -45,11 +44,9 @@ export function LeadForm() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true);
     
-    // Mensagem de fallback imediata para garantir velocidade
     const fallbackMessage = `Prezado(a) ${values.name}, sua convocação para o Santuário Safe & Sound foi aceita. Você deu o primeiro passo para silenciar a Maldição do Silêncio e retomar o poder da sua voz em inglês. O mensageiro já está a caminho com as instruções para o primeiro ritual no WhatsApp.`;
 
     try {
-      // 1. Salva o Lead (Non-blocking)
       const leadsRef = collection(firestore, 'leads');
       addDocumentNonBlocking(leadsRef, {
         name: values.name,
@@ -58,8 +55,6 @@ export function LeadForm() {
         source: 'Landing Page Safe & Sound',
       });
 
-      // 2. Tenta obter mensagem da IA com um timeout curto ou abre o diálogo com o fallback se demorar
-      // Para máxima velocidade, abrimos o diálogo quase instantaneamente
       const aiPromise = generatePersonalizedFollowUpMessage({
         leadName: values.name,
         leadEmail: values.email,
@@ -70,10 +65,9 @@ export function LeadForm() {
         courseBenefits: 'Protego Mental, Defesa Contra Travas, Suporte via Coruja',
       }).catch(() => null);
 
-      // Aguardamos apenas um breve momento (800ms) para ver se a IA responde, senão vamos com fallback
       const aiResponse = await Promise.race([
         aiPromise,
-        new Promise(resolve => setTimeout(() => resolve(null), 800))
+        new Promise(resolve => setTimeout(() => resolve(null), 600))
       ]) as any;
 
       setSuccessData({ 
@@ -82,8 +76,6 @@ export function LeadForm() {
       });
       
     } catch (error: any) {
-      console.error('Falha no ritual:', error);
-      // Mesmo com erro, tentamos mostrar o sucesso para não travar o usuário
       setSuccessData({ message: fallbackMessage, name: values.name });
     } finally {
       setIsLoading(false);
@@ -153,7 +145,13 @@ export function LeadForm() {
       </Form>
 
       <Dialog open={!!successData} onOpenChange={() => setSuccessData(null)}>
-        <DialogContent className="bg-[#f4ecd8] border-[#8b7355] w-[95vw] md:max-w-2xl text-[#4a3728] rounded-none p-0 overflow-hidden outline-none shadow-2xl sanctuary-glow">
+        <DialogContent className="bg-[#f4ecd8] border-[#8b7355] w-[95vw] md:max-w-2xl text-[#4a3728] rounded-none p-0 overflow-hidden outline-none shadow-2xl sanctuary-glow border-2">
+          {/* Botão de fechar customizado para o tema de pergaminho */}
+          <DialogClose className="absolute right-4 top-4 z-[120] text-[#8b7355] hover:text-[#4a3728] transition-colors p-2 rounded-full hover:bg-black/5">
+            <X className="h-6 w-6" />
+            <span className="sr-only">Fechar</span>
+          </DialogClose>
+
           <div className="relative p-6 md:p-12 min-h-[500px] flex flex-col justify-center items-center text-center">
             <div className="absolute inset-0 opacity-40 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/parchment.png')]" />
             <div className="absolute inset-4 border border-[#8b7355]/30 pointer-events-none" />
