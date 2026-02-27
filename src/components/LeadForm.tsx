@@ -81,7 +81,7 @@ export function LeadForm() {
   }
 
   const handleJoinWhatsApp = () => {
-    window.open('https://chat.whatsapp.com/seu-link-aqui', '_blank');
+    window.open('https://chat.whatsapp.com/Ew6011hhjUs2Suemv4oODg', '_blank');
   };
 
   return (
