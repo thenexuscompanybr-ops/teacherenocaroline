@@ -274,12 +274,12 @@ export default function LandingPage() {
               { 
                 num: "Aula 2", 
                 title: "O Caldeirão da Consistência", 
-                desc: "Aprenda a fórmula para manter o foco e a disciplina, transformando o estudo em um ritual diário de evolução." 
+                desc: "Aprenda a fórmula para manter o foco e a disciplina, transformando o estudo em um ritual diário de evolução. Como encaixar o inglês na rotina sem surtar." 
               },
               { 
                 num: "Aula 3", 
                 title: "A Transfiguração da Voz (Safe & Sound)", 
-                desc: "Domine a arte da comunicação segura e assuma sua autoridade vocal em qualquer cenário profissional." 
+                desc: "Domine a arte da comunicação segura e assuma sua autoridade vocal em qualquer cenário profissional. O segredo para falar sem medo e com o som certo." 
               },
             ].map((card, idx) => (
               <Card key={idx} className="brand-card scroll-reveal border-primary/20 bg-card/70 shadow-2xl h-full">
