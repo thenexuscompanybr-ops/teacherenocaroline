@@ -1,4 +1,3 @@
-
 "use client"
 
 import React, { useEffect } from 'react';
@@ -334,7 +333,7 @@ export default function LandingPage() {
                 <CarouselContent>
                   {aboutSlides.map((slide, index) => (
                     <CarouselItem key={index}>
-                      <div className="flex flex-col h-full min-h-[400px]">
+                      <div className="flex flex-col h-full min-h-[350px]">
                         <h2 className="text-2xl md:text-5xl font-headline text-foreground mb-6 leading-tight tracking-tight">
                           {slide.title}
                         </h2>
@@ -356,7 +355,7 @@ export default function LandingPage() {
                           </div>
                         ) : (
                           index === 0 && (
-                            <div className="mt-12 flex justify-center md:justify-start">
+                            <div className="mt-6 flex justify-center md:justify-start">
                                <div className="p-8 brand-card bg-primary/5 border-primary/20 flex items-center gap-6 max-w-sm">
                                  <slide.icon className="w-10 h-10 text-primary animate-magical-float" />
                                  <p className="text-[11px] uppercase tracking-[0.3em] font-bold text-primary leading-relaxed">Folheie estas crônicas para iniciarmos nossa jornada</p>
@@ -368,7 +367,7 @@ export default function LandingPage() {
                     </CarouselItem>
                   ))}
                 </CarouselContent>
-                <div className="flex justify-center md:justify-start gap-6 mt-16">
+                <div className="flex justify-center md:justify-start gap-6 mt-8">
                   <CarouselPrevious className="static translate-y-0 border-primary/40 text-primary hover:bg-primary/20 h-12 w-12" />
                   <CarouselNext className="static translate-y-0 border-primary/40 text-primary hover:bg-primary/20 h-12 w-12" />
                 </div>
