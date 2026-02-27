@@ -113,7 +113,7 @@ export default function LandingPage() {
         "Talvez você também esteja se sentindo fora do lugar. Com medo de falar. Com vergonha de travar.",
         "E talvez tudo que você precise seja um espaço seguro. Leve. Real.",
         "Se for o seu caso... fica.",
-        "Porque essa história tem tudo para continuar com você aqui."
+        "Because essa história tem tudo para continuar com você aqui."
       ]
     }
   ];
@@ -158,7 +158,7 @@ export default function LandingPage() {
           
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-headline text-foreground mb-4 md:mb-8 leading-[1.1] scroll-reveal w-full flex flex-col items-center">
             Safe & Sound:
-            <span className="gold-leaf mystic-script text-[7.5vw] sm:text-5xl md:text-6xl lg:text-7xl block mt-2 py-2 px-2 sm:px-6 whitespace-nowrap text-center">
+            <span className="gold-leaf mystic-script text-[7.5vw] md:text-5xl lg:text-6xl block mt-2 py-2 px-2 sm:px-6 whitespace-nowrap text-center">
               Onde a Magia do Inglês Acontece.
             </span>
             <span className="text-base md:text-xl lg:text-2xl block mt-3 font-body tracking-tight opacity-95">
@@ -268,18 +268,18 @@ export default function LandingPage() {
             {[
               { 
                 num: "Aula 1", 
-                title: "O Mapa do Desbloqueio", 
-                desc: "Entenda por que o seu cérebro entra em modo de pânico e como reverter esse processo de forma imediata." 
+                title: "O Contra-Feitiço do Medo", 
+                desc: "Descubra como desarmar o pânico de falar inglês e liberar sua voz das amarras do bloqueio emocional." 
               },
               { 
                 num: "Aula 2", 
-                title: "A Técnica da Habilidade Ativa", 
-                desc: "Pratique a fala de forma acolhedora e sem julgamentos, focando na comunicação real e segura." 
+                title: "O Caldeirão da Consistência", 
+                desc: "Aprenda a fórmula para manter o foco e a disciplina, transformando o estudo em um ritual diário de evolução." 
               },
               { 
                 num: "Aula 3", 
-                title: "O Plano de Carreira Fluente", 
-                desc: "Como utilizar sua nova confiança para abrir portais em reuniões e entrevistas internacionais." 
+                title: "A Transfiguração da Voz (Safe & Sound)", 
+                desc: "Domine a arte da comunicação segura e assuma sua autoridade vocal em qualquer cenário profissional." 
               },
             ].map((card, idx) => (
               <Card key={idx} className="brand-card scroll-reveal border-primary/20 bg-card/70 shadow-2xl h-full">
